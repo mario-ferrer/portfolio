@@ -131,7 +131,7 @@
 
   .bento-caption .event,
   .bento-card.no-image .event {
-    color: #fff;
+    color: #FF6FA5;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 15px;
@@ -139,11 +139,12 @@
   }
 
   .bento-card.no-image .event {
-    color: #231C33;
+    color: #FF1B6B;
   }
 
   .bento-caption .talk {
     color: #f0e8d8;
+    font-weight: 500;
     font-size: 13px;
     line-height: 1.35;
   }
@@ -176,16 +177,16 @@
   }
 
   .teaching-badge {
-    width: 56px;
-    height: 56px;
+    width: 76px;
+    height: 76px;
     background: #fff;
     border: 1px solid rgba(35,28,51,0.1);
-    border-radius: 10px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding: 4px;
+    padding: 6px;
   }
 
   .teaching-badge img {
@@ -221,6 +222,22 @@
     border-top: 1px solid rgba(35,28,51,0.08);
   }
 
+  tbody tr.featured td:first-child {
+    position: relative;
+    padding-left: 12px;
+  }
+
+  tbody tr.featured td:first-child::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 14px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #FF1B6B;
+  }
+
   tbody td {
     padding: 10px 8px 10px 0;
     vertical-align: top;
@@ -248,6 +265,23 @@
     color: #231C33;
     margin-top: 48px;
     text-align: center;
+  }
+
+  .closing-cta-link {
+    text-align: center;
+    margin-top: 10px;
+  }
+
+  .closing-cta-link a {
+    color: #FF1B6B;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+  }
+
+  .closing-cta-link a:hover {
+    text-decoration: underline;
   }
 
   footer {
@@ -315,41 +349,36 @@
   <h1>Stages, mics, and classrooms</h1>
   <p class="intro">Conferences, podcasts, and teaching, all about content design.</p>
 
-  <div class="section-label">What I've done lately</div>
+  <div class="section-label">What I've talked about</div>
   <div class="bento">
     <div class="bento-card bento-big">
-      <img src="../images/talks/design-matters.jpg" alt="Mario Ferrer speaking on stage at Design Matters 2021">
+      <img src="../images/talks/button-conference.jpg" alt="Mario Ferrer on stage during the Button Conference 2022 panel">
       <div class="bento-caption">
-        <div class="event">Design Matters</div>
-        <div class="talk">Impactful UX writing</div>
+        <div class="event">Button Conference</div>
       </div>
     </div>
     <div class="bento-card bento-b1">
       <img src="../images/talks/lead-with-tempo.jpg" alt="Mario Ferrer mid-gesture on stage at Lead With Tempo">
       <div class="bento-caption">
         <div class="event">Lead With Tempo</div>
-        <div class="talk">How local communities of practice have a global impact</div>
       </div>
     </div>
     <div class="bento-card bento-b2">
-      <img src="../images/talks/content-rookie.jpg" alt="Content Rookie podcast cover art, hosted by Nicole Michaelis">
+      <img src="../images/talks/design-matters.jpg" alt="Mario Ferrer speaking on stage at Design Matters 2021">
       <div class="bento-caption">
-        <div class="event">Content Rookie</div>
-        <div class="talk">Content design with care, for users and ourselves</div>
+        <div class="event">Design Matters</div>
       </div>
     </div>
     <div class="bento-card bento-b3">
       <img src="../images/talks/writers-of-silicon-valley.jpg" alt="Writers of Silicon Valley podcast episode cover with Mario Ferrer">
       <div class="bento-caption">
         <div class="event">Writers of Silicon Valley</div>
-        <div class="talk">Going global: UX writing outside the United States</div>
       </div>
     </div>
     <div class="bento-card bento-b4">
-      <img src="../images/talks/button-conference.jpg" alt="Mario Ferrer on stage during the Button Conference 2022 panel">
+      <img src="../images/talks/content-rookie.jpg" alt="Content Rookie podcast cover art, hosted by Nicole Michaelis">
       <div class="bento-caption">
-        <div class="event">Button Conference</div>
-        <div class="talk">Cultivating a healthy culture for your content design team</div>
+        <div class="event">Content Rookie</div>
       </div>
     </div>
   </div>
@@ -384,25 +413,25 @@
       <tr><td>Type</td><td>Event</td><td>Topic</td><td class="date">Date</td></tr>
     </thead>
     <tbody>
-      <tr><td>Post</td><td>LinkedIn</td><td>"Context architecture" thought-leadership thread</td><td class="date">2026</td></tr>
-      <tr><td>Podcast</td><td><a href="https://open.spotify.com/episode/67DJTLndDQtygAyVfGEQHx" target="_blank" rel="noopener">Content Rookie</a></td><td>Content design with care, for users and ourselves</td><td class="date">Jul 2025</td></tr>
+      <tr class="featured"><td>Podcast</td><td><a href="https://open.spotify.com/episode/67DJTLndDQtygAyVfGEQHx" target="_blank" rel="noopener">Content Rookie</a></td><td>Content design with care, for users and ourselves</td><td class="date">Jul 2025</td></tr>
+      <tr><td>Interview</td><td><a href="https://www.youtube.com/watch?v=_gXkbVwb0Pw" target="_blank" rel="noopener">UXTips</a></td><td>Scaling content design</td><td class="date">Dec 2024</td></tr>
+      <tr><td>Talk</td><td><a href="https://www.youtube.com/watch?v=2AzAMJmcu74" target="_blank" rel="noopener">WeDesign</a></td><td>What the heck is content design?</td><td class="date">Jun 2024</td></tr>
       <tr><td>Panel</td><td><a href="https://www.worldiaday.org/talks/how-content-design-provides-context-user-experience" target="_blank" rel="noopener">World IA Day Barcelona</a></td><td>How content design provides context to the user experience</td><td class="date">Mar 2024</td></tr>
       <tr><td>Podcast</td><td><a href="https://open.spotify.com/episode/6xAxDBZ6RuAefMZtu4eGTR" target="_blank" rel="noopener">Lo que callamos l@s UX Writers</a></td><td>De tacos y UX writing</td><td class="date">Apr 2024</td></tr>
-      <tr><td>Course</td><td><a href="https://www.domestika.org/es/courses/798-introduccion-al-ux-writing" target="_blank" rel="noopener">Domestika</a></td><td>Introducción al UX writing</td><td class="date">2020&ndash;ongoing</td></tr>
-      <tr><td>Talk</td><td><a href="https://www.youtube.com/watch?v=sHoDaB1mUZ0" target="_blank" rel="noopener">Lead With Tempo</a></td><td>How local communities of practice have a global impact</td><td class="date">2023&ndash;24</td></tr>
+      <tr class="featured"><td>Talk</td><td><a href="https://www.youtube.com/watch?v=sHoDaB1mUZ0" target="_blank" rel="noopener">Lead With Tempo</a></td><td>How local communities of practice have a global impact</td><td class="date">Jun 2024</td></tr>
       <tr><td>Interview</td><td><a href="https://www.youtube.com/watch?v=g_fch8Pk8Zg" target="_blank" rel="noopener">Lead With Tempo</a></td><td>On the sofa with Mario Ferrer</td><td class="date">May 2020</td></tr>
       <tr><td>Podcast</td><td><a href="https://open.spotify.com/episode/6mBc8mYDX5wOyUCAHqM4oe" target="_blank" rel="noopener">UXBS</a></td><td>Cómo colaborar en el diseño de producto siendo content designer</td><td class="date">May 2022</td></tr>
-      <tr><td>Panel</td><td><a href="https://workingincontent.com/perspectives/watch/learnings-in-leadership" target="_blank" rel="noopener">Working In Content — Perspectives</a></td><td>Learnings in leadership</td><td class="date">2022</td></tr>
-      <tr><td>Talk</td><td><a href="https://www.buttonevents.com/2022-segments/cultivating-a-healthy-culture-for-your-content-design-team" target="_blank" rel="noopener">Button Conference</a></td><td>Cultivating a healthy culture for your content design team</td><td class="date">2022</td></tr>
+      <tr><td>Panel</td><td><a href="https://workingincontent.com/perspectives/watch/learnings-in-leadership" target="_blank" rel="noopener">Working In Content — Perspectives</a></td><td>Learnings in leadership</td><td class="date">Mar 2022</td></tr>
+      <tr class="featured"><td>Talk</td><td><a href="https://www.buttonevents.com/2022-segments/cultivating-a-healthy-culture-for-your-content-design-team" target="_blank" rel="noopener">Button Conference</a></td><td>Cultivating a healthy culture for your content design team</td><td class="date">Oct 2022</td></tr>
       <tr><td>Podcast</td><td><a href="https://open.spotify.com/episode/4We6akWZaXrXe9z4sR8OZl" target="_blank" rel="noopener">CLEAR TALKS</a></td><td>Episode #1, interview</td><td class="date">Feb 2022</td></tr>
       <tr><td>Workshop</td><td><a href="https://2021.contentbydesign.org/speaker/mario-ferrer" target="_blank" rel="noopener">Content by Design (Clearleft)</a></td><td>Collaboration tools for content-first design</td><td class="date">Jul 2021</td></tr>
-      <tr><td>Talk</td><td><a href="https://2021.designmatters.io/line-up/mario-ferrer/" target="_blank" rel="noopener">Design Matters</a></td><td>Impactful UX writing</td><td class="date">2021</td></tr>
+      <tr class="featured"><td>Talk</td><td><a href="https://2021.designmatters.io/line-up/mario-ferrer/" target="_blank" rel="noopener">Design Matters</a></td><td>Impactful UX writing</td><td class="date">Sep 2021</td></tr>
       <tr><td>Podcast</td><td><a href="https://open.spotify.com/episode/4qpd6udplD3wYjhKHSK3MK" target="_blank" rel="noopener">UX en Español</a></td><td>Diseñar contenido en otros idiomas</td><td class="date">Dec 2021</td></tr>
-      <tr><td>Talk</td><td><a href="https://www.youtube.com/watch?v=gh7BfuEaG7U" target="_blank" rel="noopener">Nuclio Digital School</a></td><td>Derribando silos: colaboración entre product y content design</td><td class="date">2021&ndash;24</td></tr>
-      <tr><td>Interview</td><td><a href="https://www.youtube.com/watch?v=uGmizomK38I" target="_blank" rel="noopener">ProductStories</a></td><td>How to build and manage a world-class team of UX writers</td><td class="date">2021&ndash;22</td></tr>
-      <tr><td>Podcast</td><td><a href="https://www.writersofsiliconvalley.com/episodes/2020-10-27/mario-ferrer-ux-writer-global-community" target="_blank" rel="noopener">Writers of Silicon Valley</a></td><td>Going global: UX writing outside the United States</td><td class="date">Oct 2020&ndash;ongoing</td></tr>
+      <tr><td>Talk</td><td><a href="https://www.youtube.com/watch?v=gh7BfuEaG7U" target="_blank" rel="noopener">Interactius</a></td><td>Derribando silos: colaboración entre product y content design</td><td class="date">Sep 2022</td></tr>
+      <tr><td>Interview</td><td><a href="https://www.youtube.com/watch?v=uGmizomK38I" target="_blank" rel="noopener">ProductStories</a></td><td>How to build and manage a world-class team of UX writers</td><td class="date">Jun 2022</td></tr>
+      <tr class="featured"><td>Podcast</td><td><a href="https://www.writersofsiliconvalley.com/episodes/2020-10-27/mario-ferrer-ux-writer-global-community" target="_blank" rel="noopener">Writers of Silicon Valley</a></td><td>Going global: UX writing outside the United States</td><td class="date">Oct 2020&ndash;ongoing</td></tr>
       <tr><td>Podcast</td><td><a href="https://open.spotify.com/episode/5TNMECSgIZSQx12Gu1d8yh" target="_blank" rel="noopener">Content Rookie</a></td><td>UX writing and content design stakeholders</td><td class="date">Mar 2021</td></tr>
-      <tr><td>Interview</td><td><a href="https://ellessmedia.com/csi/king-games/" target="_blank" rel="noopener">Content Strategy Insights</a></td><td>Scaling content design to ~250M users at King</td><td class="date">&mdash;</td></tr>
+      <tr><td>Interview</td><td><a href="https://ellessmedia.com/csi/king-games/" target="_blank" rel="noopener">Content Strategy Insights</a></td><td>Scaling content design to ~250M users at King</td><td class="date">May 2021</td></tr>
       <tr><td>Talk</td><td><a href="https://locworld.com/speakers/mario-ferrer/" target="_blank" rel="noopener">LocWorld 42</a></td><td>Why localization and UX writing should be one team</td><td class="date">Jul 2020</td></tr>
       <tr><td>Talk</td><td><a href="https://womenintechsummit.pl/pl/speaker?ids=mario-ferrer" target="_blank" rel="noopener">Woman in Tech Summit</a></td><td>&mdash;</td><td class="date">&mdash;</td></tr>
       <tr><td>Interview</td><td><a href="https://www.youtube.com/watch?v=F9Cbv5-i8X0" target="_blank" rel="noopener">IDA Chile</a></td><td>UX writing, juegos móviles y desafíos del contenido en español</td><td class="date">Jul 21, 2020</td></tr>
@@ -410,6 +439,7 @@
   </table>
 
   <p class="closing-cta">From keynotes to classrooms, happy to show up and talk shop.</p>
+  <p class="closing-cta-link"><a href="/contact/">Let's chat &rarr;</a></p>
 </main>
 
 <footer>
