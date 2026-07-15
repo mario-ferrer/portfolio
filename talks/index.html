@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Talks & teaching — Mario Ferrer</title>
+<meta name="description" content="Talks, podcasts, panels, and where Mario Ferrer teaches content design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: #FFF8ED;
+    color: #231C33;
+    font-family: 'Inter', sans-serif;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(35,28,51,0.1);
+    padding: 22px 40px;
+  }
+
+  .nameplate {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    color: #231C33;
+  }
+
+  .nameplate a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  nav {
+    display: flex;
+    gap: 28px;
+    font-size: 14px;
+  }
+
+  nav a {
+    color: #6B6152;
+    text-decoration: none;
+  }
+
+  nav a.current {
+    color: #FF1B6B;
+    font-weight: 500;
+  }
+
+  nav a:hover {
+    color: #231C33;
+  }
+
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 40px 80px;
+  }
+
+  h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .intro {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: #6B6152;
+    max-width: 60ch;
+    margin-bottom: 40px;
+  }
+
+  .section-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #948970;
+    margin-bottom: 16px;
+  }
+
+  /* Spotlight bento */
+  .bento {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 12px;
+    height: 380px;
+    margin-bottom: 48px;
+  }
+
+  .bento-card {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .bento-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .bento-card.no-image {
+    background: #F2E8D5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 14px;
+  }
+
+  .bento-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.6));
+    padding: 16px;
+  }
+
+  .bento-caption .event,
+  .bento-card.no-image .event {
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 4px;
+  }
+
+  .bento-card.no-image .event {
+    color: #231C33;
+  }
+
+  .bento-caption .talk {
+    color: #f0e8d8;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .bento-card.no-image .talk {
+    color: #5c5644;
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+
+  .bento-big { grid-column: 1; grid-row: 1 / 3; }
+  .bento-b1 { grid-column: 2; grid-row: 1; }
+  .bento-b2 { grid-column: 3; grid-row: 1; }
+  .bento-b3 { grid-column: 2; grid-row: 2; }
+  .bento-b4 { grid-column: 3; grid-row: 2; }
+
+  /* Teaching logo strip */
+  .teaching {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+
+  .teaching-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .teaching-badge {
+    width: 56px;
+    height: 56px;
+    background: #fff;
+    border: 1px solid rgba(35,28,51,0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    padding: 4px;
+  }
+
+  .teaching-badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .teaching-item span {
+    font-size: 11px;
+    color: #948970;
+  }
+
+  /* Full table */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+  }
+
+  thead td {
+    color: #948970;
+    text-align: left;
+    padding: 8px 8px 8px 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  tbody tr {
+    border-top: 1px solid rgba(35,28,51,0.08);
+  }
+
+  tbody td {
+    padding: 10px 8px 10px 0;
+    vertical-align: top;
+  }
+
+  tbody td.date {
+    color: #948970;
+    white-space: nowrap;
+  }
+
+  tbody a {
+    color: #0F7A50;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  tbody a:hover {
+    color: #0B5C3D;
+  }
+
+  .closing-cta {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #231C33;
+    margin-top: 48px;
+    text-align: center;
+  }
+
+  footer {
+    padding: 24px 40px;
+    border-top: 1px solid rgba(35,28,51,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12.5px;
+  }
+
+  footer .copyright {
+    color: #948970;
+  }
+
+  footer a {
+    color: #0F7A50;
+    text-decoration: none;
+    font-weight: 500;
+  }
+
+  @media (max-width: 720px) {
+    header, main, footer {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .bento {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 140px);
+      height: auto;
+    }
+
+    .bento-big { grid-column: 1 / 3; grid-row: 1; }
+    .bento-b1 { grid-column: 1; grid-row: 2; }
+    .bento-b2 { grid-column: 2; grid-row: 2; }
+    .bento-b3 { grid-column: 1; grid-row: 3; }
+    .bento-b4 { grid-column: 2; grid-row: 3; }
+
+    table, thead, tbody, tr, td { display: block; }
+    thead { display: none; }
+    tbody tr {
+      padding: 12px 0;
+    }
+    tbody td {
+      padding: 2px 0;
+    }
+    tbody td.date { order: -1; font-size: 11.5px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nameplate"><a href="/">Mario Ferrer</a></div>
+  <nav>
+    <a href="/#work">Work</a>
+    <a href="/about/">About</a>
+    <a href="/talks/" class="current">Talks</a>
+    <a href="/contact/">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Stages, mics, and classrooms</h1>
+  <p class="intro">Conferences, podcasts, and teaching, all about content design.</p>
+
+  <div class="section-label">What I've done lately</div>
+  <div class="bento">
+    <div class="bento-card bento-big">
+      <img src="../images/talks/design-matters.jpg" alt="Mario Ferrer speaking on stage at Design Matters 2021">
+      <div class="bento-caption">
+        <div class="event">Design Matters</div>
+        <div class="talk">Impactful UX writing</div>
+      </div>
+    </div>
+    <div class="bento-card bento-b1">
+      <img src="../images/talks/lead-with-tempo.jpg" alt="Mario Ferrer mid-gesture on stage at Lead With Tempo">
+      <div class="bento-caption">
+        <div class="event">Lead With Tempo</div>
+        <div class="talk">How local communities of practice have a global impact</div>
+      </div>
+    </div>
+    <div class="bento-card bento-b2">
+      <img src="../images/talks/content-rookie.jpg" alt="Content Rookie podcast cover art, hosted by Nicole Michaelis">
+      <div class="bento-caption">
+        <div class="event">Content Rookie</div>
+        <div class="talk">Content design with care, for users and ourselves</div>
+      </div>
+    </div>
+    <div class="bento-card bento-b3">
+      <img src="../images/talks/writers-of-silicon-valley.jpg" alt="Writers of Silicon Valley podcast episode cover with Mario Ferrer">
+      <div class="bento-caption">
+        <div class="event">Writers of Silicon Valley</div>
+        <div class="talk">Going global: UX writing outside the United States</div>
+      </div>
+    </div>
+    <div class="bento-card bento-b4">
+      <img src="../images/talks/button-conference.jpg" alt="Mario Ferrer on stage during the Button Conference 2022 panel">
+      <div class="bento-caption">
+        <div class="event">Button Conference</div>
+        <div class="talk">Cultivating a healthy culture for your content design team</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Where I teach</div>
+  <div class="teaching">
+    <div class="teaching-item">
+      <div class="teaching-badge"><img src="../images/talks/logos/lci.png" alt="LCI Barcelona logo"></div>
+      <span>Barcelona</span>
+    </div>
+    <div class="teaching-item">
+      <div class="teaching-badge"><img src="../images/talks/logos/esdi.png" alt="ESDi logo"></div>
+      <span>Barcelona</span>
+    </div>
+    <div class="teaching-item">
+      <div class="teaching-badge"><img src="../images/talks/logos/shifta.png" alt="SHIFTA by ELISAVA logo"></div>
+      <span>by ELISAVA</span>
+    </div>
+    <div class="teaching-item">
+      <div class="teaching-badge"><img src="../images/talks/logos/nuclio.png" alt="Nuclio Digital School logo"></div>
+      <span>School</span>
+    </div>
+    <div class="teaching-item">
+      <div class="teaching-badge"><img src="../images/talks/logos/domestika.png" alt="Domestika logo"></div>
+      <span>course</span>
+    </div>
+  </div>
+
+  <div class="section-label">What's on the record</div>
+  <table>
+    <thead>
+      <tr><td>Type</td><td>Event</td><td>Topic</td><td class="date">Date</td></tr>
+    </thead>
+    <tbody>
+      <tr><td>Post</td><td>LinkedIn</td><td>"Context architecture" thought-leadership thread</td><td class="date">2026</td></tr>
+      <tr><td>Podcast</td><td><a href="https://open.spotify.com/episode/67DJTLndDQtygAyVfGEQHx" target="_blank" rel="noopener">Content Rookie</a></td><td>Content design with care, for users and ourselves</td><td class="date">Jul 2025</td></tr>
+      <tr><td>Panel</td><td><a href="https://www.worldiaday.org/talks/how-content-design-provides-context-user-experience" target="_blank" rel="noopener">World IA Day Barcelona</a></td><td>How content design provides context to the user experience</td><td class="date">Mar 2024</td></tr>
+      <tr><td>Podcast</td><td><a href="https://open.spotify.com/episode/6xAxDBZ6RuAefMZtu4eGTR" target="_blank" rel="noopener">Lo que callamos l@s UX Writers</a></td><td>De tacos y UX writing</td><td class="date">Apr 2024</td></tr>
+      <tr><td>Course</td><td><a href="https://www.domestika.org/es/courses/798-introduccion-al-ux-writing" target="_blank" rel="noopener">Domestika</a></td><td>Introducción al UX writing</td><td class="date">2020&ndash;ongoing</td></tr>
+      <tr><td>Talk</td><td><a href="https://www.youtube.com/watch?v=sHoDaB1mUZ0" target="_blank" rel="noopener">Lead With Tempo</a></td><td>How local communities of practice have a global impact</td><td class="date">2023&ndash;24</td></tr>
+      <tr><td>Interview</td><td><a href="https://www.youtube.com/watch?v=g_fch8Pk8Zg" target="_blank" rel="noopener">Lead With Tempo</a></td><td>On the sofa with Mario Ferrer</td><td class="date">May 2020</td></tr>
+      <tr><td>Podcast</td><td><a href="https://open.spotify.com/episode/6mBc8mYDX5wOyUCAHqM4oe" target="_blank" rel="noopener">UXBS</a></td><td>Cómo colaborar en el diseño de producto siendo content designer</td><td class="date">May 2022</td></tr>
+      <tr><td>Panel</td><td><a href="https://workingincontent.com/perspectives/watch/learnings-in-leadership" target="_blank" rel="noopener">Working In Content — Perspectives</a></td><td>Learnings in leadership</td><td class="date">2022</td></tr>
+      <tr><td>Talk</td><td><a href="https://www.buttonevents.com/2022-segments/cultivating-a-healthy-culture-for-your-content-design-team" target="_blank" rel="noopener">Button Conference</a></td><td>Cultivating a healthy culture for your content design team</td><td class="date">2022</td></tr>
+      <tr><td>Podcast</td><td><a href="https://open.spotify.com/episode/4We6akWZaXrXe9z4sR8OZl" target="_blank" rel="noopener">CLEAR TALKS</a></td><td>Episode #1, interview</td><td class="date">Feb 2022</td></tr>
+      <tr><td>Workshop</td><td><a href="https://2021.contentbydesign.org/speaker/mario-ferrer" target="_blank" rel="noopener">Content by Design (Clearleft)</a></td><td>Collaboration tools for content-first design</td><td class="date">Jul 2021</td></tr>
+      <tr><td>Talk</td><td><a href="https://2021.designmatters.io/line-up/mario-ferrer/" target="_blank" rel="noopener">Design Matters</a></td><td>Impactful UX writing</td><td class="date">2021</td></tr>
+      <tr><td>Podcast</td><td><a href="https://open.spotify.com/episode/4qpd6udplD3wYjhKHSK3MK" target="_blank" rel="noopener">UX en Español</a></td><td>Diseñar contenido en otros idiomas</td><td class="date">Dec 2021</td></tr>
+      <tr><td>Talk</td><td><a href="https://www.youtube.com/watch?v=gh7BfuEaG7U" target="_blank" rel="noopener">Nuclio Digital School</a></td><td>Derribando silos: colaboración entre product y content design</td><td class="date">2021&ndash;24</td></tr>
+      <tr><td>Interview</td><td><a href="https://www.youtube.com/watch?v=uGmizomK38I" target="_blank" rel="noopener">ProductStories</a></td><td>How to build and manage a world-class team of UX writers</td><td class="date">2021&ndash;22</td></tr>
+      <tr><td>Podcast</td><td><a href="https://www.writersofsiliconvalley.com/episodes/2020-10-27/mario-ferrer-ux-writer-global-community" target="_blank" rel="noopener">Writers of Silicon Valley</a></td><td>Going global: UX writing outside the United States</td><td class="date">Oct 2020&ndash;ongoing</td></tr>
+      <tr><td>Podcast</td><td><a href="https://open.spotify.com/episode/5TNMECSgIZSQx12Gu1d8yh" target="_blank" rel="noopener">Content Rookie</a></td><td>UX writing and content design stakeholders</td><td class="date">Mar 2021</td></tr>
+      <tr><td>Interview</td><td><a href="https://ellessmedia.com/csi/king-games/" target="_blank" rel="noopener">Content Strategy Insights</a></td><td>Scaling content design to ~250M users at King</td><td class="date">&mdash;</td></tr>
+      <tr><td>Talk</td><td><a href="https://locworld.com/speakers/mario-ferrer/" target="_blank" rel="noopener">LocWorld 42</a></td><td>Why localization and UX writing should be one team</td><td class="date">Jul 2020</td></tr>
+      <tr><td>Talk</td><td><a href="https://womenintechsummit.pl/pl/speaker?ids=mario-ferrer" target="_blank" rel="noopener">Woman in Tech Summit</a></td><td>&mdash;</td><td class="date">&mdash;</td></tr>
+      <tr><td>Interview</td><td><a href="https://www.youtube.com/watch?v=F9Cbv5-i8X0" target="_blank" rel="noopener">IDA Chile</a></td><td>UX writing, juegos móviles y desafíos del contenido en español</td><td class="date">Jul 21, 2020</td></tr>
+    </tbody>
+  </table>
+
+  <p class="closing-cta">From keynotes to classrooms, happy to show up and talk shop.</p>
+</main>
+
+<footer>
+  <div class="copyright">&copy; 2026 Mario Ferrer</div>
+  <a href="https://www.linkedin.com/in/marioferrer/" target="_blank" rel="noopener">LinkedIn</a>
+</footer>
+
+</body>
+</html>
