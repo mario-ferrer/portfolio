@@ -86,9 +86,8 @@
   .section-label {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 12px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.01em;
     color: #948970;
     margin-bottom: 16px;
   }
@@ -135,14 +134,14 @@
 
   .bento-caption .event,
   .bento-card.no-image .event {
-    color: #C6B3EC;
+    color: #fff;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     font-size: 15px;
   }
 
   .bento-card.no-image .event {
-    color: #7A5FBF;
+    color: #231C33;
   }
 
   .bento-card.no-image .talk {
@@ -201,13 +200,19 @@
   table {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed;
     font-size: 13.5px;
   }
+
+  colgroup .col-event { width: 24%; }
+  colgroup .col-title { width: 46%; }
+  colgroup .col-date { width: 15%; }
+  colgroup .col-type { width: 15%; }
 
   thead td {
     color: #948970;
     text-align: left;
-    padding: 8px 8px 8px 0;
+    padding: 8px 24px 8px 0;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     font-size: 11px;
@@ -220,8 +225,9 @@
   }
 
   tbody td {
-    padding: 10px 8px 10px 0;
+    padding: 10px 24px 10px 0;
     vertical-align: top;
+    word-wrap: break-word;
   }
 
   tbody td.date {
@@ -390,6 +396,12 @@
 
   <div class="section-label">What's on the record</div>
   <table>
+    <colgroup>
+      <col class="col-event">
+      <col class="col-title">
+      <col class="col-date">
+      <col class="col-type">
+    </colgroup>
     <thead>
       <tr><td>Event</td><td>Title</td><td class="date">Date</td><td>Type</td></tr>
     </thead>
