@@ -158,32 +158,40 @@
     margin-top: 6px;
   }
 
-  /* Film photo strip */
-  .film-strip {
+  /* Film photo bento */
+  .film-bento {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     gap: 12px;
+    height: 380px;
     margin-bottom: 56px;
   }
 
-  .film-strip figure {
+  .film-bento figure {
+    position: relative;
     border-radius: 12px;
     overflow: hidden;
-    aspect-ratio: 1;
     transition: transform 0.25s ease;
   }
 
-  .film-strip figure:hover {
+  .film-bento figure:hover {
     transform: scale(1.06);
     z-index: 1;
   }
 
-  .film-strip img {
+  .film-bento img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
+
+  .film-big { grid-column: 1; grid-row: 1 / 3; }
+  .film-b1 { grid-column: 2; grid-row: 1; }
+  .film-b2 { grid-column: 3; grid-row: 1; }
+  .film-b3 { grid-column: 2; grid-row: 2; }
+  .film-b4 { grid-column: 3; grid-row: 2; }
 
   .closing-cta {
     font-family: 'Poppins', sans-serif;
@@ -255,14 +263,17 @@
       grid-column: 1 / 3;
     }
 
-    .film-strip {
-      grid-template-columns: repeat(2, 1fr);
+    .film-bento {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: repeat(3, 140px);
+      height: auto;
     }
 
-    .film-strip figure:last-child {
-      grid-column: 1 / 3;
-      aspect-ratio: 2 / 1;
-    }
+    .film-big { grid-column: 1 / 3; grid-row: 1; }
+    .film-b1 { grid-column: 1; grid-row: 2; }
+    .film-b2 { grid-column: 2; grid-row: 2; }
+    .film-b3 { grid-column: 1; grid-row: 3; }
+    .film-b4 { grid-column: 2; grid-row: 3; }
   }
 </style>
 </head>
@@ -283,13 +294,12 @@
 
   <div class="intro-grid">
     <div class="narrative">
-      <p>I was born in Guadalajara, Mexico, and moved to Barcelona in my twenties. Barcelona's home now, but some part of me is always halfway back to a taco stand in Guadalajara. I'm fluent in Spanish and English, get by in French and Catalan, and I've never quite stopped noticing how much gets lost, or found, in the space between languages.</p>
-      <p>I started out as an advertising copywriter in Mexico. The real shift came after I moved to Barcelona, when I made the jump into content design.</p>
-      <p>Early at King, a designer stopped me mid-sentence while I was writing an onboarding flow the way I used to write ads: one message, dramatic, precious. He looked at what I'd written and said something like, if you want to tell a story, go write a book. This isn't a book. It's a flow. That's the moment I fell in love with product design. I stopped treating words like a finished product and started treating them like part of a system, one that guides people through an experience: where they came from, where they're headed, and what they need to get done at each step along the way.</p>
-      <p>A few years in, I realized I didn't know anyone else doing this work in Spain, so I started Content Design España. Seven years, a lot of mentorships and workshops, and no shortage of job referrals later, it's still one of the things I'm proudest of. Not because I built something, but because a bunch of people stopped feeling like the only content designer in the room.</p>
-      <p>Along the way, I've worked with teams across Europe, the US, Canada, and Latin America, and with people from all sorts of backgrounds and cultures. It's taught me empathy not just for the people I design for, but for the people I design with too.</p>
-      <p>These days, there's one problem space I keep getting pulled into. Good content design comes from the judgment and taste that experience gives you, not tone of voice guidelines. So I've been building content systems and AI agents that try to carry that forward instead of just enforcing rules. Still figuring it out, but it feels like the right problem to be working on.</p>
-      <p>Outside of work, I genuinely enjoy teaching, chase the best tacos in town (DM me your faves), and shoot photos on film cameras older than some of my students. When I'm not doing any of that, you'll probably find me at crossfit or out on a trail run.</p>
+      <p>I was born in Guadalajara, Mexico, and moved to Barcelona in my twenties. Barcelona's home now, but part of me is always halfway back to a taco stand in Guadalajara. I speak Spanish, English, and enough French and Catalan to get by, and I've never quite stopped noticing how much gets lost, or found, in the space between languages.</p>
+      <p>I started out as an advertising copywriter in Mexico, and made the jump into content design after landing in Barcelona. Early at King, a designer stopped me mid-sentence while I was writing an onboarding flow the way I used to write ads: one message, dramatic, precious. He said something like, if you want to tell a story, go write a book. This isn't a book. It's a flow. That's the moment I fell in love with product design. I stopped treating words like a finished product and started treating them like part of a system, one that guides people through an experience.</p>
+      <p>A few years in, I didn't know anyone else doing this work in Spain, so I started Content Design España. Seven years and a lot of mentorships, workshops, and job referrals later, it's still one of the things I'm proudest of. Not because I built something, but because a bunch of people stopped feeling like the only content designer in the room.</p>
+      <p>Along the way I've worked with teams across Europe, the US, Canada, and Latin America. It taught me empathy not just for the people I design for, but for the people I design with.</p>
+      <p>These days, one problem space keeps pulling me in. Good content design comes from the judgment and taste experience gives you, not tone of voice guidelines. So I've been building content systems and AI agents that try to carry that forward instead of just enforcing rules. Still figuring it out, but it feels like the right problem to be working on.</p>
+      <p>Outside of work, I teach, chase the best tacos in town (DM me your faves), and shoot photos on film cameras older than some of my students. When I'm not doing any of that, you'll find me at crossfit or out on a trail run.</p>
     </div>
     <div class="portrait">
       <!-- TODO: drop the hero portrait here — PERSONAL BRAND/intro photo/Mario Ferrer.png → images/about/mario-portrait.png -->
@@ -334,12 +344,12 @@
   </div>
 
   <h2 class="section-label">I still shoot on film</h2>
-  <div class="film-strip">
-    <figure><img src="../images/about/film-wheat-field.jpg" alt="Woman in a red headscarf standing in a golden wheat field, shot on film"></figure>
-    <figure><img src="../images/about/film-hay-bale.jpg" alt="Kid standing triumphant on a hay bale, color-shifted film photo"></figure>
-    <figure><img src="../images/about/film-saga-cinema.jpg" alt="Neon Saga cinema marquee at night"></figure>
-    <figure><img src="../images/about/film-tall-grass.jpg" alt="Black and white portrait of a kid standing in tall grass"></figure>
-    <figure><img src="../images/about/film-vw-beetle.jpg" alt="Vintage VW Beetle parked against a stone wall in Mexico"></figure>
+  <div class="film-bento">
+    <figure class="film-big"><img src="../images/about/film-wheat-field.jpg" alt="Woman in a red headscarf standing in a golden wheat field, shot on film"></figure>
+    <figure class="film-b1"><img src="../images/about/film-hay-bale.jpg" alt="Kid standing triumphant on a hay bale, color-shifted film photo"></figure>
+    <figure class="film-b2"><img src="../images/about/film-saga-cinema.jpg" alt="Neon Saga cinema marquee at night"></figure>
+    <figure class="film-b3"><img src="../images/about/film-tall-grass.jpg" alt="Black and white portrait of a kid standing in tall grass"></figure>
+    <figure class="film-b4"><img src="../images/about/film-vw-beetle.jpg" alt="Vintage VW Beetle parked against a stone wall in Mexico"></figure>
   </div>
 
   <p class="closing-cta">Tacos, content systems, or both. Always up for a chat.</p>
