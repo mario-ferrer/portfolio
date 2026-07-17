@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Mario Ferrer</title>
+<meta name="description" content="Get in touch with Mario Ferrer for work, talks, teaching, or taco recommendations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: #FFF8ED;
+    color: #231C33;
+    font-family: 'Inter', sans-serif;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(35,28,51,0.1);
+    padding: 22px 40px;
+  }
+
+  .nameplate {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    color: #231C33;
+  }
+
+  .nameplate a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  nav {
+    display: flex;
+    gap: 28px;
+    font-size: 14px;
+  }
+
+  nav a {
+    color: #6B6152;
+    text-decoration: none;
+  }
+
+  nav a.current {
+    color: #FF1B6B;
+    font-weight: 500;
+  }
+
+  nav a:hover {
+    color: #231C33;
+  }
+
+  main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 40px 80px;
+  }
+
+  h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  h1 .accent {
+    color: #12A5B4;
+  }
+
+  .intro {
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: #6B6152;
+    max-width: 60ch;
+    margin-bottom: 40px;
+  }
+
+  .section-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.01em;
+    color: #12A5B4;
+    margin-bottom: 16px;
+  }
+
+  .contact-grid {
+    max-width: 560px;
+    margin-bottom: 56px;
+  }
+
+  .linkedin-line {
+    font-size: 14px;
+    color: #6B6152;
+    margin-top: 24px;
+  }
+
+  .linkedin-line a {
+    color: #FF1B6B;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .linkedin-line a:hover {
+    text-decoration: underline;
+  }
+
+  /* Form */
+  .form-field {
+    margin-bottom: 16px;
+  }
+
+  .form-field label {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    font-size: 12.5px;
+    color: #231C33;
+    margin-bottom: 6px;
+  }
+
+  .form-field input,
+  .form-field textarea {
+    width: 100%;
+    background: #fff;
+    border: 1px solid rgba(35,28,51,0.18);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #231C33;
+  }
+
+  .form-field textarea {
+    min-height: 130px;
+    resize: vertical;
+  }
+
+  .form-field input:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-color: #12A5B4;
+  }
+
+  .send-btn {
+    display: inline-block;
+    background: #FF1B6B;
+    color: #fff;
+    border: none;
+    border-radius: 100px;
+    padding: 11px 26px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .send-btn:hover {
+    background: #E01059;
+  }
+
+  .form-status {
+    display: none;
+    margin-top: 14px;
+    font-size: 13.5px;
+    color: #0C9E64;
+  }
+
+  .form-status.error {
+    color: #C0392B;
+  }
+
+  .form-status.visible {
+    display: block;
+  }
+
+  /* Taco callout */
+  .taco-callout {
+    background: #fff;
+    border: 1px solid rgba(35,28,51,0.1);
+    border-radius: 16px;
+    padding: 24px;
+  }
+
+  .taco-callout .taco-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #231C33;
+    margin-bottom: 6px;
+  }
+
+  .taco-callout p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #6B6152;
+    max-width: 60ch;
+  }
+
+  .taco-callout a {
+    color: #FF1B6B;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .taco-callout a:hover {
+    text-decoration: underline;
+  }
+
+  footer {
+    padding: 24px 40px;
+    border-top: 1px solid rgba(35,28,51,0.1);
+    font-size: 12.5px;
+  }
+
+  footer .footer-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  footer .copyright {
+    color: #948970;
+  }
+
+  @media (max-width: 720px) {
+    header, main, footer {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nameplate"><a href="/">Mario Ferrer</a></div>
+  <nav>
+    <a href="/#work">Work</a>
+    <a href="/talks/">Talks</a>
+    <a href="/about/">About</a>
+    <a href="/contact/" class="current">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <h1>Di <span class="accent">hola</span> &#128075;&#127996;</h1>
+  <p class="intro">Work, talks, teaching, or a taco tip that can't wait? Drop me a line.</p>
+
+  <div class="contact-grid">
+    <div>
+      <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="bb21eb62-a459-4594-970b-8f05cd61caa4">
+        <input type="hidden" name="subject" value="New message from marioferrer.com">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+        <div class="form-field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <button type="submit" class="send-btn">Send it</button>
+        <p class="form-status" id="form-status"></p>
+      </form>
+      <p class="linkedin-line">Not a form person? My <a href="https://www.linkedin.com/in/marioferrer/" target="_blank" rel="noopener">LinkedIn</a> DMs are open.</p>
+    </div>
+  </div>
+
+  <div class="taco-callout">
+    <div class="taco-title">The Button taco map &#127790;</div>
+    <p>Tacos are the official food of Button Conference, and <a href="https://torreypodmajersky.com" target="_blank" rel="noopener">Torrey Podmajersky</a> has been keeping the official map. <a href="https://maps.app.goo.gl/hDDzYTUqvDbzwjK67" target="_blank" rel="noopener">Explore it here</a>, and if your favorite spot is missing, that counts as urgent business for the form above.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="copyright">&copy; 2026 Mario Ferrer</div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var form = document.getElementById('contact-form');
+    var status = document.getElementById('form-status');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      status.className = 'form-status';
+
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (res.ok) {
+          form.reset();
+          status.textContent = 'Sent. Gracias, I’ll get back to you soon.';
+          status.className = 'form-status visible';
+        } else {
+          throw new Error();
+        }
+      }).catch(function () {
+        status.textContent = 'That didn’t go through. Try again, or find me on LinkedIn.';
+        status.className = 'form-status error visible';
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
