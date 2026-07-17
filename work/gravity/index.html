@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gravity, a voice and tone system — Mario Ferrer</title>
+<meta name="description" content="How I built Gravity, the voice and tone system for Shopify's Shop app, giving one consistent voice to two very different audiences: merchants and shoppers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: #FFF8ED;
+    color: #231C33;
+    font-family: 'Inter', sans-serif;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(35,28,51,0.1);
+    padding: 22px 40px;
+  }
+
+  .nameplate {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    color: #231C33;
+  }
+
+  .nameplate a { color: inherit; text-decoration: none; }
+
+  nav { display: flex; gap: 28px; font-size: 14px; }
+  nav a { color: #6B6152; text-decoration: none; }
+  nav a.current { color: #FF1B6B; font-weight: 500; }
+  nav a:hover { color: #231C33; }
+
+  main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+
+  .back {
+    display: inline-block;
+    font-size: 13.5px;
+    color: #6B6152;
+    text-decoration: none;
+    margin-bottom: 32px;
+  }
+  .back:hover { color: #231C33; }
+
+  .eyebrow {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #4C5FD5;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+
+  .lede {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #6B6152;
+    max-width: 60ch;
+    margin-bottom: 40px;
+  }
+
+  /* Metadata */
+  .meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    border-top: 1px solid rgba(35,28,51,0.12);
+    border-bottom: 1px solid rgba(35,28,51,0.12);
+    padding: 22px 0;
+    margin-bottom: 48px;
+  }
+
+  .meta-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #948970;
+    margin-bottom: 5px;
+  }
+
+  .meta-value { font-size: 14px; line-height: 1.5; color: #231C33; }
+
+  h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: #231C33;
+    margin-bottom: 18px;
+  }
+
+  section { margin-bottom: 48px; }
+
+  section p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #231C33;
+    max-width: 66ch;
+    margin-bottom: 16px;
+  }
+
+  ul.points { list-style: none; max-width: 66ch; }
+
+  ul.points > li {
+    position: relative;
+    padding-left: 22px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #231C33;
+    margin-bottom: 18px;
+  }
+
+  ul.points > li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4C5FD5;
+  }
+
+  ul.points > li strong {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #231C33;
+  }
+
+  section a { color: #231C33; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(35,28,51,0.35); }
+  section a:hover { text-decoration-color: #231C33; }
+
+  figure { margin: 24px 0 8px; }
+
+  figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid rgba(35,28,51,0.12);
+    border-radius: 12px;
+  }
+
+  figcaption {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #948970;
+    margin-top: 10px;
+  }
+
+  /* Gate */
+  .gate {
+    background: #fff;
+    border: 1px solid rgba(35,28,51,0.12);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    max-width: 520px;
+    margin: 8px auto 0;
+  }
+
+  .gate h2 { font-size: 19px; margin-bottom: 8px; }
+
+  .gate p { font-size: 14.5px; color: #6B6152; max-width: none; margin: 0 auto 20px; }
+
+  .gate-form { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+  .gate input {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    padding: 11px 16px;
+    border: 1px solid rgba(35,28,51,0.25);
+    border-radius: 100px;
+    width: 220px;
+    color: #231C33;
+    background: #FFF8ED;
+  }
+
+  .gate input:focus { outline: none; border-color: #FF1B6B; }
+
+  .gate button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    background: #FF1B6B;
+    border: none;
+    border-radius: 100px;
+    padding: 11px 22px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .gate button:hover { background: #E01059; }
+
+  .gate-error {
+    display: none;
+    font-size: 13px;
+    color: #C0392B;
+    margin-top: 14px;
+  }
+
+  .gate-error.visible { display: block; }
+
+  #locked { display: none; }
+  #locked.unlocked { display: block; }
+
+  .closing-cta {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #231C33;
+    max-width: none;
+  }
+
+  .closing-cta-link { margin-top: 10px; }
+
+  .closing-cta-link a {
+    color: #FF1B6B;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+  }
+
+  .closing-cta-link a:hover { text-decoration: underline; }
+
+  footer {
+    padding: 24px 40px;
+    border-top: 1px solid rgba(35,28,51,0.1);
+    font-size: 12.5px;
+  }
+
+  footer .footer-inner { max-width: 820px; margin: 0 auto; text-align: center; }
+  footer .copyright { color: #948970; }
+
+  @media (max-width: 720px) {
+    header, main, footer { padding-left: 24px; padding-right: 24px; }
+    h1 { font-size: 27px; }
+    .gate { padding: 24px; }
+    .gate input { width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nameplate"><a href="/">Mario Ferrer</a></div>
+  <nav>
+    <a href="/#work" class="current">Work</a>
+    <a href="/talks/">Talks</a>
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <a class="back" href="/#work">&larr; Back to work</a>
+
+  <div class="eyebrow">Case study</div>
+  <h1>Gravity</h1>
+  <p class="lede">A voice and tone system that gave Shopify's Shop app one consistent voice across two very different audiences, merchants and shoppers.</p>
+
+  <div class="meta">
+    <div>
+      <div class="meta-label">Company</div>
+      <div class="meta-value">Shopify</div>
+    </div>
+    <div>
+      <div class="meta-label">Role</div>
+      <div class="meta-value">Content Design Craft Lead, Shop app</div>
+    </div>
+    <div>
+      <div class="meta-label">Scope</div>
+      <div class="meta-value">Voice, tone, and UX writing system, paired with visual guidelines component by component</div>
+    </div>
+    <div>
+      <div class="meta-label">Timeline</div>
+      <div class="meta-value">Sep 2022 to Jul 2023</div>
+    </div>
+  </div>
+
+  <section>
+    <h2>The challenge</h2>
+    <ul class="points">
+      <li>The Shop app had no shared, documented voice. That is a real risk once more than one writer touches a growing surface: tone drifts moment to moment without a common reference, so order updates end up written differently from empty states, which read differently again from error messages.</li>
+      <li>It had to work for two audiences at once. Merchants and shoppers each have their own vocabulary for the same underlying features, and the system needed to serve both without splitting into two.</li>
+      <li>It had to extend Shopify's Polaris design system, not duplicate it. Polaris already sets the foundation (its public content guidelines aim for a 7th-grade reading level, plain language, active voice). Gravity's job was the Shop-app-specific, shopper-facing layer on top of that, not a rebuild from zero.</li>
+      <li>The name says the goal: <strong>Gravity</strong>, the system that keeps everything grounded to one consistent voice as the surface area grows.</li>
+    </ul>
+  </section>
+
+  <section class="gate" id="gate">
+    <h2>The rest is password-protected</h2>
+    <p>The deeper walkthrough, the annotated screens, the outcome, and what I learned all sit behind a quick password. Reach out and I will happily share it.</p>
+    <form class="gate-form" id="gate-form">
+      <input type="password" id="gate-input" placeholder="Enter password" autocomplete="off" aria-label="Password">
+      <button type="submit">Unlock</button>
+    </form>
+    <div class="gate-error" id="gate-error">That is not it. Try again, or <a href="/contact/">ask me for the password</a>.</div>
+  </section>
+
+  <div id="locked">
+
+    <section>
+      <h2>What I did</h2>
+      <ul class="points">
+        <li><strong>Built a 3-point tone spectrum: Straightforward, Approachable, Memorable.</strong> Each point got a defined attitude, a frequency (used always, used often, used sometimes), and real product moments as anchors: order tracking and error messages sit at Straightforward, Home sits at Approachable, and Shop Minis and shopping events sit at Memorable.</li>
+      </ul>
+      <figure>
+        <img src="/images/work/gravity/01-voice-tone-spectrum.png" alt="The Gravity tone spectrum: Straightforward, Approachable, and Memorable, each with attitude, frequency, and paired do and don't examples">
+        <figcaption>The tone spectrum, with a concrete Do and Don't for each point rather than an abstract principle.</figcaption>
+      </figure>
+      <ul class="points">
+        <li><strong>Paired every rule with a concrete Do and Don't.</strong> For example, "Your package is out for delivery" (do) versus "There's activity related to your package!" (don't, wrong tone for a routine update); "Picked for you" (do) versus "Product recommendations" (don't, too generic for the Approachable tone).</li>
+        <li><strong>Wrote the granular mechanical guidelines</strong> covering active voice, American spelling, capitalization, contractions, and punctuation: Oxford comma, em dash versus en dash, when to avoid exclamation and question marks. The unglamorous layer that keeps hundreds of strings consistent across many writers.</li>
+      </ul>
+      <figure>
+        <img src="/images/work/gravity/02-writing-guidelines.png" alt="Gravity writing guidelines: plain language, actionable and inclusive language, and punctuation mechanics, with explicit references to Polaris">
+        <figcaption>Mechanical guidelines, with several rules explicitly deferring to Polaris so Gravity extended the design system instead of forking it.</figcaption>
+      </figure>
+      <ul class="points">
+        <li><strong>Defined branded terminology with audience tags.</strong> "Shop Cash," "Shop Pay Installments," "Shop Promise," each with a definition and correct and incorrect usage, tagged for whether it is merchant-facing or shopper-facing language.</li>
+      </ul>
+      <figure>
+        <img src="/images/work/gravity/03-branded-terms.png" alt="Gravity branded terms sheet with merchant versus shopper tags, definitions, and correct usage">
+        <figcaption>Branded terms tagged MERCHANT or SHOPPER, so the same feature could be described correctly to each audience.</figcaption>
+      </figure>
+      <figure>
+        <img src="/images/work/gravity/05-branded-terms-2.png" alt="A second Gravity branded terms sheet with more definitions and usage examples">
+        <figcaption>A second terminology sheet. Getting these names right was half the work of sounding like one product.</figcaption>
+      </figure>
+      <ul class="points">
+        <li><strong>Designed content patterns with the rationale written down.</strong> The timestamp pattern, for instance, reasons through cognitive load out loud: we don't communicate how much time has passed since an event (1d ago); we display the actual time or date, so people aren't forced to do the math.</li>
+      </ul>
+      <figure>
+        <img src="/images/work/gravity/04-timestamps-pattern.png" alt="Gravity timestamp content pattern, showing the rule and its stated cognitive-load rationale">
+        <figcaption>Patterns stated the reasoning, not just the rule, so the next writer could extend them instead of guessing.</figcaption>
+      </figure>
+      <ul class="points">
+        <li><strong>Paired every writing guideline with a matching visual guideline, component by component.</strong> This is the part worth foregrounding: Gravity wasn't a writing-only artifact. It was co-developed with visual design, so voice and visual system evolved together rather than in separate documents.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>The outcome</h2>
+      <ul class="points">
+        <li><strong>The components got reused, which is a stronger signal than any adoption number.</strong> In February 2024, seven months after I had moved off the Shop app role, a teammate built an experimental Figma UI kit for the Collabs native-app rebuild by repurposing Gravity's components. I stress-tested it myself by translating the existing Collabs web experience into the kit, validating it as a foundation for the engineer building the native creator app.</li>
+        <li>That is sourced, concrete evidence that Gravity wasn't a one-product artifact. Its systems thinking became literal infrastructure for a different team's rebuild, which is more telling than a generic adoption percentage would have been.</li>
+        <li>The standard Gravity extended is publicly checkable. Shopify's own Polaris documentation still states the 7th-grade reading level, active voice, and plain-language rules Gravity built on, so the rigor here is verifiable against a live design system, not just an internal claim.</li>
+        <li>An honest note: no adoption-percentage or review-cycle metric survives from this era (it predates my access to the internal records). The component-reuse story above is the real, and I would argue stronger, measure of impact.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>What I learned</h2>
+      <ul class="points">
+        <li>The hardest calls were never the mechanical ones. Punctuation and capitalization you can just decide. Tone was the tension: a declined payment could read as Straightforward ("Your card was declined") or tip toward Approachable to soften the blow, and the wrong choice made the app feel either cold or oddly cheerful about your money not going through. Writing those judgment calls down, with real examples, was the whole point of the system.</li>
+        <li>Pairing every writing rule with a visual one, component by component, changed how I thought about voice. I had treated tone as something that lived in the words. Sitting next to visual design, it was obvious the voice also lived in the spacing, the hierarchy, the weight of a button. A guideline that only covered the words was only doing half the job.</li>
+        <li>Looking at Gravity now, next to the tone-of-voice agent work I did later at Welltech, it reads like an early version of the same idea: don't hand people, or a model, a list of adjectives and hope for the best. Give them the judgment and the reasoning behind each call, so they can make the next decision without you in the room.</li>
+        <li>And I didn't know at the time that a teammate would repurpose Gravity's components to prototype a product I never touched. Finding that out reframed what I thought I had built: not a style doc for one app, but something durable enough to carry across teams.</li>
+      </ul>
+    </section>
+
+    <section>
+      <p class="closing-cta">Want to go deeper on any of this?</p>
+      <p class="closing-cta-link"><a href="/contact/">Get in touch &rarr;</a></p>
+    </section>
+
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="copyright">&copy; 2026 Mario Ferrer</div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    // Shared case-study password. Change this value to update the gate.
+    var PASSWORD = 'T@cosDeSuader@';
+
+    var form = document.getElementById('gate-form');
+    var input = document.getElementById('gate-input');
+    var error = document.getElementById('gate-error');
+    var gate = document.getElementById('gate');
+    var locked = document.getElementById('locked');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (input.value.trim() === PASSWORD) {
+        locked.classList.add('unlocked');
+        gate.style.display = 'none';
+      } else {
+        error.classList.add('visible');
+        input.value = '';
+        input.focus();
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
