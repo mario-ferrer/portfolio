@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mario Ferrer — Content design</title>
-<meta name="description" content="Mario Ferrer, content design. Case studies on the way.">
+<title>Mario Ferrer — Staff Content Designer</title>
+<meta name="description" content="Mario Ferrer designs content systems that carry the thinking, not just the words, for people and for AI. Content designer from Guadalajara, based in Barcelona.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -12,19 +12,15 @@
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
   html, body {
-    height: 100%;
     background: #FFF8ED;
     color: #231C33;
     font-family: 'Inter', sans-serif;
   }
 
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-
   header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid rgba(35,28,51,0.1);
     padding: 22px 40px;
   }
@@ -37,136 +33,449 @@
     color: #231C33;
   }
 
+  .nameplate a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  nav {
+    display: flex;
+    gap: 28px;
+    font-size: 14px;
+  }
+
+  nav a {
+    color: #6B6152;
+    text-decoration: none;
+  }
+
+  nav a.current {
+    color: #FF1B6B;
+    font-weight: 500;
+  }
+
+  nav a:hover {
+    color: #231C33;
+  }
+
   main {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 40px 72px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 56px 40px 80px;
   }
 
-  .content {
-    display: flex;
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 280px;
+    gap: 48px;
     align-items: center;
-    gap: 64px;
-    max-width: 760px;
-    width: 100%;
-  }
-
-  .text-block {
-    flex: 1;
-    min-width: 0;
+    margin-bottom: 72px;
   }
 
   h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 33px;
-    line-height: 1.22;
+    font-size: 34px;
+    line-height: 1.25;
     letter-spacing: -0.01em;
     color: #231C33;
-    margin: 0 0 22px;
-  }
-
-  h1 .nowrap {
-    white-space: nowrap;
+    margin-bottom: 20px;
   }
 
   h1 .accent {
     color: #FF1B6B;
   }
 
-  p {
-    font-family: 'Inter', sans-serif;
-    font-size: 15.5px;
+  .hero-sub {
+    font-size: 16px;
     line-height: 1.65;
-    letter-spacing: 0.001em;
     color: #6B6152;
-    margin: 0;
-    max-width: 34ch;
+    max-width: 48ch;
+    margin-bottom: 28px;
   }
 
-  p a {
-    color: #0F7A50;
-    font-weight: 500;
-    text-decoration: underline;
-    text-underline-offset: 2px;
+  .hero-ctas {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
   }
 
-  p a:hover {
-    color: #0B5C3D;
+  .btn-primary {
+    display: inline-block;
+    background: #FF1B6B;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 11px 22px;
+    border-radius: 100px;
+    transition: background 0.15s ease;
   }
 
-  .portrait {
-    flex-shrink: 0;
-    width: 300px;
+  .btn-primary:hover {
+    background: #E01059;
   }
 
-  .portrait img {
+  .btn-secondary {
+    display: inline-block;
+    background: transparent;
+    color: #231C33;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    padding: 10px 21px;
+    border: 1px solid rgba(35,28,51,0.25);
+    border-radius: 100px;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .btn-secondary:hover {
+    border-color: #231C33;
+    background: rgba(35,28,51,0.04);
+  }
+
+  .hero-portrait img {
     width: 100%;
     height: auto;
     display: block;
   }
 
-  footer {
-    padding: 18px 40px;
-    font-size: 12.5px;
+  .section-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
     letter-spacing: 0.01em;
+    color: #FF1B6B;
+    margin-bottom: 18px;
+  }
+
+  /* Selected work */
+  .work {
+    margin-bottom: 72px;
+  }
+
+  .work-cards {
+    display: grid;
+    gap: 14px;
+  }
+
+  .work-card {
+    display: block;
+    background: #fff;
+    border: 1px solid rgba(35,28,51,0.1);
+    border-radius: 14px;
+    padding: 22px 24px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  a.work-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(255,27,107,0.4);
+  }
+
+  .work-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+
+  .work-org {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
     color: #948970;
   }
 
-  @media (max-width: 640px) {
+  .work-status {
+    font-size: 11.5px;
+    color: #948970;
+    white-space: nowrap;
+  }
+
+  .work-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.4;
+    color: #231C33;
+    margin-bottom: 14px;
+  }
+
+  .work-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .work-tags .tag {
+    font-size: 11.5px;
+    color: #6B6152;
+    border: 1px solid rgba(35,28,51,0.2);
+    border-radius: 100px;
+    padding: 3px 11px;
+  }
+
+  /* Talks teaser */
+  .talks {
+    margin-bottom: 72px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-size: 13.5px;
+  }
+
+  colgroup .col-title { width: 52%; }
+  colgroup .col-event { width: 30%; }
+  colgroup .col-date { width: 18%; }
+
+  thead td {
+    color: #948970;
+    text-align: left;
+    padding: 8px 24px 8px 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  tbody tr {
+    border-top: 1px solid rgba(35,28,51,0.08);
+  }
+
+  tbody td {
+    padding: 10px 24px 10px 0;
+    vertical-align: top;
+    word-wrap: break-word;
+  }
+
+  tbody td.date {
+    color: #948970;
+    white-space: nowrap;
+  }
+
+  tbody a {
+    color: #231C33;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: rgba(35,28,51,0.35);
+  }
+
+  tbody a:hover {
+    text-decoration-color: #231C33;
+  }
+
+  .see-all {
+    margin-top: 18px;
+  }
+
+  .see-all a {
+    color: #FF1B6B;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  .see-all a:hover {
+    text-decoration: underline;
+  }
+
+  /* Contact closing */
+  .closing-cta {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #231C33;
+  }
+
+  .closing-cta-link {
+    margin-top: 10px;
+  }
+
+  .closing-cta-link a {
+    color: #FF1B6B;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+  }
+
+  .closing-cta-link a:hover {
+    text-decoration: underline;
+  }
+
+  footer {
+    padding: 24px 40px;
+    border-top: 1px solid rgba(35,28,51,0.1);
+    font-size: 12.5px;
+  }
+
+  footer .footer-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  footer .copyright {
+    color: #948970;
+  }
+
+  @media (max-width: 720px) {
     header, main, footer {
       padding-left: 24px;
       padding-right: 24px;
     }
 
-    .content {
-      flex-direction: column-reverse;
-      text-align: center;
+    .hero {
+      grid-template-columns: 1fr;
       gap: 28px;
+      text-align: center;
+    }
+
+    .hero-portrait {
+      max-width: 240px;
+      margin: 0 auto;
+      order: -1;
     }
 
     h1 {
       font-size: 27px;
     }
 
-    p {
+    .hero-sub {
       max-width: none;
     }
 
-    .portrait {
-      width: 220px;
+    .hero-ctas {
+      justify-content: center;
     }
+
+    table, thead, tbody, tr, td { display: block; }
+    thead { display: none; }
+    tbody tr { padding: 12px 0; }
+    tbody td { padding: 2px 0; }
+    tbody td.date { order: -1; font-size: 11.5px; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="nameplate">Mario Ferrer</div>
+  <div class="nameplate"><a href="/">Mario Ferrer</a></div>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="/talks/">Talks</a>
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </nav>
 </header>
 
 <main>
-  <div class="content">
-    <div class="text-block">
-      <h1>
-        Content design,<br>
-        <span class="nowrap">systems thinking</span>,<br>
-        tinkering with AI,<br>
-        and all about tacos.<br>
-        <span class="accent">Coming soon.</span>
-      </h1>
-      <p>Case studies on the way. In the meantime, check out my <a href="https://www.linkedin.com/in/marioferrer/" target="_blank" rel="noopener">LinkedIn</a>.</p>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h1>I design content systems that <span class="accent">carry the thinking</span>, not just the words.</h1>
+      <p class="hero-sub">It was never really about tone-of-voice rules. Good content design runs on judgment, and with AI, that judgment lives in the context you design: the words you choose, the way you organize what it knows, and what it holds onto.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#work">View my work</a>
+        <a class="btn-secondary" href="/mario-ferrer-cv.pdf" target="_blank" rel="noopener">Download CV</a>
+      </div>
     </div>
-    <div class="portrait">
+    <div class="hero-portrait">
       <img src="images/mario-portrait-polaroid.png" alt="Mario Ferrer" width="1060" height="1143">
     </div>
-  </div>
+  </section>
+
+  <section class="work" id="work">
+    <h2 class="section-label">Shipped, not shelved</h2>
+    <div class="work-cards">
+
+      <a class="work-card" href="/work/collabs-creator-app/">
+        <div class="work-meta">
+          <span class="work-org">Shopify &middot; Staff Content Designer</span>
+        </div>
+        <div class="work-title">Rebuilding a mobile web product into a native app, and designing its merchant and creator sides as one system that worked better together.</div>
+        <div class="work-tags">
+          <span class="tag">Content design</span>
+          <span class="tag">App flow</span>
+          <span class="tag">Information architecture</span>
+        </div>
+      </a>
+
+      <a class="work-card" href="/work/shop-assistant/">
+        <div class="work-meta">
+          <span class="work-org">Shopify &middot; Content Craft Lead</span>
+        </div>
+        <div class="work-title">Shaping the prompts and content standards behind an AI shopping assistant that launched to 100M users.</div>
+        <div class="work-tags">
+          <span class="tag">Prompt design</span>
+          <span class="tag">AI content</span>
+          <span class="tag">Conversational</span>
+        </div>
+      </a>
+
+      <a class="work-card" href="/work/gravity/">
+        <div class="work-meta">
+          <span class="work-org">Shopify &middot; Content Craft Lead</span>
+        </div>
+        <div class="work-title">Designing a voice and tone system that gave the Shop app one voice across two very different audiences, merchants and shoppers.</div>
+        <div class="work-tags">
+          <span class="tag">Content systems</span>
+          <span class="tag">Voice &amp; tone</span>
+          <span class="tag">Design system</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="talks">
+    <h2 class="section-label">Stages, mics, and classrooms</h2>
+    <table>
+      <colgroup>
+        <col class="col-title">
+        <col class="col-event">
+        <col class="col-date">
+      </colgroup>
+      <thead>
+        <tr><td>Title</td><td>Event</td><td class="date">Date</td></tr>
+      </thead>
+      <tbody>
+        <tr><td><a href="https://open.spotify.com/episode/67DJTLndDQtygAyVfGEQHx" target="_blank" rel="noopener">Content design with care, for users and ourselves</a></td><td>Content Rookie</td><td class="date">Jul 2025</td></tr>
+        <tr><td><a href="https://www.youtube.com/watch?v=_gXkbVwb0Pw" target="_blank" rel="noopener">Scaling content design</a></td><td>UXTips</td><td class="date">Dec 2024</td></tr>
+        <tr><td><a href="https://www.youtube.com/watch?v=2AzAMJmcu74" target="_blank" rel="noopener">What the heck is content design?</a></td><td>WeDesign</td><td class="date">Jun 2024</td></tr>
+        <tr><td><a href="https://www.youtube.com/watch?v=sHoDaB1mUZ0" target="_blank" rel="noopener">How local communities of practice have a global impact</a></td><td>Lead With Tempo</td><td class="date">Jun 2024</td></tr>
+        <tr><td><a href="https://open.spotify.com/episode/6xAxDBZ6RuAefMZtu4eGTR" target="_blank" rel="noopener">De tacos y UX writing</a></td><td>Lo que callamos l@s UX Writers</td><td class="date">Apr 2024</td></tr>
+      </tbody>
+    </table>
+    <p class="see-all"><a href="/talks/">View all talks &rarr;</a></p>
+  </section>
+
+  <section class="contact">
+    <p class="closing-cta">If it involves words, systems, or AI, I'm in. Tacos optional, but encouraged.</p>
+    <p class="closing-cta-link"><a href="/contact/">Drop me a line &rarr;</a></p>
+  </section>
+
 </main>
 
 <footer>
-  &copy; 2026 Mario Ferrer
+  <div class="footer-inner">
+    <div class="copyright">&copy; 2026 Mario Ferrer</div>
+  </div>
 </footer>
 
 </body>
