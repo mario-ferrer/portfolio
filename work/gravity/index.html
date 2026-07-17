@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gravity, a voice and tone system — Mario Ferrer</title>
+<title>Gravity content system — Mario Ferrer</title>
 <meta name="description" content="How I built Gravity, the voice and tone system for Shopify's Shop app, giving one consistent voice to two very different audiences: merchants and shoppers.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -154,7 +154,7 @@
   section a { color: #231C33; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(35,28,51,0.35); }
   section a:hover { text-decoration-color: #231C33; }
 
-  figure { margin: 24px 0 8px; }
+  figure { margin: 24px 0 32px; }
 
   figure img {
     width: 100%;
@@ -282,7 +282,7 @@
   <a class="back" href="/#work">&larr; Back to work</a>
 
   <div class="eyebrow">Case study</div>
-  <h1>Gravity</h1>
+  <h1>Gravity content system</h1>
   <p class="lede">A voice and tone system that gave Shopify's Shop app one consistent voice across two very different audiences, merchants and shoppers.</p>
 
   <div class="meta">
@@ -307,16 +307,15 @@
   <section>
     <h2>The challenge</h2>
     <ul class="points">
-      <li>The Shop app had no shared, documented voice. That is a real risk once more than one writer touches a growing surface: tone drifts moment to moment without a common reference, so order updates end up written differently from empty states, which read differently again from error messages.</li>
-      <li>It had to work for two audiences at once. Merchants and shoppers each have their own vocabulary for the same underlying features, and the system needed to serve both without splitting into two.</li>
-      <li>It had to extend Shopify's Polaris design system, not duplicate it. Polaris already sets the foundation (its public content guidelines aim for a 7th-grade reading level, plain language, active voice). Gravity's job was the Shop-app-specific, shopper-facing layer on top of that, not a rebuild from zero.</li>
-      <li>The name says the goal: <strong>Gravity</strong>, the system that keeps everything grounded to one consistent voice as the surface area grows.</li>
+      <li>The Shop app had no shared, documented voice. Once more than one writer touches a growing surface, tone drifts: order updates, empty states, and error messages all end up sounding different.</li>
+      <li>It had to serve two audiences at once. Merchants and shoppers use different words for the same features, and one system had to speak to both without splitting in two.</li>
+      <li>It had to extend Polaris, not duplicate it. Shopify's design system already set the foundation, so Gravity was the shopper-facing layer on top, not a rebuild from zero.</li>
     </ul>
   </section>
 
   <section class="gate" id="gate">
-    <h2>The rest is password-protected</h2>
-    <p>The deeper walkthrough, the annotated screens, the outcome, and what I learned all sit behind a quick password. Reach out and I will happily share it.</p>
+    <h2>From here, you'll need a password</h2>
+    <p>The full walkthrough, the screens, and what I learned are behind a password. <a href="/contact/">Reach out and I'll send it over</a>.</p>
     <form class="gate-form" id="gate-form">
       <input type="password" id="gate-input" placeholder="Enter password" autocomplete="off" aria-label="Password">
       <button type="submit">Unlock</button>
@@ -332,7 +331,7 @@
         <li><strong>Built a 3-point tone spectrum: Straightforward, Approachable, Memorable.</strong> Each point got a defined attitude, a frequency (used always, used often, used sometimes), and real product moments as anchors: order tracking and error messages sit at Straightforward, Home sits at Approachable, and Shop Minis and shopping events sit at Memorable.</li>
       </ul>
       <figure>
-        <img src="/images/work/gravity/01-voice-tone-spectrum.png" alt="The Gravity tone spectrum: Straightforward, Approachable, and Memorable, each with attitude, frequency, and paired do and don't examples">
+        <img src="../../images/work/gravity/01-voice-tone-spectrum.png" alt="The Gravity tone spectrum: Straightforward, Approachable, and Memorable, each with attitude, frequency, and paired do and don't examples">
         <figcaption>The tone spectrum, with a concrete Do and Don't for each point rather than an abstract principle.</figcaption>
       </figure>
       <ul class="points">
@@ -340,25 +339,25 @@
         <li><strong>Wrote the granular mechanical guidelines</strong> covering active voice, American spelling, capitalization, contractions, and punctuation: Oxford comma, em dash versus en dash, when to avoid exclamation and question marks. The unglamorous layer that keeps hundreds of strings consistent across many writers.</li>
       </ul>
       <figure>
-        <img src="/images/work/gravity/02-writing-guidelines.png" alt="Gravity writing guidelines: plain language, actionable and inclusive language, and punctuation mechanics, with explicit references to Polaris">
+        <img src="../../images/work/gravity/02-writing-guidelines.png" alt="Gravity writing guidelines: plain language, actionable and inclusive language, and punctuation mechanics, with explicit references to Polaris">
         <figcaption>Mechanical guidelines, with several rules explicitly deferring to Polaris so Gravity extended the design system instead of forking it.</figcaption>
       </figure>
       <ul class="points">
         <li><strong>Defined branded terminology with audience tags.</strong> "Shop Cash," "Shop Pay Installments," "Shop Promise," each with a definition and correct and incorrect usage, tagged for whether it is merchant-facing or shopper-facing language.</li>
       </ul>
       <figure>
-        <img src="/images/work/gravity/03-branded-terms.png" alt="Gravity branded terms sheet with merchant versus shopper tags, definitions, and correct usage">
+        <img src="../../images/work/gravity/03-branded-terms.png" alt="Gravity branded terms sheet with merchant versus shopper tags, definitions, and correct usage">
         <figcaption>Branded terms tagged MERCHANT or SHOPPER, so the same feature could be described correctly to each audience.</figcaption>
       </figure>
       <figure>
-        <img src="/images/work/gravity/05-branded-terms-2.png" alt="A second Gravity branded terms sheet with more definitions and usage examples">
+        <img src="../../images/work/gravity/05-branded-terms-2.png" alt="A second Gravity branded terms sheet with more definitions and usage examples">
         <figcaption>A second terminology sheet. Getting these names right was half the work of sounding like one product.</figcaption>
       </figure>
       <ul class="points">
         <li><strong>Designed content patterns with the rationale written down.</strong> The timestamp pattern, for instance, reasons through cognitive load out loud: we don't communicate how much time has passed since an event (1d ago); we display the actual time or date, so people aren't forced to do the math.</li>
       </ul>
       <figure>
-        <img src="/images/work/gravity/04-timestamps-pattern.png" alt="Gravity timestamp content pattern, showing the rule and its stated cognitive-load rationale">
+        <img src="../../images/work/gravity/04-timestamps-pattern.png" alt="Gravity timestamp content pattern, showing the rule and its stated cognitive-load rationale">
         <figcaption>Patterns stated the reasoning, not just the rule, so the next writer could extend them instead of guessing.</figcaption>
       </figure>
       <ul class="points">
@@ -369,20 +368,19 @@
     <section>
       <h2>The outcome</h2>
       <ul class="points">
-        <li><strong>The components got reused, which is a stronger signal than any adoption number.</strong> In February 2024, seven months after I had moved off the Shop app role, a teammate built an experimental Figma UI kit for the Collabs native-app rebuild by repurposing Gravity's components. I stress-tested it myself by translating the existing Collabs web experience into the kit, validating it as a foundation for the engineer building the native creator app.</li>
-        <li>That is sourced, concrete evidence that Gravity wasn't a one-product artifact. Its systems thinking became literal infrastructure for a different team's rebuild, which is more telling than a generic adoption percentage would have been.</li>
-        <li>The standard Gravity extended is publicly checkable. Shopify's own Polaris documentation still states the 7th-grade reading level, active voice, and plain-language rules Gravity built on, so the rigor here is verifiable against a live design system, not just an internal claim.</li>
-        <li>An honest note: no adoption-percentage or review-cycle metric survives from this era (it predates my access to the internal records). The component-reuse story above is the real, and I would argue stronger, measure of impact.</li>
+        <li><strong>The components got reused, which says more than any adoption number could.</strong> Seven months after I moved off the Shop app, a teammate built the Collabs native-app UI kit by repurposing Gravity's components. I stress-tested it myself, rebuilding the existing Collabs web experience inside the kit to prove it could carry a native app.</li>
+        <li>That is the real measure of impact here: Gravity's systems thinking became literal infrastructure for a different team's product, not a style doc that shipped once and sat still.</li>
+        <li>And the standard it built on is public. Shopify's Polaris still documents the same plain-language, active-voice, 7th-grade-reading-level rules Gravity extended, so the rigor is checkable, not just claimed.</li>
       </ul>
     </section>
 
     <section>
       <h2>What I learned</h2>
       <ul class="points">
-        <li>The hardest calls were never the mechanical ones. Punctuation and capitalization you can just decide. Tone was the tension: a declined payment could read as Straightforward ("Your card was declined") or tip toward Approachable to soften the blow, and the wrong choice made the app feel either cold or oddly cheerful about your money not going through. Writing those judgment calls down, with real examples, was the whole point of the system.</li>
-        <li>Pairing every writing rule with a visual one, component by component, changed how I thought about voice. I had treated tone as something that lived in the words. Sitting next to visual design, it was obvious the voice also lived in the spacing, the hierarchy, the weight of a button. A guideline that only covered the words was only doing half the job.</li>
-        <li>Looking at Gravity now, next to the tone-of-voice agent work I did later at Welltech, it reads like an early version of the same idea: don't hand people, or a model, a list of adjectives and hope for the best. Give them the judgment and the reasoning behind each call, so they can make the next decision without you in the room.</li>
-        <li>And I didn't know at the time that a teammate would repurpose Gravity's components to prototype a product I never touched. Finding that out reframed what I thought I had built: not a style doc for one app, but something durable enough to carry across teams.</li>
+        <li>The hardest calls were never mechanical. Punctuation you can just decide. Tone was the tension: a declined payment could read Straightforward ("Your card was declined") or lean Approachable to soften it, and the wrong pick made the app feel either cold or weirdly upbeat about your money not going through. Writing those judgment calls down, with real examples, was the whole point.</li>
+        <li>Pairing every writing rule with a visual one changed how I saw voice. I had thought tone lived in the words. Up close with visual design, it clearly lived in the spacing, the hierarchy, the weight of a button too. Guidelines that only covered words were doing half the job.</li>
+        <li>Next to the tone-of-voice agent work I did later at Welltech, Gravity reads like an early version of the same instinct: don't hand people, or a model, a list of adjectives and hope. Give them the reasoning behind each call, so they can make the next one without you in the room.</li>
+        <li>And I didn't know a teammate would later rebuild a product I never touched on top of Gravity's components. Finding that out changed what I thought I had made: not a style doc for one app, but something durable enough to travel.</li>
       </ul>
     </section>
 
