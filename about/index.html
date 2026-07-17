@@ -22,7 +22,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(35,28,51,0.1);
-    padding: 22px 40px;
+    padding: 24px 40px;
   }
 
   .nameplate {
@@ -40,7 +40,7 @@
 
   nav {
     display: flex;
-    gap: 28px;
+    gap: 32px;
     font-size: 14px;
   }
 
@@ -89,7 +89,7 @@
     line-height: 1.7;
     color: #231C33;
     max-width: 62ch;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
 
   .narrative p:last-child {
@@ -111,7 +111,7 @@
   .section-label {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 18px;
     letter-spacing: 0.01em;
     color: #EE6C1E;
     margin-bottom: 16px;
@@ -122,14 +122,14 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 12px;
-    margin-bottom: 56px;
+    margin-bottom: 32px;
   }
 
   .craft-item {
     background: #fff;
     border: 1px solid rgba(35,28,51,0.1);
     border-radius: 12px;
-    padding: 14px 16px;
+    padding: 16px 16px;
   }
 
   .craft-name {
@@ -140,6 +140,32 @@
   }
 
   .craft-desc {
+    font-size: 11.5px;
+    line-height: 1.45;
+    color: #948970;
+    margin-top: 2px;
+  }
+
+  .cv-card {
+    background: #fff;
+    border: 1.5px solid #EE6C1E;
+    border-radius: 12px;
+    padding: 16px 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+
+  .cv-card:hover { background: rgba(238,108,30,0.06); transform: translateY(-2px); }
+
+  .cv-card-name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    color: #EE6C1E;
+  }
+
+  .cv-card-desc {
     font-size: 11.5px;
     line-height: 1.45;
     color: #948970;
@@ -181,7 +207,7 @@
     left: 0;
     right: 0;
     background: linear-gradient(transparent, rgba(0,0,0,0.5) 35%, rgba(0,0,0,0.88));
-    padding: 44px 14px 12px;
+    padding: 48px 16px 12px;
   }
 
   .fact-caption .lead {
@@ -218,7 +244,7 @@
   }
 
   .closing-cta-link {
-    margin-top: 10px;
+    margin-top: 8px;
   }
 
   .closing-cta-link a {
@@ -283,6 +309,9 @@
     .fact-b3 { grid-column: 1; grid-row: 3; }
     .fact-b4 { grid-column: 2; grid-row: 3; }
   }
+  footer .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; text-align: left; }
+  .footer-cv { color: #6B6152; text-decoration: none; }
+  .footer-cv:hover { color: #231C33; }
 </style>
 </head>
 <body>
@@ -318,8 +347,8 @@
     <div class="fact-card fact-big">
       <img src="../images/about/fifteen-years.jpg" alt="Mario with Kristina Halvorson at Button Conference">
       <div class="fact-caption">
-        <div class="lead">15+ years</div>
-        <div class="detail">Experience across mobile games, travel, ecommerce, and wellness digital products.</div>
+        <div class="lead">15+ years experience</div>
+        <div class="detail">Designed content across mobile games, travel, ecommerce, and wellness digital products.</div>
       </div>
     </div>
     <div class="fact-card fact-b1">
@@ -386,6 +415,10 @@
       <div class="craft-name">Teaching</div>
       <div class="craft-desc">Content design fundamentals in master's programs.</div>
     </div>
+    <a class="cv-card" href="/mario-ferrer-cv.pdf" target="_blank" rel="noopener">
+      <div class="cv-card-name">View my CV &rarr;</div>
+      <div class="cv-card-desc">The full timeline, roles, and skills in one page.</div>
+    </a>
   </div>
 
   <p class="closing-cta">Tacos, content design, or both. Always up for a chat.</p>
@@ -394,7 +427,8 @@
 
 <footer>
   <div class="footer-inner">
-    <div class="copyright">&copy; 2026 Mario Ferrer</div>
+    <a class="footer-cv" href="/mario-ferrer-cv.pdf" target="_blank" rel="noopener">View my CV</a>
+    <div class="copyright">Every word chosen on purpose &mdash; &copy; 2026 Mario Ferrer</div>
   </div>
 </footer>
 

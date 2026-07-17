@@ -22,7 +22,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(35,28,51,0.1);
-    padding: 22px 40px;
+    padding: 24px 40px;
   }
 
   .nameplate {
@@ -35,7 +35,7 @@
 
   .nameplate a { color: inherit; text-decoration: none; }
 
-  nav { display: flex; gap: 28px; font-size: 14px; }
+  nav { display: flex; gap: 32px; font-size: 14px; }
   nav a { color: #6B6152; text-decoration: none; }
   nav a.current { color: #FF1B6B; font-weight: 500; }
   nav a:hover { color: #231C33; }
@@ -52,7 +52,7 @@
     font-size: 32px;
     line-height: 1.22;
     letter-spacing: -0.01em;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
 
   h1 .accent { color: #4C5FD5; }
@@ -62,10 +62,10 @@
     line-height: 1.6;
     color: #6B6152;
     max-width: 56ch;
-    margin-bottom: 44px;
+    margin-bottom: 48px;
   }
 
-  .work-cards { display: grid; gap: 22px; }
+  .work-cards { display: grid; gap: 24px; }
 
   .work-card {
     display: block;
@@ -98,7 +98,7 @@
     display: block;
   }
 
-  .work-body { padding: 22px 26px 26px; }
+  .work-body { padding: 24px 24px 24px; }
 
   .work-org {
     font-family: 'Poppins', sans-serif;
@@ -116,7 +116,7 @@
     font-size: 19px;
     line-height: 1.4;
     color: #231C33;
-    margin-bottom: 14px;
+    margin-bottom: 16px;
   }
 
   .work-tags { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -126,7 +126,7 @@
     color: #6B6152;
     border: 1px solid rgba(35,28,51,0.2);
     border-radius: 100px;
-    padding: 3px 11px;
+    padding: 3px 12px;
   }
 
   .closing-cta {
@@ -137,7 +137,7 @@
     margin-top: 48px;
   }
 
-  .closing-cta-link { margin-top: 10px; }
+  .closing-cta-link { margin-top: 8px; }
 
   .closing-cta-link a {
     color: #FF1B6B;
@@ -162,6 +162,9 @@
     header, main, footer { padding-left: 24px; padding-right: 24px; }
     h1 { font-size: 26px; }
   }
+  footer .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; text-align: left; }
+  .footer-cv { color: #6B6152; text-decoration: none; }
+  .footer-cv:hover { color: #231C33; }
 </style>
 </head>
 <body>
@@ -178,7 +181,7 @@
 
 <main>
 
-  <h1>Shipped, not <span class="accent">shelved</span></h1>
+  <h1><span class="accent">Shipped</span>, not shelved</h1>
   <p class="lede">A few of the systems and products I've helped ship.</p>
 
   <div class="work-cards">
@@ -231,7 +234,8 @@
 
 <footer>
   <div class="footer-inner">
-    <div class="copyright">&copy; 2026 Mario Ferrer</div>
+    <a class="footer-cv" href="/mario-ferrer-cv.pdf" target="_blank" rel="noopener">View my CV</a>
+    <div class="copyright">Every word chosen on purpose &mdash; &copy; 2026 Mario Ferrer</div>
   </div>
 </footer>
 

@@ -22,7 +22,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid rgba(35,28,51,0.1);
-    padding: 22px 40px;
+    padding: 24px 40px;
   }
 
   .nameplate {
@@ -40,7 +40,7 @@
 
   nav {
     display: flex;
-    gap: 28px;
+    gap: 32px;
     font-size: 14px;
   }
 
@@ -70,7 +70,7 @@
     grid-template-columns: minmax(0, 1fr) 280px;
     gap: 48px;
     align-items: center;
-    margin-bottom: 72px;
+    margin-bottom: 56px;
   }
 
   h1 {
@@ -80,7 +80,7 @@
     line-height: 1.25;
     letter-spacing: -0.01em;
     color: #231C33;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
 
   h1 .accent {
@@ -92,13 +92,13 @@
     line-height: 1.65;
     color: #6B6152;
     max-width: 48ch;
-    margin-bottom: 28px;
+    margin-bottom: 0;
   }
 
   .hero-ctas {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 24px;
     flex-wrap: wrap;
   }
 
@@ -110,7 +110,7 @@
     font-weight: 600;
     font-size: 14px;
     text-decoration: none;
-    padding: 11px 22px;
+    padding: 12px 24px;
     border-radius: 100px;
     transition: background 0.15s ease;
   }
@@ -127,7 +127,7 @@
     font-weight: 600;
     font-size: 14px;
     text-decoration: none;
-    padding: 10px 21px;
+    padding: 8px 24px;
     border: 1px solid rgba(35,28,51,0.25);
     border-radius: 100px;
     transition: border-color 0.15s ease, background 0.15s ease;
@@ -147,10 +147,10 @@
   .section-label {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 13px;
+    font-size: 18px;
     letter-spacing: 0.01em;
-    color: #FF1B6B;
-    margin-bottom: 18px;
+    color: #231C33;
+    margin-bottom: 16px;
   }
 
   /* Work teaser */
@@ -163,7 +163,7 @@
     justify-content: space-between;
     align-items: baseline;
     gap: 16px;
-    margin-bottom: 18px;
+    margin-bottom: 16px;
   }
 
   .teaser-all {
@@ -195,7 +195,7 @@
     overflow: hidden;
     background: #F2E8D5;
     border: 1px solid rgba(35,28,51,0.1);
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     transition: transform 0.2s ease, border-color 0.2s ease;
   }
 
@@ -257,7 +257,7 @@
   }
 
   tbody td {
-    padding: 10px 24px 10px 0;
+    padding: 8px 24px 8px 0;
     vertical-align: top;
     word-wrap: break-word;
   }
@@ -279,7 +279,7 @@
   }
 
   .see-all {
-    margin-top: 18px;
+    margin-top: 16px;
   }
 
   .see-all a {
@@ -303,7 +303,7 @@
   }
 
   .closing-cta-link {
-    margin-top: 10px;
+    margin-top: 8px;
   }
 
   .closing-cta-link a {
@@ -342,7 +342,7 @@
 
     .hero {
       grid-template-columns: 1fr;
-      gap: 28px;
+      gap: 32px;
       text-align: center;
     }
 
@@ -374,6 +374,9 @@
     tbody td { padding: 2px 0; }
     tbody td.date { order: -1; font-size: 11.5px; }
   }
+  footer .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; text-align: left; }
+  .footer-cv { color: #6B6152; text-decoration: none; }
+  .footer-cv:hover { color: #231C33; }
 </style>
 </head>
 <body>
@@ -394,10 +397,6 @@
     <div class="hero-text">
       <h1>I design content systems that <span class="accent">carry the thinking</span>, not just the words.</h1>
       <p class="hero-sub">It was never really about tone-of-voice rules. Good content design runs on judgment, and with AI, that judgment lives in the context you design: the words you choose, the way you organize what it knows, and what it holds onto.</p>
-      <div class="hero-ctas">
-        <a class="btn-primary" href="/work/">View my work</a>
-        <a class="btn-secondary" href="/mario-ferrer-cv.pdf" target="_blank" rel="noopener">Download CV</a>
-      </div>
     </div>
     <div class="hero-portrait">
       <img src="images/mario-portrait-polaroid.png" alt="Mario Ferrer" width="1060" height="1143">
@@ -405,10 +404,7 @@
   </section>
 
   <section class="work-teaser">
-    <div class="teaser-head">
-      <h2 class="section-label" style="margin-bottom:0;">Shipped, not shelved</h2>
-      <a class="teaser-all" href="/work/">View all work &rarr;</a>
-    </div>
+    <h2 class="section-label">Shipped, not shelved</h2>
     <div class="teaser-grid">
       <a class="teaser-tile" href="/work/collabs-creator-app/">
         <div class="teaser-thumb"><img src="images/work/collabs-cover.jpg" alt="Shopify Collabs creator app feature pages"></div>
@@ -416,7 +412,7 @@
         <div class="teaser-sub">Shopify</div>
       </a>
       <a class="teaser-tile" href="/work/shop-assistant/">
-        <div class="teaser-thumb"><img src="images/work/shop-assistant-cover.jpg" alt="Shopé, the AI shopping assistant in the Shop app"></div>
+        <div class="teaser-thumb"><img src="images/work/shop-assistant-thumb.jpg" alt="Shopé, the AI shopping assistant in the Shop app"></div>
         <div class="teaser-label">Shop Assistant</div>
         <div class="teaser-sub">Shopify</div>
       </a>
@@ -426,6 +422,7 @@
         <div class="teaser-sub">Shopify</div>
       </a>
     </div>
+    <p class="see-all"><a href="/work/">View all work &rarr;</a></p>
   </section>
 
   <section class="talks">
@@ -459,7 +456,8 @@
 
 <footer>
   <div class="footer-inner">
-    <div class="copyright">&copy; 2026 Mario Ferrer</div>
+    <a class="footer-cv" href="/mario-ferrer-cv.pdf" target="_blank" rel="noopener">View my CV</a>
+    <div class="copyright">Every word chosen on purpose &mdash; &copy; 2026 Mario Ferrer</div>
   </div>
 </footer>
 
