@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — Mario Ferrer</title>
+<meta name="description" content="Selected content design and content systems work by Mario Ferrer, mostly at Shopify.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: #FFF8ED;
+    color: #231C33;
+    font-family: 'Inter', sans-serif;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(35,28,51,0.1);
+    padding: 22px 40px;
+  }
+
+  .nameplate {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    color: #231C33;
+  }
+
+  .nameplate a { color: inherit; text-decoration: none; }
+
+  nav { display: flex; gap: 28px; font-size: 14px; }
+  nav a { color: #6B6152; text-decoration: none; }
+  nav a.current { color: #FF1B6B; font-weight: 500; }
+  nav a:hover { color: #231C33; }
+
+  main {
+    max-width: 840px;
+    margin: 0 auto;
+    padding: 56px 40px 80px;
+  }
+
+  h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 1.22;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+
+  h1 .accent { color: #4C5FD5; }
+
+  .lede {
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: #6B6152;
+    max-width: 56ch;
+    margin-bottom: 44px;
+  }
+
+  .work-cards { display: grid; gap: 22px; }
+
+  .work-card {
+    display: block;
+    background: #fff;
+    border: 1px solid rgba(35,28,51,0.1);
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  a.work-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(255,27,107,0.4);
+    box-shadow: 0 12px 28px rgba(35,28,51,0.09);
+  }
+
+  .work-thumb {
+    aspect-ratio: 16 / 9;
+    background: #F2E8D5;
+    overflow: hidden;
+  }
+
+  .work-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .work-body { padding: 22px 26px 26px; }
+
+  .work-org {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #948970;
+    margin-bottom: 8px;
+  }
+
+  .work-title {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 19px;
+    line-height: 1.4;
+    color: #231C33;
+    margin-bottom: 14px;
+  }
+
+  .work-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .work-tags .tag {
+    font-size: 11.5px;
+    color: #6B6152;
+    border: 1px solid rgba(35,28,51,0.2);
+    border-radius: 100px;
+    padding: 3px 11px;
+  }
+
+  .closing-cta {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #231C33;
+    margin-top: 48px;
+  }
+
+  .closing-cta-link { margin-top: 10px; }
+
+  .closing-cta-link a {
+    color: #FF1B6B;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+  }
+
+  .closing-cta-link a:hover { text-decoration: underline; }
+
+  footer {
+    padding: 24px 40px;
+    border-top: 1px solid rgba(35,28,51,0.1);
+    font-size: 12.5px;
+  }
+
+  footer .footer-inner { max-width: 840px; margin: 0 auto; text-align: center; }
+  footer .copyright { color: #948970; }
+
+  @media (max-width: 720px) {
+    header, main, footer { padding-left: 24px; padding-right: 24px; }
+    h1 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nameplate"><a href="/">Mario Ferrer</a></div>
+  <nav>
+    <a href="/work/" class="current">Work</a>
+    <a href="/talks/">Talks</a>
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <h1>Shipped, not <span class="accent">shelved</span></h1>
+  <p class="lede">A few of the systems and products I've helped ship.</p>
+
+  <div class="work-cards">
+
+    <a class="work-card" href="/work/collabs-creator-app/">
+      <div class="work-thumb"><img src="../images/work/collabs-cover.jpg" alt="Shopify Collabs feature pages: creator search and filters, automatic commission payouts, and consolidated creator profiles"></div>
+      <div class="work-body">
+        <div class="work-org">Shopify &middot; Staff Content Designer</div>
+        <div class="work-title">Rebuilding a mobile web product into a native app, and designing its merchant and creator sides as one system that worked better together.</div>
+        <div class="work-tags">
+          <span class="tag">Content strategy</span>
+          <span class="tag">Information architecture</span>
+          <span class="tag">Content design</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="work-card" href="/work/shop-assistant/">
+      <div class="work-thumb"><img src="../images/work/shop-assistant-cover.jpg" alt="Shopé, the ChatGPT-powered shopping assistant in the Shop app, showing a chat helping a shopper find shorts"></div>
+      <div class="work-body">
+        <div class="work-org">Shopify &middot; Content Craft Lead</div>
+        <div class="work-title">Shaping the prompts and content standards behind an AI shopping assistant that launched to 100M users.</div>
+        <div class="work-tags">
+          <span class="tag">Prompt design</span>
+          <span class="tag">Conversational design</span>
+          <span class="tag">LLM training</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="work-card" href="/work/gravity/">
+      <div class="work-thumb"><img src="../images/work/gravity-cover.jpg" alt="The Gravity tone spectrum for the Shop app: Straightforward, Approachable, and Memorable, with do and don't examples"></div>
+      <div class="work-body">
+        <div class="work-org">Shopify &middot; Content Craft Lead</div>
+        <div class="work-title">Designing a voice and tone system that gave the Shop app one voice across two very different audiences, merchants and shoppers.</div>
+        <div class="work-tags">
+          <span class="tag">Design systems</span>
+          <span class="tag">Voice and tone</span>
+          <span class="tag">Content systems</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <p class="closing-cta">The full case studies are behind a password.</p>
+  <p class="closing-cta-link"><a href="/contact/">Reach out and I'll share it &rarr;</a></p>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="copyright">&copy; 2026 Mario Ferrer</div>
+  </div>
+</footer>
+
+</body>
+</html>

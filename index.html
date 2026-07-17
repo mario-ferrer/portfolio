@@ -153,76 +153,76 @@
     margin-bottom: 18px;
   }
 
-  /* Selected work */
-  .work {
+  /* Work teaser */
+  .work-teaser {
     margin-bottom: 72px;
   }
 
-  .work-cards {
-    display: grid;
-    gap: 14px;
-  }
-
-  .work-card {
-    display: block;
-    background: #fff;
-    border: 1px solid rgba(35,28,51,0.1);
-    border-radius: 14px;
-    padding: 22px 24px;
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-
-  a.work-card:hover {
-    transform: translateY(-2px);
-    border-color: rgba(255,27,107,0.4);
-  }
-
-  .work-meta {
+  .teaser-head {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
     gap: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 18px;
   }
 
-  .work-org {
+  .teaser-all {
+    color: #FF1B6B;
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 12px;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    color: #948970;
-  }
-
-  .work-status {
-    font-size: 11.5px;
-    color: #948970;
+    font-size: 14px;
+    text-decoration: none;
     white-space: nowrap;
   }
 
-  .work-title {
+  .teaser-all:hover { text-decoration: underline; }
+
+  .teaser-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .teaser-tile {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .teaser-thumb {
+    aspect-ratio: 4 / 3;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #F2E8D5;
+    border: 1px solid rgba(35,28,51,0.1);
+    margin-bottom: 10px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .teaser-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+  }
+
+  .teaser-tile:hover .teaser-thumb {
+    transform: translateY(-3px);
+    border-color: rgba(255,27,107,0.4);
+  }
+
+  .teaser-label {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 18px;
-    line-height: 1.4;
+    font-size: 14px;
     color: #231C33;
-    margin-bottom: 14px;
   }
 
-  .work-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .work-tags .tag {
-    font-size: 11.5px;
-    color: #6B6152;
-    border: 1px solid rgba(35,28,51,0.2);
-    border-radius: 100px;
-    padding: 3px 11px;
+  .teaser-sub {
+    font-size: 12.5px;
+    color: #948970;
+    margin-top: 1px;
   }
 
   /* Talks teaser */
@@ -364,6 +364,10 @@
       justify-content: center;
     }
 
+    .teaser-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
     table, thead, tbody, tr, td { display: block; }
     thead { display: none; }
     tbody tr { padding: 12px 0; }
@@ -377,7 +381,7 @@
 <header>
   <div class="nameplate"><a href="/">Mario Ferrer</a></div>
   <nav>
-    <a href="#work">Work</a>
+    <a href="/work/">Work</a>
     <a href="/talks/">Talks</a>
     <a href="/about/">About</a>
     <a href="/contact/">Contact</a>
@@ -391,7 +395,7 @@
       <h1>I design content systems that <span class="accent">carry the thinking</span>, not just the words.</h1>
       <p class="hero-sub">It was never really about tone-of-voice rules. Good content design runs on judgment, and with AI, that judgment lives in the context you design: the words you choose, the way you organize what it knows, and what it holds onto.</p>
       <div class="hero-ctas">
-        <a class="btn-primary" href="#work">View my work</a>
+        <a class="btn-primary" href="/work/">View my work</a>
         <a class="btn-secondary" href="/mario-ferrer-cv.pdf" target="_blank" rel="noopener">Download CV</a>
       </div>
     </div>
@@ -400,46 +404,27 @@
     </div>
   </section>
 
-  <section class="work" id="work">
-    <h2 class="section-label">Shipped, not shelved</h2>
-    <div class="work-cards">
-
-      <a class="work-card" href="/work/collabs-creator-app/">
-        <div class="work-meta">
-          <span class="work-org">Shopify &middot; Staff Content Designer</span>
-        </div>
-        <div class="work-title">Rebuilding a mobile web product into a native app, and designing its merchant and creator sides as one system that worked better together.</div>
-        <div class="work-tags">
-          <span class="tag">Content strategy</span>
-          <span class="tag">Information architecture</span>
-          <span class="tag">Content design</span>
-        </div>
+  <section class="work-teaser">
+    <div class="teaser-head">
+      <h2 class="section-label" style="margin-bottom:0;">Shipped, not shelved</h2>
+      <a class="teaser-all" href="/work/">View all work &rarr;</a>
+    </div>
+    <div class="teaser-grid">
+      <a class="teaser-tile" href="/work/collabs-creator-app/">
+        <div class="teaser-thumb"><img src="images/work/collabs-cover.jpg" alt="Shopify Collabs creator app feature pages"></div>
+        <div class="teaser-label">Collabs creator app</div>
+        <div class="teaser-sub">Shopify</div>
       </a>
-
-      <a class="work-card" href="/work/shop-assistant/">
-        <div class="work-meta">
-          <span class="work-org">Shopify &middot; Content Craft Lead</span>
-        </div>
-        <div class="work-title">Shaping the prompts and content standards behind an AI shopping assistant that launched to 100M users.</div>
-        <div class="work-tags">
-          <span class="tag">Prompt design</span>
-          <span class="tag">Conversational design</span>
-          <span class="tag">LLM training</span>
-        </div>
+      <a class="teaser-tile" href="/work/shop-assistant/">
+        <div class="teaser-thumb"><img src="images/work/shop-assistant-cover.jpg" alt="Shopé, the AI shopping assistant in the Shop app"></div>
+        <div class="teaser-label">Shop Assistant</div>
+        <div class="teaser-sub">Shopify</div>
       </a>
-
-      <a class="work-card" href="/work/gravity/">
-        <div class="work-meta">
-          <span class="work-org">Shopify &middot; Content Craft Lead</span>
-        </div>
-        <div class="work-title">Designing a voice and tone system that gave the Shop app one voice across two very different audiences, merchants and shoppers.</div>
-        <div class="work-tags">
-          <span class="tag">Design systems</span>
-          <span class="tag">Voice and tone</span>
-          <span class="tag">Content systems</span>
-        </div>
+      <a class="teaser-tile" href="/work/gravity/">
+        <div class="teaser-thumb"><img src="images/work/gravity-cover.jpg" alt="The Gravity tone spectrum for the Shop app"></div>
+        <div class="teaser-label">Gravity content system</div>
+        <div class="teaser-sub">Shopify</div>
       </a>
-
     </div>
   </section>
 

@@ -55,16 +55,6 @@
   }
   .back:hover { color: #231C33; }
 
-  .eyebrow {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 13px;
-    letter-spacing: 0.03em;
-    text-transform: uppercase;
-    color: #4C5FD5;
-    margin-bottom: 12px;
-  }
-
   h1 {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
@@ -73,6 +63,8 @@
     letter-spacing: -0.01em;
     margin-bottom: 16px;
   }
+
+  h1 .accent { color: #4C5FD5; }
 
   .lede {
     font-size: 17px;
@@ -270,7 +262,7 @@
 <header>
   <div class="nameplate"><a href="/">Mario Ferrer</a></div>
   <nav>
-    <a href="/#work" class="current">Work</a>
+    <a href="/work/" class="current">Work</a>
     <a href="/talks/">Talks</a>
     <a href="/about/">About</a>
     <a href="/contact/">Contact</a>
@@ -279,10 +271,9 @@
 
 <main>
 
-  <a class="back" href="/#work">&larr; Back to work</a>
+  <a class="back" href="/work/">&larr; Back to work</a>
 
-  <div class="eyebrow">Case study</div>
-  <h1>Gravity content system</h1>
+  <h1><span class="accent">Gravity</span> content system</h1>
   <p class="lede">A voice and tone system that gave Shopify's Shop app one consistent voice across two very different audiences, merchants and shoppers.</p>
 
   <div class="meta">
@@ -385,7 +376,7 @@
     </section>
 
     <section>
-      <p class="closing-cta">Want to go deeper on any of this?</p>
+      <p class="closing-cta">There's always more behind a case study.</p>
       <p class="closing-cta-link"><a href="/contact/">Get in touch &rarr;</a></p>
     </section>
 
