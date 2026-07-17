@@ -117,22 +117,33 @@
     margin-bottom: 16px;
   }
 
-  /* Craft tags */
+  /* Craft cards */
   .craft {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
     margin-bottom: 56px;
   }
 
-  .craft span {
-    display: inline-block;
-    border: 1px solid rgba(35,28,51,0.25);
-    border-radius: 100px;
-    padding: 6px 14px;
+  .craft-item {
+    background: #fff;
+    border: 1px solid rgba(35,28,51,0.1);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+
+  .craft-name {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
     font-size: 13px;
-    color: #6B6152;
-    white-space: nowrap;
+    color: #231C33;
+  }
+
+  .craft-desc {
+    font-size: 11.5px;
+    line-height: 1.45;
+    color: #948970;
+    margin-top: 2px;
   }
 
   /* Y algo más: fact bento */
@@ -294,7 +305,7 @@
       <p>I was born in Guadalajara, Mexico, and moved to Barcelona in my twenties. Barcelona's home now, but part of me is always halfway back to a taco stand in Guadalajara. I speak Spanish, English, and enough French and Catalan to get by, and I've never quite stopped noticing how much gets lost, or found, in the space between languages.</p>
       <p>I started out as an advertising copywriter in Mexico, and made the jump into content design after landing in Barcelona. Early at King, a designer stopped me mid-sentence while I was writing an onboarding flow the way I used to write ads: one message, dramatic, precious. He said something like, if you want to tell a story, go write a book. This isn't a book. It's a flow. That's the moment I fell in love with product design. I stopped treating words like a finished product and started treating them like part of a system, one that guides people through an experience.</p>
       <p>A few years in, I didn't know anyone else doing this work in Spain, so I started Content Design España. Seven years and a lot of mentorships, workshops, and job referrals later, it's still one of the things I'm proudest of. Not because I built something, but because a bunch of people stopped feeling like the only content designer in the room.</p>
-      <p>Along the way I've worked with teams across Europe, the US, Canada, and Latin America. It taught me empathy not just for the people I design for, but for the people I design with.</p>
+      <p>Along the way I've worked with teams across Europe, the US, Canada, and Latin America. Different languages, different cultures, different ways of disagreeing. It turned out the noticing I do between languages works on people too: most of design is translating between the people you build for and the people you build with.</p>
       <p>These days, one problem space keeps pulling me in. Good content design comes from the judgment and taste experience gives you, not tone of voice guidelines. AI raised the stakes on that idea: what you name things, how you structure knowledge, and what a system remembers now shape how it thinks and acts. So beyond writing prompts, I've been designing the context AI agents run on, trying to carry that judgment forward instead of just enforcing rules. Still figuring it out, but it feels like the right problem to be working on.</p>
       <p>Outside of work, I teach, chase the best tacos in town (DM me your faves), and shoot photos on film cameras older than some of my students. When I'm not doing any of that, you'll find me at crossfit or out on a trail run.</p>
     </div>
@@ -303,19 +314,6 @@
     </div>
   </div>
 
-  <h2 class="section-label">My craft, in short</h2>
-  <div class="craft">
-    <span>Content design</span>
-    <span>Prompt design</span>
-    <span>AI content systems</span>
-    <span>Context design</span>
-    <span>Content strategy</span>
-    <span>Design leadership</span>
-    <span>Public speaking</span>
-    <span>Teaching</span>
-  </div>
-
-  <h2 class="section-label">Y algo m&aacute;s <em>(and then some)</em></h2>
   <div class="fact-bento">
     <div class="fact-card fact-big">
       <img src="../images/about/fifteen-years.jpg" alt="Mario with Kristina Halvorson at Button Conference">
@@ -354,7 +352,43 @@
     </div>
   </div>
 
-  <p class="closing-cta">Tacos, content systems, or both. Always up for a chat.</p>
+  <h2 class="section-label">Lo m&iacute;o <em>(professionally speaking)</em></h2>
+  <div class="craft">
+    <div class="craft-item">
+      <div class="craft-name">Content design</div>
+      <div class="craft-desc">Designing what a product says, where, and why.</div>
+    </div>
+    <div class="craft-item">
+      <div class="craft-name">Prompt design</div>
+      <div class="craft-desc">Writing the instructions AI products run on.</div>
+    </div>
+    <div class="craft-item">
+      <div class="craft-name">AI content systems</div>
+      <div class="craft-desc">Systems that keep content quality high when AI writes too.</div>
+    </div>
+    <div class="craft-item">
+      <div class="craft-name">Context design</div>
+      <div class="craft-desc">Structuring what an AI system knows, names, and remembers.</div>
+    </div>
+    <div class="craft-item">
+      <div class="craft-name">Content strategy</div>
+      <div class="craft-desc">Deciding what content exists, for whom, and why.</div>
+    </div>
+    <div class="craft-item">
+      <div class="craft-name">Design leadership</div>
+      <div class="craft-desc">Building and growing content design teams.</div>
+    </div>
+    <div class="craft-item">
+      <div class="craft-name">Public speaking</div>
+      <div class="craft-desc">Conferences, panels, and podcasts about the craft.</div>
+    </div>
+    <div class="craft-item">
+      <div class="craft-name">Teaching</div>
+      <div class="craft-desc">Content design fundamentals in master's programs.</div>
+    </div>
+  </div>
+
+  <p class="closing-cta">Tacos, content design, or both. Always up for a chat.</p>
   <p class="closing-cta-link"><a href="/contact/">Say hola &rarr;</a></p>
 </main>
 
