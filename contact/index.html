@@ -17,6 +17,10 @@
     font-family: 'Inter', sans-serif;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   header {
     display: flex;
     justify-content: space-between;
@@ -182,37 +186,68 @@
     display: block;
   }
 
-  /* Taco callout */
-  .taco-callout {
+  /* Taco map card */
+  .taco-card {
+    display: grid;
+    grid-template-columns: 220px 1fr;
     background: #fff;
     border: 1px solid rgba(35,28,51,0.1);
     border-radius: 16px;
-    padding: 24px;
+    overflow: hidden;
+    transition: transform 0.25s ease;
   }
 
-  .taco-callout .taco-title {
+  .taco-card:hover {
+    transform: scale(1.02);
+  }
+
+  .taco-map-art {
+    background: #F2E8D5;
+  }
+
+  .taco-map-art svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .taco-card-text {
+    padding: 22px 24px;
+  }
+
+  .taco-card-text .taco-title {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 15px;
     color: #231C33;
     margin-bottom: 6px;
   }
 
-  .taco-callout p {
-    font-size: 14px;
+  .taco-card-text p {
+    font-size: 13.5px;
     line-height: 1.6;
     color: #6B6152;
-    max-width: 60ch;
+    max-width: 52ch;
   }
 
-  .taco-callout a {
+  .taco-card-text a {
     color: #FF1B6B;
     font-weight: 500;
     text-decoration: none;
   }
 
-  .taco-callout a:hover {
+  .taco-card-text a:hover {
     text-decoration: underline;
+  }
+
+  .taco-cta {
+    margin-top: 12px;
+  }
+
+  .taco-cta a {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 13.5px;
   }
 
   footer {
@@ -240,6 +275,14 @@
     .contact-grid {
       grid-template-columns: 1fr;
     }
+
+    .taco-card {
+      grid-template-columns: 1fr;
+    }
+
+    .taco-map-art svg {
+      max-height: 120px;
+    }
   }
 </style>
 </head>
@@ -256,7 +299,7 @@
 </header>
 
 <main>
-  <h1>Di <span class="accent">hola</span> &#128075;&#127996;</h1>
+  <h1>Say <span class="accent">hola</span> &#128075;&#127996;</h1>
   <p class="intro">Work, talks, teaching, or a taco tip that can't wait? Drop me a line.</p>
 
   <div class="contact-grid">
@@ -284,9 +327,27 @@
     </div>
   </div>
 
-  <div class="taco-callout">
-    <div class="taco-title">The Button taco map &#127790;</div>
-    <p>Tacos are the official food of Button Conference, and <a href="https://torreypodmajersky.com" target="_blank" rel="noopener">Torrey Podmajersky</a> has been keeping the official map. <a href="https://maps.app.goo.gl/hDDzYTUqvDbzwjK67" target="_blank" rel="noopener">Explore it here</a>, and if your favorite spot is missing, that counts as urgent business for the form above.</p>
+  <div class="taco-card">
+    <div class="taco-map-art" aria-hidden="true">
+      <svg viewBox="0 0 220 170" xmlns="http://www.w3.org/2000/svg">
+        <rect width="220" height="170" fill="#F2E8D5"/>
+        <path d="M0 45 L220 30" stroke="#FFF8ED" stroke-width="10"/>
+        <path d="M0 110 L220 125" stroke="#FFF8ED" stroke-width="14"/>
+        <path d="M60 0 L45 170" stroke="#FFF8ED" stroke-width="9"/>
+        <path d="M150 0 L170 170" stroke="#FFF8ED" stroke-width="12"/>
+        <path d="M25 140 C 60 100, 90 130, 110 85 S 175 60, 195 35" stroke="#FF1B6B" stroke-width="2.5" stroke-dasharray="6 5" fill="none" stroke-linecap="round"/>
+        <circle cx="25" cy="140" r="3.5" fill="#FF1B6B"/>
+        <text x="98" y="95" font-size="22">&#127790;</text>
+        <text x="40" y="55" font-size="16">&#127790;</text>
+        <text x="180" y="45" font-size="20">&#127790;</text>
+        <text x="150" y="145" font-size="15">&#127790;</text>
+      </svg>
+    </div>
+    <div class="taco-card-text">
+      <div class="taco-title">The taco map</div>
+      <p><a href="https://torreypodmajersky.com" target="_blank" rel="noopener">Torrey Podmajersky</a>, host of <a href="https://www.buttonevents.com/" target="_blank" rel="noopener">Button</a>, keeps a map of every taco spot the conference community recommends. The Guadalajara pins are mine.</p>
+      <p class="taco-cta"><a href="https://maps.app.goo.gl/hDDzYTUqvDbzwjK67" target="_blank" rel="noopener">Explore the map &rarr;</a></p>
+    </div>
   </div>
 </main>
 
