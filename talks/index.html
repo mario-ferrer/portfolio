@@ -3,8 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Talks — Mario Ferrer</title>
+<title>Talks · Mario Ferrer</title>
 <meta name="description" content="Talks, podcasts, panels, and where Mario Ferrer teaches content design.">
+<link rel="icon" href="/favicon.svg">
+<link rel="icon" type="image/png" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:title" content="Talks · Mario Ferrer">
+<meta property="og:description" content="Talks, podcasts, panels, and where Mario Ferrer teaches content design.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mario Ferrer">
+<meta property="og:image" content="https://marioferrer.com/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://marioferrer.com/images/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -206,7 +216,7 @@
   .teaching-role {
     font-size: 11.5px;
     line-height: 1.4;
-    color: #948970;
+    color: #7A6E54;
     margin-top: 1px;
   }
 
@@ -230,7 +240,7 @@
   colgroup .col-type { width: 15%; }
 
   thead td {
-    color: #948970;
+    color: #7A6E54;
     text-align: left;
     padding: 8px 24px 8px 0;
     font-family: 'Poppins', sans-serif;
@@ -251,7 +261,7 @@
   }
 
   tbody td.date {
-    color: #948970;
+    color: #7A6E54;
     white-space: nowrap;
   }
 
@@ -346,7 +356,7 @@
   }
 
   footer .copyright {
-    color: #948970;
+    color: #7A6E54;
   }
 
   footer a {
@@ -386,9 +396,14 @@
   footer .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; text-align: left; }
   .footer-cv { color: #6B6152; text-decoration: none; }
   .footer-cv:hover { color: #231C33; }
+  .skip-link { position: absolute; left: -9999px; top: 0; background: #231C33; color: #fff; padding: 8px 16px; z-index: 100; font-size: 14px; border-radius: 0 0 8px 0; }
+  .skip-link:focus { left: 0; }
+  a:focus-visible, button:focus-visible { outline: 2px solid #FF1B6B; outline-offset: 2px; }
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header>
   <div class="nameplate"><a href="/">Mario Ferrer</a></div>
@@ -400,7 +415,7 @@
   </nav>
 </header>
 
-<main>
+<main id="main">
   <h1>Stages, <span class="accent">couches</span>, and classrooms</h1>
   <p class="intro">Conferences, podcasts, and teaching about content design.</p>
 
@@ -521,7 +536,7 @@
 <footer>
   <div class="footer-inner">
     <a class="footer-cv" href="/mario-ferrer-cv.pdf" target="_blank" rel="noopener">View my CV</a>
-    <div class="copyright">Every word chosen on purpose &mdash; &copy; 2026 Mario Ferrer</div>
+    <div class="copyright">Every word chosen on purpose &middot; &copy; 2026 Mario Ferrer</div>
   </div>
 </footer>
 

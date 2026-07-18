@@ -3,8 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gravity content system — Mario Ferrer</title>
+<title>Gravity content system · Mario Ferrer</title>
 <meta name="description" content="How I built Gravity, the voice and tone system for Shopify's Shop app, giving one consistent voice to two very different audiences: merchants and shoppers.">
+<link rel="icon" href="/favicon.svg">
+<link rel="icon" type="image/png" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:title" content="Gravity content system · Mario Ferrer">
+<meta property="og:description" content="How I built Gravity, the voice and tone system for Shopify's Shop app, giving one consistent voice to two very different audiences: merchants and shoppers.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mario Ferrer">
+<meta property="og:image" content="https://marioferrer.com/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://marioferrer.com/images/og-image.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
@@ -91,7 +101,7 @@
     font-size: 11px;
     letter-spacing: 0.03em;
     text-transform: uppercase;
-    color: #948970;
+    color: #7A6E54;
     margin-bottom: 5px;
   }
 
@@ -159,7 +169,7 @@
   figcaption {
     font-size: 13px;
     line-height: 1.5;
-    color: #948970;
+    color: #7A6E54;
     margin-top: 8px;
   }
 
@@ -247,7 +257,7 @@
   }
 
   footer .footer-inner { max-width: 820px; margin: 0 auto; text-align: center; }
-  footer .copyright { color: #948970; }
+  footer .copyright { color: #7A6E54; }
 
   @media (max-width: 720px) {
     header, main, footer { padding-left: 24px; padding-right: 24px; }
@@ -258,9 +268,14 @@
   footer .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; text-align: left; }
   .footer-cv { color: #6B6152; text-decoration: none; }
   .footer-cv:hover { color: #231C33; }
+  .skip-link { position: absolute; left: -9999px; top: 0; background: #231C33; color: #fff; padding: 8px 16px; z-index: 100; font-size: 14px; border-radius: 0 0 8px 0; }
+  .skip-link:focus { left: 0; }
+  a:focus-visible, button:focus-visible { outline: 2px solid #FF1B6B; outline-offset: 2px; }
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#main">Skip to content</a>
 
 <header>
   <div class="nameplate"><a href="/">Mario Ferrer</a></div>
@@ -272,7 +287,7 @@
   </nav>
 </header>
 
-<main>
+<main id="main">
 
   <a class="back" href="/work/">&larr; Back to work</a>
 
@@ -304,6 +319,8 @@
       <li>The Shop app had no shared, documented voice. Once more than one writer touches a growing surface, tone drifts: order updates, empty states, and error messages all end up sounding different.</li>
       <li>It had to serve two audiences at once. Merchants and shoppers use different words for the same features, and one system had to speak to both without splitting in two.</li>
       <li>It had to extend Polaris, not duplicate it. Shopify's design system already set the foundation, so Gravity was the shopper-facing layer on top, not a rebuild from zero.</li>
+      <li><strong>How I knew it was real:</strong> the drift was already in the product. The same app greeted you one way, apologized another, and celebrated in a third. No audit needed, it was visible in the strings once you lined them up.</li>
+      <li><strong>The goal:</strong> one reference any writer could apply on their own, so the Shop app sounded like a single product no matter who was writing, or when.</li>
     </ul>
   </section>
 
@@ -390,7 +407,7 @@
 <footer>
   <div class="footer-inner">
     <a class="footer-cv" href="/mario-ferrer-cv.pdf" target="_blank" rel="noopener">View my CV</a>
-    <div class="copyright">Every word chosen on purpose &mdash; &copy; 2026 Mario Ferrer</div>
+    <div class="copyright">Every word chosen on purpose &middot; &copy; 2026 Mario Ferrer</div>
   </div>
 </footer>
 
