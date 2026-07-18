@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collabs creator app | Mario Ferrer</title>
+<meta name="description" content="How I rebuilt Shopify's Collabs from a mobile web experience into a native creator app, designing the merchant and creator sides as one connected system.">
+<link rel="icon" href="../../favicon.svg">
+<link rel="icon" type="image/png" href="../../favicon-32.png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<meta property="og:title" content="Collabs creator app | Mario Ferrer">
+<meta property="og:description" content="How I rebuilt Shopify's Collabs from a mobile web experience into a native creator app, designing the merchant and creator sides as one connected system.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mario Ferrer">
+<meta property="og:image" content="https://marioferrer.com/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://marioferrer.com/images/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: #FFF8ED;
+    color: #231C33;
+    font-family: 'Inter', sans-serif;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(35,28,51,0.1);
+    padding: 24px 40px;
+  }
+
+  .nameplate {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    color: #231C33;
+  }
+
+  .nameplate a { color: inherit; text-decoration: none; }
+
+  nav { display: flex; gap: 32px; font-size: 14px; }
+  nav a { color: #6B6152; text-decoration: none; }
+  nav a.current { color: #FF1B6B; font-weight: 500; }
+  nav a:hover { color: #231C33; }
+
+  main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+
+  .back {
+    display: inline-block;
+    font-size: 13.5px;
+    color: #6B6152;
+    text-decoration: none;
+    margin-bottom: 32px;
+  }
+  .back:hover { color: #231C33; }
+
+  h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+
+  h1 .accent { color: #4C5FD5; }
+
+  .lede {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #6B6152;
+    max-width: 60ch;
+    margin-bottom: 40px;
+  }
+
+  /* Metadata */
+  .meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 24px;
+    border-top: 1px solid rgba(35,28,51,0.12);
+    border-bottom: 1px solid rgba(35,28,51,0.12);
+    padding: 24px 0;
+    margin-bottom: 48px;
+  }
+
+  .meta-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #7A6E54;
+    margin-bottom: 5px;
+  }
+
+  .meta-value { font-size: 14px; line-height: 1.5; color: #231C33; }
+
+  h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: #231C33;
+    margin-bottom: 16px;
+  }
+
+  section { margin-bottom: 48px; }
+
+  section p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #231C33;
+    max-width: 66ch;
+    margin-bottom: 16px;
+  }
+
+  ul.points { list-style: none; max-width: 66ch; }
+
+  ul.points > li {
+    position: relative;
+    padding-left: 24px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #231C33;
+    margin-bottom: 16px;
+  }
+
+  ul.points > li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4C5FD5;
+  }
+
+  ul.points > li strong {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #231C33;
+  }
+
+  section a { color: #231C33; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(35,28,51,0.35); }
+  section a:hover { text-decoration-color: #231C33; }
+
+  figure { margin: 24px 0 32px; }
+
+  figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid rgba(35,28,51,0.12);
+    border-radius: 12px;
+  }
+
+  figcaption {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #7A6E54;
+    margin-top: 8px;
+  }
+
+  /* Metric callout */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin: 8px 0 24px;
+  }
+
+  .metric {
+    background: #fff;
+    border: 1px solid rgba(35,28,51,0.1);
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .metric-num {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: #4C5FD5;
+  }
+
+  .metric-label {
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: #6B6152;
+    margin-top: 4px;
+  }
+
+  /* Gate */
+  .gate {
+    background: #fff;
+    border: 1px solid rgba(35,28,51,0.12);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    max-width: 520px;
+    margin: 8px auto 0;
+  }
+
+  .gate h2 { font-size: 19px; margin-bottom: 8px; }
+
+  .gate p { font-size: 14.5px; color: #6B6152; max-width: none; margin: 0 auto 24px; }
+
+  .gate-form { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+
+  .gate input {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    padding: 12px 16px;
+    border: 1px solid rgba(35,28,51,0.25);
+    border-radius: 100px;
+    width: 220px;
+    color: #231C33;
+    background: #FFF8ED;
+  }
+
+  .gate input:focus { outline: none; border-color: #FF1B6B; }
+
+  .gate button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    background: #FF1B6B;
+    border: none;
+    border-radius: 100px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .gate button:hover { background: #E01059; }
+
+  .gate-error {
+    display: none;
+    font-size: 13px;
+    color: #C0392B;
+    margin-top: 16px;
+  }
+
+  .gate-error.visible { display: block; }
+
+  #locked { display: none; }
+  #locked.unlocked { display: block; }
+
+  .closing-cta {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #231C33;
+    max-width: none;
+  }
+
+  .closing-cta-link { margin-top: 8px; }
+
+  .closing-cta-link a {
+    color: #FF1B6B;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+  }
+
+  .closing-cta-link a:hover { text-decoration: underline; }
+
+  footer {
+    padding: 24px 40px;
+    border-top: 1px solid rgba(35,28,51,0.1);
+    font-size: 12.5px;
+  }
+
+  footer .footer-inner { max-width: 820px; margin: 0 auto; text-align: center; }
+  footer .copyright { color: #7A6E54; }
+
+  @media (max-width: 720px) {
+    header, main, footer { padding-left: 24px; padding-right: 24px; }
+    h1 { font-size: 27px; }
+    .gate { padding: 24px; }
+    .gate input { width: 100%; }
+  }
+  footer .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; text-align: left; }
+  .footer-cv { color: #6B6152; text-decoration: none; }
+  .footer-cv:hover { color: #231C33; }
+  .skip-link { position: absolute; left: -9999px; top: 0; background: #231C33; color: #fff; padding: 8px 16px; z-index: 100; font-size: 14px; border-radius: 0 0 8px 0; }
+  .skip-link:focus { left: 0; }
+  a:focus-visible, button:focus-visible { outline: 2px solid #FF1B6B; outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+  <div class="nameplate"><a href="/">Mario Ferrer</a></div>
+  <nav>
+    <a href="/work/" class="current">Work</a>
+    <a href="/talks/">Talks</a>
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <a class="back" href="/work/">&larr; Back to work</a>
+
+  <h1><span class="accent">Collabs</span> creator app</h1>
+  <p class="lede">Rebuilding Shopify's creator-marketing product from a mobile web experience into a native app, and designing the merchant and creator sides as one connected system.</p>
+
+  <div class="meta">
+    <div>
+      <div class="meta-label">Company</div>
+      <div class="meta-value">Shopify</div>
+    </div>
+    <div>
+      <div class="meta-label">Role</div>
+      <div class="meta-value">Staff Content Designer, Collabs</div>
+    </div>
+    <div>
+      <div class="meta-label">Scope</div>
+      <div class="meta-value">Content design across two connected surfaces: the merchant admin and the new creator app</div>
+    </div>
+    <div>
+      <div class="meta-label">Timeline</div>
+      <div class="meta-value">Jul 2023 to Nov 2024</div>
+    </div>
+  </div>
+
+  <section>
+    <h2>The challenge</h2>
+    <ul class="points">
+      <li>Collabs, Shopify's creator-marketing product, existed only as a mobile web experience. The team was rebuilding it as a native app, codenamed Project Phoenix.</li>
+      <li>It was not a single redesign. Two connected surfaces had to ship together: the merchant admin, where brands manage collabs, and the creator app, where creators discover products, track collabs, get paid, and run a shoppable storefront for their followers.</li>
+      <li>Underneath, it was really an information-architecture problem. Two audiences, two surfaces, one shared taxonomy of products, categories, brands, and collab states, and the job was making it feel like one coherent system instead of two apps bolted together.</li>
+      <li><strong>How I knew it was real:</strong> working with our UX researcher Sophie Allcock, empathy mapping surfaced a live tension, creators wanted momentum and control ("do more of what works," "keep me on track") but also simplicity and automation. And the old navigation, five flat top-level tabs, plainly couldn't scale to hold both surfaces.</li>
+      <li><strong>The goal:</strong> one system that read as a single product to two different people, a merchant configuring a collab and a creator posting and getting paid, without either side feeling like an afterthought.</li>
+    </ul>
+    <figure>
+      <img src="../../images/work/collabs/02-empathy-map.jpg" alt="Creator empathy map: 'As a creator using Collabs, I feel...' and 'What I need...' research synthesis">
+      <figcaption>Early creator research (with researcher Sophie Allcock) surfaced the real tension: momentum and control, but also simplicity and automation.</figcaption>
+    </figure>
+    <figure>
+      <img src="../../images/work/collabs/09-ia-before-after-nav.jpg" alt="FigJam board comparing the core current navigation against the redesigned 2023 navigation, level 1 to 4">
+      <figcaption>The IA problem, made visible: the old five-tab structure versus the redesigned navigation grouped by how creators actually work.</figcaption>
+    </figure>
+  </section>
+
+  <section class="gate" id="gate">
+    <h2>From here, you'll need a password</h2>
+    <p>The full walkthrough, the screens, the numbers, and what I learned are behind a password. <a href="/contact/">Reach out and I'll send it over</a>.</p>
+    <form class="gate-form" id="gate-form">
+      <input type="password" id="gate-input" placeholder="Enter password" autocomplete="off" aria-label="Password">
+      <button type="submit">Unlock</button>
+    </form>
+    <div class="gate-error" id="gate-error">That is not it. Try again, or <a href="/contact/">ask me for the password</a>.</div>
+  </section>
+
+  <div id="locked">
+
+    <section>
+      <h2>What I did</h2>
+      <ul class="points">
+        <li><strong>Set the tone-of-voice foundations first.</strong> Three pillars, Gutsy, Authentic, Empowering, each grounded in a specific creator insight ("Collabs is a vibe... clarity over clever"), not abstract adjectives. This became the north star for every screen that followed.</li>
+      </ul>
+      <figure>
+        <img src="../../images/work/collabs/01-tone-of-voice-foundations.jpg" alt="Collabs tone of voice: Gutsy, Authentic, and Empowering pillars, each tied to a creator insight">
+        <figcaption>Voice pillars tied to real creator insights, so tone had a reason behind it rather than a mood board.</figcaption>
+      </figure>
+      <ul class="points">
+        <li><strong>Built the taxonomy and IA that tie admin and app together.</strong> Mapped the full screen inventory as a system, Discover, Creator Shop, Performance, Settings up top, with PDP, Merchant Shop, Search, Collections, Connections, and Security beneath, so the same product and collab-state model could drive both what a merchant configures and what a creator sees.</li>
+      </ul>
+      <figure>
+        <img src="../../images/work/collabs/06-ia-taxonomy-key-screens.jpg" alt="Full Collabs app IA and taxonomy skeleton across Discover, Creator Shop, Performance, and Settings">
+        <figcaption>One shared taxonomy driving two surfaces, the scaffolding the whole system hung from.</figcaption>
+      </figure>
+      <ul class="points">
+        <li><strong>Designed the Home feed around three real creator personas.</strong> Coach, Insider, and Guardian, each with a distinct need ("show me what's working" / "show me something new" / "keep me on path"), mapped along a spectrum from your active collab out to discovery. Home's design principles were written as paired rules and creator-voice quotes.</li>
+      </ul>
+      <figure>
+        <img src="../../images/work/collabs/13-home-personas-and-principles.jpg" alt="The three creator personas, Coach, Insider, and Guardian, with their needs and Home's five design principles">
+        <figcaption>Personalization designed around who the creator is, with principles written in the creator's own voice.</figcaption>
+      </figure>
+      <ul class="points">
+        <li><strong>Turned the personalization concept into a prioritized, voice-complete backlog.</strong> Every rail idea (Your top sellers, Trending in {my category}, New from {Active Collab}) got a plain-language rationale, an actual shipped-voice tagline ("Tap into the trendsetters to boost your commissions"), and a Do Now / Do Soon / Later / Don't triage. Voice applied line by line, not a moodboard.</li>
+      </ul>
+      <figure>
+        <img src="../../images/work/collabs/14-home-feature-backlog-prioritized.jpg" alt="The prioritized Home rail backlog: Do Now, Do Soon, For the Future, Don't Do, each with a rationale and a shipped-voice tagline">
+        <figcaption>The craft behind the spectrum: real taglines against a triaged, attributed backlog.</figcaption>
+      </figure>
+      <ul class="points">
+        <li><strong>Spec'd each Home rail as a reusable component with conditional logic,</strong> not a one-off screen. "IF creator has an active brand collab, show the hero product card... ELSE fallback," written right alongside the visual so engineering could build the branching without a separate spec.</li>
+      </ul>
+      <figure>
+        <img src="../../images/work/collabs/17-home-component-spec-system.jpg" alt="Home rail components spec'd with conditional IF/ELSE logic written alongside the visual design">
+        <figcaption>Content and logic in one artifact, so the rules shipped with the design.</figcaption>
+      </figure>
+      <ul class="points">
+        <li><strong>Designed the buyer-facing side of the same system:</strong> a shoppable creator storefront (a TikTok-style feed to "Shop this look" to curated collections like "Marielle's Minimal Winter") so a creator's own audience could shop straight from their content. This is the content-commerce half, the other side of the same taxonomy.</li>
+      </ul>
+      <figure>
+        <img src="../../images/work/collabs/15-buyer-experience-updated.jpg" alt="The shoppable creator storefront a buyer sees: creator profile, content post, Shop this look, and curated collections">
+        <figcaption>The other side of the taxonomy: a creator's followers shopping directly from their content.</figcaption>
+      </figure>
+      <ul class="points">
+        <li><strong>Wrote and structured the full onboarding flow:</strong> login, welcome, personal info, social connection, community guidelines, notifications, celebration, plus edge states like the waitlist screen and a "Leaving so soon?" exit-intent. I added a skip option on social connection specifically to cut drop-off.</li>
+      </ul>
+      <figure>
+        <img src="../../images/work/collabs/16-onboarding-updated-full-flow.jpg" alt="The full Collabs onboarding flow from login through celebration, including waitlist and exit-intent edge states">
+        <figcaption>The whole flow, including the unglamorous edge states, with a skip added where the data said people were dropping.</figcaption>
+      </figure>
+      <ul class="points">
+        <li><strong>Pressure-tested the taxonomy in cross-functional decision reviews, on the file.</strong> Real questions resolved in place: do we favorite or save or follow a brand (favorite), where do favorite brands live, Home or Library (Library, per Harriet, our PM), are brand values clickable (no). Designed with product and design leadership, not in isolation.</li>
+        <li><strong>Carried Gravity across products.</strong> Ahead of the build, I stress-tested an experimental Figma UI kit (a teammate had repurposed <a href="/work/gravity/">Gravity's</a> components) by translating the existing web creator experience into it, to validate it as a foundation for the engineer building the native app. The systems thinking wasn't siloed per product, it traveled.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>The outcome</h2>
+      <div class="metrics">
+        <div class="metric"><div class="metric-num">4.8&#9733;</div><div class="metric-label">App Store rating across 298 ratings, live today</div></div>
+        <div class="metric"><div class="metric-num">70 &rarr; 72%</div><div class="metric-label">Onboarding completion, legacy vs. new funnel</div></div>
+        <div class="metric"><div class="metric-num">~10 &rarr; ~3%</div><div class="metric-label">Drop-off on social connection after adding a skip</div></div>
+      </div>
+      <ul class="points">
+        <li><strong>Live product, positive reception.</strong> "Collabs: Content commerce" is on the App Store and Google Play today at 4.8 stars across 298 ratings. Unsolicited from the reviews: "Keeps me up to date with every sale that's made," and "so user friendly... we've had the best experience with it."</li>
+        <li><strong>The skip option was the single biggest win.</strong> Adding a skip on social-account connection cut that step's drop-off from ~10% to ~3%, and 15% of the people who skipped came back and connected later anyway.</li>
+        <li><strong>An honest trade-off in the same data:</strong> the new values step has a 15% skip rate, flagged internally as worth revisiting. Either the options are too narrow or the step reads as optional. Not hidden, just an open question. (Source: our data teammate's funnel analysis, Feb 2024, legacy vs. new cohorts.)</li>
+        <li><strong>Documented decisions traced straight to what's live.</strong> The "favorite brands live in Library, not Home" call shipped exactly there. The Coach / Insider / Guardian spectrum shows up as a live "Curate your feed" picker. The taxonomy's Performance and Commissions sections are the app's real tabs, with commission math on every product page.</li>
+      </ul>
+      <figure>
+        <img src="../../images/work/collabs/20-live-app-pdp-commission-math.jpg" alt="Live Collabs app product page showing real commission math: Buyer pays $189.00, You earn $28.35">
+        <figcaption>A documented decision, live: commission math surfaced on the product page ("Buyer pays $189.00 / You earn $28.35"), shot from my own phone a year after the work.</figcaption>
+      </figure>
+      <ul class="points">
+        <li><strong>The merchant-admin half shipped too, and it's public.</strong> Shopify's Editions Winter '24 page lists seven live Collabs features: creator search and filters, automatic commission payouts, consolidated creator profiles, bulk application management, a unified connections table, per-segment affiliate offers, and TikTok Shop sync. Verifiable, not an internal claim.</li>
+      </ul>
+      <figure>
+        <img src="../../images/work/collabs/11-shopify-editions-winter24-public.jpg" alt="Public Shopify Editions Winter 24 page showing shipped Collabs merchant features">
+        <figcaption>The merchant side, documented publicly in Shopify's Editions Winter '24.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>What I learned</h2>
+      <ul class="points">
+        <li>The information architecture was the real test. Everything was interconnected, so getting the scaffolding right mattered more than any single screen. It was the clearest chance I've had to hold a whole shared taxonomy in my head at once, not just apply systems thinking to one flow.</li>
+        <li>The values-step drop-off taught me something about how "optional" reads to people. Creators treated it as a "maybe later" step, and a good chunk never came back. If I had more time, I'd make its value clearer in the moment or rethink where it sits in the flow.</li>
+        <li>Working across both surfaces let me see the full loop, the merchant managing a collab and the creator posting and getting paid. Very few projects let you sit with both halves of a relationship at once, and it changed how I thought about the taxonomy: a decision that looked small on the admin side could become real friction on the creator side.</li>
+      </ul>
+    </section>
+
+    <section>
+      <p class="closing-cta">There's always more behind a case study.</p>
+      <p class="closing-cta-link"><a href="/contact/">Get in touch &rarr;</a></p>
+    </section>
+
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <a class="footer-cv" href="/mario-ferrer-cv.pdf" target="_blank" rel="noopener">View my CV</a>
+    <div class="copyright">Every word chosen on purpose | &copy; 2026 Mario Ferrer</div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var PASSWORD = 'T@cosDeSuader@';
+    var form = document.getElementById('gate-form');
+    var input = document.getElementById('gate-input');
+    var error = document.getElementById('gate-error');
+    var gate = document.getElementById('gate');
+    var locked = document.getElementById('locked');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (input.value.trim() === PASSWORD) {
+        locked.classList.add('unlocked');
+        gate.style.display = 'none';
+      } else {
+        error.classList.add('visible');
+        input.value = '';
+        input.focus();
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>

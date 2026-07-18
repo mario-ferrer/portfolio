@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop Assistant | Mario Ferrer</title>
+<meta name="description" content="How I shaped the prompts and content standards for the Shop app's AI shopping assistant, one of the first four public ChatGPT API implementations, shipped to 100 million users.">
+<link rel="icon" href="../../favicon.svg">
+<link rel="icon" type="image/png" href="../../favicon-32.png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
+<meta property="og:title" content="Shop Assistant | Mario Ferrer">
+<meta property="og:description" content="How I shaped the prompts and content standards for the Shop app's AI shopping assistant, one of the first four public ChatGPT API implementations, shipped to 100 million users.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mario Ferrer">
+<meta property="og:image" content="https://marioferrer.com/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://marioferrer.com/images/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: #FFF8ED;
+    color: #231C33;
+    font-family: 'Inter', sans-serif;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(35,28,51,0.1);
+    padding: 24px 40px;
+  }
+
+  .nameplate {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    color: #231C33;
+  }
+
+  .nameplate a { color: inherit; text-decoration: none; }
+
+  nav { display: flex; gap: 32px; font-size: 14px; }
+  nav a { color: #6B6152; text-decoration: none; }
+  nav a.current { color: #FF1B6B; font-weight: 500; }
+  nav a:hover { color: #231C33; }
+
+  main {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 40px 40px 80px;
+  }
+
+  .back {
+    display: inline-block;
+    font-size: 13.5px;
+    color: #6B6152;
+    text-decoration: none;
+    margin-bottom: 32px;
+  }
+  .back:hover { color: #231C33; }
+
+  h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 16px;
+  }
+
+  h1 .accent { color: #4C5FD5; }
+
+  .lede {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #6B6152;
+    max-width: 60ch;
+    margin-bottom: 40px;
+  }
+
+  .meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 24px;
+    border-top: 1px solid rgba(35,28,51,0.12);
+    border-bottom: 1px solid rgba(35,28,51,0.12);
+    padding: 24px 0;
+    margin-bottom: 48px;
+  }
+
+  .meta-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    color: #7A6E54;
+    margin-bottom: 5px;
+  }
+
+  .meta-value { font-size: 14px; line-height: 1.5; color: #231C33; }
+
+  h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    color: #231C33;
+    margin-bottom: 16px;
+  }
+
+  section { margin-bottom: 48px; }
+
+  section p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: #231C33;
+    max-width: 66ch;
+    margin-bottom: 16px;
+  }
+
+  ul.points { list-style: none; max-width: 66ch; }
+
+  ul.points > li {
+    position: relative;
+    padding-left: 24px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: #231C33;
+    margin-bottom: 16px;
+  }
+
+  ul.points > li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4C5FD5;
+  }
+
+  ul.points > li strong {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    color: #231C33;
+  }
+
+  section a { color: #231C33; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(35,28,51,0.35); }
+  section a:hover { text-decoration-color: #231C33; }
+
+  figure { margin: 24px 0 32px; }
+
+  figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 1px solid rgba(35,28,51,0.12);
+    border-radius: 12px;
+  }
+
+  /* phone-sized screens shouldn't blow up full width */
+  figure.phone img { max-width: 300px; margin: 0 auto; }
+  .phone-pair { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin: 24px 0 8px; }
+  .phone-pair figure { margin: 0; flex: 1; min-width: 200px; max-width: 300px; }
+  .phone-pair figure img { max-width: 100%; }
+
+  figcaption {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #7A6E54;
+    margin-top: 8px;
+    text-align: center;
+  }
+
+  /* Gate */
+  .gate {
+    background: #fff;
+    border: 1px solid rgba(35,28,51,0.12);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    max-width: 520px;
+    margin: 8px auto 0;
+  }
+
+  .gate h2 { font-size: 19px; margin-bottom: 8px; }
+
+  .gate p { font-size: 14.5px; color: #6B6152; max-width: none; margin: 0 auto 24px; }
+
+  .gate-form { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+
+  .gate input {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    padding: 12px 16px;
+    border: 1px solid rgba(35,28,51,0.25);
+    border-radius: 100px;
+    width: 220px;
+    color: #231C33;
+    background: #FFF8ED;
+  }
+
+  .gate input:focus { outline: none; border-color: #FF1B6B; }
+
+  .gate button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #fff;
+    background: #FF1B6B;
+    border: none;
+    border-radius: 100px;
+    padding: 12px 24px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+
+  .gate button:hover { background: #E01059; }
+
+  .gate-error {
+    display: none;
+    font-size: 13px;
+    color: #C0392B;
+    margin-top: 16px;
+  }
+
+  .gate-error.visible { display: block; }
+
+  #locked { display: none; }
+  #locked.unlocked { display: block; }
+
+  .closing-cta {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #231C33;
+    max-width: none;
+  }
+
+  .closing-cta-link { margin-top: 8px; }
+
+  .closing-cta-link a {
+    color: #FF1B6B;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+  }
+
+  .closing-cta-link a:hover { text-decoration: underline; }
+
+  footer {
+    padding: 24px 40px;
+    border-top: 1px solid rgba(35,28,51,0.1);
+    font-size: 12.5px;
+  }
+
+  footer .footer-inner { max-width: 820px; margin: 0 auto; text-align: center; }
+  footer .copyright { color: #7A6E54; }
+
+  @media (max-width: 720px) {
+    header, main, footer { padding-left: 24px; padding-right: 24px; }
+    h1 { font-size: 27px; }
+    .gate { padding: 24px; }
+    .gate input { width: 100%; }
+  }
+  footer .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; text-align: left; }
+  .footer-cv { color: #6B6152; text-decoration: none; }
+  .footer-cv:hover { color: #231C33; }
+  .skip-link { position: absolute; left: -9999px; top: 0; background: #231C33; color: #fff; padding: 8px 16px; z-index: 100; font-size: 14px; border-radius: 0 0 8px 0; }
+  .skip-link:focus { left: 0; }
+  a:focus-visible, button:focus-visible { outline: 2px solid #FF1B6B; outline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+  <div class="nameplate"><a href="/">Mario Ferrer</a></div>
+  <nav>
+    <a href="/work/" class="current">Work</a>
+    <a href="/talks/">Talks</a>
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </nav>
+</header>
+
+<main id="main">
+
+  <a class="back" href="/work/">&larr; Back to work</a>
+
+  <h1><span class="accent">Shop</span> Assistant</h1>
+  <p class="lede">Prompt engineering and content standards for an AI shopping assistant inside the Shop app, one of the first four public ChatGPT API implementations, shipped to 100 million users.</p>
+
+  <div class="meta">
+    <div>
+      <div class="meta-label">Company</div>
+      <div class="meta-value">Shopify</div>
+    </div>
+    <div>
+      <div class="meta-label">Role</div>
+      <div class="meta-value">Content Design Craft Lead, Shop app</div>
+    </div>
+    <div>
+      <div class="meta-label">Scope</div>
+      <div class="meta-value">Prompt engineering and content standards for an AI-driven shopping assistant</div>
+    </div>
+    <div>
+      <div class="meta-label">Timeline</div>
+      <div class="meta-value">Sep 2022 to Jul 2023 (shipped March 2023)</div>
+    </div>
+  </div>
+
+  <section>
+    <h2>The challenge</h2>
+    <ul class="points">
+      <li>Shop's search was pure inventory lookup: type a query, get a results grid. The team wanted to test whether an AI chat layer (GPT-3.5, weeks after OpenAI's ChatGPT API first became available) could actually help someone find the right product instead of only matching keywords.</li>
+      <li>Internal codename "shopé," pitched plainly as "ChatGPT x Shop App." The aim: an in-app AI experience that helps users find exactly what they're looking for on Shop.</li>
+      <li><strong>How I knew it was real:</strong> keyword search can't hear intent. Someone typing "a gift for my mom" got a wall of results, not help. The open questions were captured as literal signed sticky notes at the time, how do we train the model to follow our tone-of-voice guidelines, how do we prioritize and categorize prompts, how does going back and forth work, where do the entry points live.</li>
+      <li><strong>The goal:</strong> help a shopper find the right thing through conversation, with the app's voice intact, not just swap one results grid for a chattier one.</li>
+      <li>This was 0 to 1 under real time pressure. The API had existed for about a week when we started scoping it.</li>
+    </ul>
+    <figure>
+      <img src="../../images/work/shop-assistant/03-context-gpt3-x-shop.jpg" alt="The one-line context slide framing the project as GPT-3 times Shop">
+      <figcaption>The pitch in one line: an AI layer that helps you find exactly what you're looking for on Shop.</figcaption>
+    </figure>
+    <figure>
+      <img src="../../images/work/shop-assistant/04-open-questions-naming-brand.jpg" alt="Real unresolved questions about naming and brand positioning shown against actual entry-point iterations, Cash Island versus shopé">
+      <figcaption>The real open questions, in the open: naming, positioning, and where the assistant should live, tested against actual product screens.</figcaption>
+    </figure>
+  </section>
+
+  <section class="gate" id="gate">
+    <h2>From here, you'll need a password</h2>
+    <p>The scripts, the chat states, the demos, and what I learned are behind a password. <a href="/contact/">Reach out and I'll send it over</a>.</p>
+    <form class="gate-form" id="gate-form">
+      <input type="password" id="gate-input" placeholder="Enter password" autocomplete="off" aria-label="Password">
+      <button type="submit">Unlock</button>
+    </form>
+    <div class="gate-error" id="gate-error">That is not it. Try again, or <a href="/contact/">ask me for the password</a>.</div>
+  </section>
+
+  <div id="locked">
+
+    <section>
+      <h2>What I did</h2>
+      <ul class="points">
+        <li><strong>Defined what the assistant actually was and pitched it in plain language.</strong> "An AI-driven utility layer inside Shop that helps you with all of your shopping needs, chat, voice, or visual search," positioned alongside a supercharged Shop search with camera, voice, and chat docked right in the search bar.</li>
+      </ul>
+      <figure>
+        <img src="../../images/work/shop-assistant/01-poster-pitch.jpg" alt="The plain-language pitch poster: an AI-driven utility layer inside Shop that helps with all your shopping needs">
+        <figcaption>Naming the thing in plain language before designing it, so the team shared one idea of what it was.</figcaption>
+      </figure>
+      <ul class="points">
+        <li><strong>Wrote the actual conversational scripts, past the concept stage.</strong> The assistant narrowing "the 45,873 shorts we have available on Shop" down through a specific opening question and quick-reply chips, or asking "can you tell me what kind of shoe you're looking for?" with category chips (Running, Lifestyle, Boots, Training).</li>
+      </ul>
+      <figure class="phone">
+        <img src="../../images/work/shop-assistant/05-final-chat-flow.jpg" alt="Finished chat screen: the assistant asking what kind of shoe, with Running, Lifestyle, Boots, and Training quick-reply chips">
+        <figcaption>Real scripted flow with quick-reply chips, so the conversation had a shape, not just a text box.</figcaption>
+      </figure>
+      <ul class="points">
+        <li><strong>Owned the open design questions as signed artifacts:</strong> training the model to follow tone-of-voice guidelines, generating a first-time prompt list from Shop's real search data, categorizing and prioritizing prompts, handling back-and-forth, and where the entry points live. Real-time design thinking in writing, not reconstructed after the fact.</li>
+        <li><strong>Wrote end-to-end demos that show reasoning, not just retrieval.</strong> Asked for "a gift for my mom," the assistant reasons about the occasion and her style before recommending; asked for "an outfit Brad Pitt would wear," it explains the styling choices. The point was an assistant that thinks with you, not a fancier search box.</li>
+      </ul>
+      <div class="phone-pair">
+        <figure>
+          <img src="../../images/work/shop-assistant/06-demo-gift-for-mom.gif" alt="Recorded demo: the assistant reasoning through a Mother's Day gift request and recommending a hat and boots">
+          <figcaption>"Help me find a gift for my mom", reasoning about the occasion before recommending.</figcaption>
+        </figure>
+        <figure>
+          <img src="../../images/work/shop-assistant/07-demo-brad-pitt-outfit.gif" alt="Recorded demo: the assistant styling a Brad-Pitt-inspired outfit with reasoning">
+          <figcaption>"An outfit Brad Pitt would wear", explaining the styling, not just matching keywords.</figcaption>
+        </figure>
+      </div>
+      <ul class="points">
+        <li><strong>Designed all eight states of the chat interaction, not just the happy path.</strong> Empty, prompts, keyboard focused, keyboard active, products returned, feedback unfocused, feedback captured, clear conversation. The boring-but-critical edge cases (what does it look like with nothing typed yet? after you clear the thread?) alongside the demo-able ones.</li>
+      </ul>
+      <div class="phone-pair">
+        <figure>
+          <img src="../../images/work/shop-assistant/08-chat-state-empty.jpg" alt="Chat state: empty, before anything is typed">
+          <figcaption>Empty state.</figcaption>
+        </figure>
+        <figure>
+          <img src="../../images/work/shop-assistant/12-chat-state-products-returned.jpg" alt="Chat state: products returned, with product cards in the conversation">
+          <figcaption>Products-returned state.</figcaption>
+        </figure>
+      </div>
+      <ul class="points">
+        <li><strong>Placed the entry point across three real product surfaces,</strong> the Home feed, browse-by-category, and search results, each with the same small purple assistant icon in the search bar, so it read as one consistent, always-available entry point rather than a chat screen bolted onto a single surface.</li>
+      </ul>
+      <figure class="phone">
+        <img src="../../images/work/shop-assistant/16-entry-point-home-feed.jpg" alt="The assistant entry icon docked in the Home feed search bar">
+        <figcaption>One consistent entry point, docked in the search bar across surfaces.</figcaption>
+      </figure>
+    </section>
+
+    <section>
+      <h2>The outcome</h2>
+      <ul class="points">
+        <li><strong>It shipped.</strong> Publicly, to 100 million Shop app users, on March 1, 2023, via a purple assistant icon in the search bar, with a web rollout two weeks later and independent press coverage at launch.</li>
+        <li><strong>Shopify was one of only four launch partners</strong> OpenAI named for the brand-new ChatGPT API itself, alongside Instacart, Snap, and Quizlet. Not "we tried ChatGPT eventually," but one of the first four public implementations of the API, ever.</li>
+        <li><strong>Honest framing on metrics:</strong> Shopify didn't publish adoption numbers for this feature, and it predates my access to internal analytics. The outcome here is the shipped launch and the press reception, which is real, public evidence. Not every project needs a conversion number when "first-of-its-kind integration, 100M users, covered in the press" is the actual result.</li>
+        <li>For the record, this 2023 Shop assistant is a distinct, earlier product from Shopify's later merchant-facing Sidekick and from the 2025 checkout integration. It predates both.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>What I learned</h2>
+      <ul class="points">
+        <li>Writing for a model I couldn't fully control was new. In the first days the API existed, you couldn't just specify an output, you shaped the conditions and hoped. That reframed the job: less writing the answer, more designing the context and guardrails the model answers inside.</li>
+        <li>The "Cash Island to Archipelago" naming debate taught me how much scoping happens through language. Deciding what to call the thing, and whether to lean into the weirdness or reel it back, was really deciding what the product was. Naming under time pressure is a design decision, not a label you add at the end.</li>
+        <li>Next to the tone-of-voice agent work I did later at Welltech, this reads like the first time I treated a model as something you design the surroundings for, not something you script. It got the instinct right even with week-old tools. What I'd change now is starting from the content standards and how we'd evaluate quality, not from the demo.</li>
+      </ul>
+    </section>
+
+    <section>
+      <p class="closing-cta">There's always more behind a case study.</p>
+      <p class="closing-cta-link"><a href="/contact/">Get in touch &rarr;</a></p>
+    </section>
+
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <a class="footer-cv" href="/mario-ferrer-cv.pdf" target="_blank" rel="noopener">View my CV</a>
+    <div class="copyright">Every word chosen on purpose | &copy; 2026 Mario Ferrer</div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var PASSWORD = 'T@cosDeSuader@';
+    var form = document.getElementById('gate-form');
+    var input = document.getElementById('gate-input');
+    var error = document.getElementById('gate-error');
+    var gate = document.getElementById('gate');
+    var locked = document.getElementById('locked');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (input.value.trim() === PASSWORD) {
+        locked.classList.add('unlocked');
+        gate.style.display = 'none';
+      } else {
+        error.classList.add('visible');
+        input.value = '';
+        input.focus();
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
