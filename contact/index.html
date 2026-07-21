@@ -196,6 +196,12 @@
     display: block;
   }
 
+  .form-status a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
   /* Taco map card */
   .taco-card {
     display: grid;
@@ -463,7 +469,7 @@
           throw new Error();
         }
       }).catch(function () {
-        status.textContent = 'That didn’t go through. Try again, or find me on LinkedIn.';
+        status.innerHTML = 'That didn’t go through. Try again, or find me on <a href="https://www.linkedin.com/in/marioferrer/" target="_blank" rel="noopener">LinkedIn</a>.';
         status.className = 'form-status error visible';
       });
     });
