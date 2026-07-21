@@ -173,6 +173,35 @@
     margin-top: 8px;
   }
 
+  /* Results callout */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 16px;
+    margin: 8px 0 24px;
+  }
+
+  .metric {
+    background: #fff;
+    border: 1px solid rgba(35,28,51,0.1);
+    border-radius: 12px;
+    padding: 16px;
+  }
+
+  .metric-num {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+    color: #4C5FD5;
+  }
+
+  .metric-label {
+    font-size: 12.5px;
+    line-height: 1.4;
+    color: #6B6152;
+    margin-top: 4px;
+  }
+
   /* Gate */
   .gate {
     background: #fff;
@@ -383,6 +412,11 @@
 
     <section>
       <h2>The outcome</h2>
+      <div class="metrics">
+        <div class="metric"><div class="metric-num">Reused</div><div class="metric-label">Components became the base for the Collabs native-app rebuild</div></div>
+        <div class="metric"><div class="metric-num">One voice</div><div class="metric-label">Two audiences, merchants and shoppers, held to one system</div></div>
+        <div class="metric"><div class="metric-num">3-point</div><div class="metric-label">A tone spectrum any writer could apply on their own</div></div>
+      </div>
       <ul class="points">
         <li><strong>The components got reused, which says more than any adoption number could.</strong> Seven months after I moved off the Shop app, a teammate built the Collabs native-app UI kit by repurposing Gravity's components. I stress-tested it myself, rebuilding the existing Collabs web experience inside the kit to prove it could carry a native app.</li>
         <li>That is the real measure of impact here: Gravity's systems thinking became literal infrastructure for a different team's product, not a style doc that shipped once and sat still.</li>
