@@ -449,16 +449,12 @@
       <h2>The outcome</h2>
       <div class="metrics">
         <div class="metric"><div class="metric-num">4.8&#9733;</div><div class="metric-label">App Store rating, live today</div></div>
-        <div class="metric"><div class="metric-num">298</div><div class="metric-label">Ratings on the App Store</div></div>
-        <div class="metric"><div class="metric-num">7</div><div class="metric-label">Merchant features shipped, in Shopify Editions</div></div>
         <div class="metric"><div class="metric-num">70 &rarr; 72%</div><div class="metric-label">Onboarding completion, legacy vs. new funnel</div></div>
         <div class="metric"><div class="metric-num">~10 &rarr; ~3%</div><div class="metric-label">Drop-off on social connection after adding a skip</div></div>
-        <div class="metric"><div class="metric-num">15%</div><div class="metric-label">Skip rate on the values step, flagged to revisit</div></div>
       </div>
       <ul class="points">
         <li><strong>Live product, positive reception.</strong> "Collabs: Content commerce" is on the App Store and Google Play today at 4.8 stars across 298 ratings. Unsolicited from the reviews: "Keeps me up to date with every sale that's made," and "so user friendly... we've had the best experience with it."</li>
         <li><strong>The skip option was the single biggest win.</strong> Adding a skip on social-account connection cut that step's drop-off from ~10% to ~3%, and 15% of the people who skipped came back and connected later anyway.</li>
-        <li><strong>An honest trade-off in the same data:</strong> the new values step has a 15% skip rate, flagged internally as worth revisiting. Either the options are too narrow or the step reads as optional. Not hidden, just an open question. (Source: our data teammate's funnel analysis, Feb 2024, legacy vs. new cohorts.)</li>
         <li><strong>Documented decisions traced straight to what's live.</strong> The "favorite brands live in Library, not Home" call shipped exactly there. The Coach / Insider / Guardian spectrum shows up as a live "Curate your feed" picker. The taxonomy's Performance and Commissions sections are the app's real tabs, with commission math on every product page.</li>
       </ul>
       <figure class="phone">
@@ -513,9 +509,11 @@
     var error = document.getElementById('gate-error');
     var gate = document.getElementById('gate');
     var locked = document.getElementById('locked');
+    try { if (sessionStorage.getItem('cs_unlocked') === '1') { locked.classList.add('unlocked'); gate.style.display = 'none'; } } catch (e) {}
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (input.value.trim() === PASSWORD) {
+        try { sessionStorage.setItem('cs_unlocked', '1'); } catch (e) {}
         locked.classList.add('unlocked');
         gate.style.display = 'none';
       } else {

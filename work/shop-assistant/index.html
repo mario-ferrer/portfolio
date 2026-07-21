@@ -499,9 +499,11 @@
     var error = document.getElementById('gate-error');
     var gate = document.getElementById('gate');
     var locked = document.getElementById('locked');
+    try { if (sessionStorage.getItem('cs_unlocked') === '1') { locked.classList.add('unlocked'); gate.style.display = 'none'; } } catch (e) {}
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       if (input.value.trim() === PASSWORD) {
+        try { sessionStorage.setItem('cs_unlocked', '1'); } catch (e) {}
         locked.classList.add('unlocked');
         gate.style.display = 'none';
       } else {
