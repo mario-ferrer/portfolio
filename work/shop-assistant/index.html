@@ -320,7 +320,7 @@
     </div>
     <div>
       <div class="meta-label">Timeline</div>
-      <div class="meta-value">Sep 2022 to Jul 2023 (shipped March 2023)</div>
+      <div class="meta-value">Sep 2022 to Mar 2023</div>
     </div>
   </div>
 
@@ -365,14 +365,14 @@
         <figcaption>Naming the thing in plain language before designing it, so the team shared one idea of what it was.</figcaption>
       </figure>
       <ul class="points">
-        <li><strong>Wrote the actual conversational scripts, past the concept stage.</strong> The assistant narrowing "the 45,873 shorts we have available on Shop" down through a specific opening question and quick-reply chips, or asking "can you tell me what kind of shoe you're looking for?" with category chips (Running, Lifestyle, Boots, Training).</li>
+        <li><strong>Wrote the actual conversational scripts, past the concept stage.</strong> The assistant narrowing "the 45,873 shorts we have available on Shop" down through a specific opening question and quick-reply chips, or asking "can you tell me what kind of shoe you're looking for?" with category chips (Running, Lifestyle, Boots, Training). Those chips weren't invented, they mapped to Shop's existing product taxonomy, so a big part of the work was understanding that taxonomy and using it to surface the right categories based on where the conversation had gone.</li>
       </ul>
       <figure class="phone">
         <img src="../../images/work/shop-assistant/05-final-chat-flow.jpg" alt="Finished chat screen: the assistant asking what kind of shoe, with Running, Lifestyle, Boots, and Training quick-reply chips">
         <figcaption>Real scripted flow with quick-reply chips, so the conversation had a shape, not just a text box.</figcaption>
       </figure>
       <ul class="points">
-        <li><strong>Owned the open design questions as signed artifacts:</strong> training the model to follow tone-of-voice guidelines, generating a first-time prompt list from Shop's real search data, categorizing and prioritizing prompts, handling back-and-forth, and where the entry points live. Real-time design thinking in writing, not reconstructed after the fact.</li>
+        <li><strong>Owned the open design questions as signed artifacts:</strong> training the model to follow our tone-of-voice guidelines (the same three-point tone spectrum I built in <a href="/work/gravity/">Gravity</a>), generating a first-time prompt list from Shop's real search data, categorizing and prioritizing prompts, handling back-and-forth, and where the entry points live. Real-time design thinking in writing, not reconstructed after the fact.</li>
         <li><strong>Wrote end-to-end demos that show reasoning, not just retrieval.</strong> Asked for "a gift for my mom," the assistant reasons about the occasion and her style before recommending; asked for "an outfit Brad Pitt would wear," it explains the styling choices. The point was an assistant that thinks with you, not a fancier search box.</li>
       </ul>
       <div class="phone-pair">
@@ -412,7 +412,7 @@
       <ul class="points">
         <li><strong>It shipped.</strong> Publicly, to 100 million Shop app users, on March 1, 2023, via a purple assistant icon in the search bar, with a web rollout two weeks later and independent press coverage at launch.</li>
         <li><strong>Shopify was one of only four launch partners</strong> OpenAI named for the brand-new ChatGPT API itself, alongside Instacart, Snap, and Quizlet. Not "we tried ChatGPT eventually," but one of the first four public implementations of the API, ever.</li>
-        <li><strong>Honest framing on metrics:</strong> Shopify didn't publish adoption numbers for this feature, and it predates my access to internal analytics. The outcome here is the shipped launch and the press reception, which is real, public evidence. Not every project needs a conversion number when "first-of-its-kind integration, 100M users, covered in the press" is the actual result.</li>
+        <li><strong>No public adoption numbers exist for this one,</strong> so the outcome is the launch itself: a first-of-its-kind integration, live to 100 million users, covered in the press. On this project, that is the metric.</li>
         <li>For the record, this 2023 Shop assistant is a distinct, earlier product from Shopify's later merchant-facing Sidekick and from the 2025 checkout integration. It predates both.</li>
       </ul>
     </section>
@@ -421,8 +421,8 @@
       <h2>What I learned</h2>
       <ul class="points">
         <li>Writing for a model I couldn't fully control was new. In the first days the API existed, you couldn't just specify an output, you shaped the conditions and hoped. That reframed the job: less writing the answer, more designing the context and guardrails the model answers inside.</li>
-        <li>The "Cash Island to Archipelago" naming debate taught me how much scoping happens through language. Deciding what to call the thing, and whether to lean into the weirdness or reel it back, was really deciding what the product was. Naming under time pressure is a design decision, not a label you add at the end.</li>
-        <li>Next to the tone-of-voice agent work I did later at Welltech, this reads like the first time I treated a model as something you design the surroundings for, not something you script. It got the instinct right even with week-old tools. What I'd change now is starting from the content standards and how we'd evaluate quality, not from the demo.</li>
+        <li>So much of the scoping happened through naming. Debating what to call it, and whether to lean into the weirdness or reel it back in, was really us deciding what the product was. Naming isn't a label you add at the end, it's where a lot of the design actually gets decided.</li>
+        <li>This was the first time I treated a model as something you design the surroundings for, rather than something you script. The instinct holds up, even with week-old tools. What I'd change now is starting from the content standards and how we'd evaluate quality, not from the demo.</li>
       </ul>
     </section>
 
