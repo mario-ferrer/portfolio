@@ -261,6 +261,8 @@
   }
 
   .gate-error.visible { display: block; }
+  .gate-error .err-text { color: #C0392B; }
+  .gate-error a { color: #FF1B6B; text-decoration: underline; text-underline-offset: 2px; }
 
   #locked { display: none; }
   #locked.unlocked { display: block; }
@@ -392,7 +394,7 @@
       <input type="password" id="gate-input" placeholder="Enter password" autocomplete="off" aria-label="Password">
       <button type="submit">Unlock</button>
     </form>
-    <div class="gate-error" id="gate-error">That is not it. Try again, or <a href="/contact/">ask me for the password</a>.</div>
+    <div class="gate-error" id="gate-error"><span class="err-text">That's not it, try again.</span> <a href="/contact/">Ask me for the password</a></div>
   </section>
 
   <div id="locked">

@@ -258,6 +258,8 @@
   }
 
   .gate-error.visible { display: block; }
+  .gate-error .err-text { color: #C0392B; }
+  .gate-error a { color: #FF1B6B; text-decoration: underline; text-underline-offset: 2px; }
 
   #locked { display: none; }
   #locked.unlocked { display: block; }
@@ -376,9 +378,9 @@
 
   <section>
     <div class="metrics">
-      <div class="metric"><div class="metric-num">4.8&#9733;</div><div class="metric-label">App Store rating across 298 ratings, live today</div></div>
-      <div class="metric"><div class="metric-num">Live</div><div class="metric-label">On the App Store and Google Play</div></div>
-      <div class="metric"><div class="metric-num">7 features</div><div class="metric-label">Shipped and documented in Shopify Editions</div></div>
+      <div class="metric"><div class="metric-num">4.8&#9733;</div><div class="metric-label">App Store rating, live today</div></div>
+      <div class="metric"><div class="metric-num">298</div><div class="metric-label">Ratings on the App Store</div></div>
+      <div class="metric"><div class="metric-num">7</div><div class="metric-label">Merchant features shipped, in Shopify Editions</div></div>
     </div>
   </section>
 
@@ -389,7 +391,7 @@
       <input type="password" id="gate-input" placeholder="Enter password" autocomplete="off" aria-label="Password">
       <button type="submit">Unlock</button>
     </form>
-    <div class="gate-error" id="gate-error">That is not it. Try again, or <a href="/contact/">ask me for the password</a>.</div>
+    <div class="gate-error" id="gate-error"><span class="err-text">That's not it, try again.</span> <a href="/contact/">Ask me for the password</a></div>
   </section>
 
   <div id="locked">

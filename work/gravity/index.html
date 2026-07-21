@@ -255,6 +255,8 @@
   }
 
   .gate-error.visible { display: block; }
+  .gate-error .err-text { color: #C0392B; }
+  .gate-error a { color: #FF1B6B; text-decoration: underline; text-underline-offset: 2px; }
 
   #locked { display: none; }
   #locked.unlocked { display: block; }
@@ -365,9 +367,9 @@
 
   <section>
     <div class="metrics">
-      <div class="metric"><div class="metric-num">Reused</div><div class="metric-label">Components became the base for the Collabs native-app rebuild</div></div>
-      <div class="metric"><div class="metric-num">2 audiences</div><div class="metric-label">Merchants and shoppers, held to one voice</div></div>
-      <div class="metric"><div class="metric-num">3-point</div><div class="metric-label">A tone spectrum any writer could apply on their own</div></div>
+      <div class="metric"><div class="metric-num">1 voice</div><div class="metric-label">Held across the whole Shop app</div></div>
+      <div class="metric"><div class="metric-num">2 audiences</div><div class="metric-label">Merchants and shoppers, one system</div></div>
+      <div class="metric"><div class="metric-num">3-point</div><div class="metric-label">Tone spectrum any writer could apply</div></div>
     </div>
   </section>
 
@@ -378,7 +380,7 @@
       <input type="password" id="gate-input" placeholder="Enter password" autocomplete="off" aria-label="Password">
       <button type="submit">Unlock</button>
     </form>
-    <div class="gate-error" id="gate-error">That is not it. Try again, or <a href="/contact/">ask me for the password</a>.</div>
+    <div class="gate-error" id="gate-error"><span class="err-text">That's not it, try again.</span> <a href="/contact/">Ask me for the password</a></div>
   </section>
 
   <div id="locked">
