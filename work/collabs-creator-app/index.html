@@ -300,6 +300,11 @@
   .skip-link { position: absolute; left: -9999px; top: 0; background: #231C33; color: #fff; padding: 8px 16px; z-index: 100; font-size: 14px; border-radius: 0 0 8px 0; }
   .skip-link:focus { left: 0; }
   a:focus-visible, button:focus-visible { outline: 2px solid #FF1B6B; outline-offset: 2px; }
+  figure img { cursor: zoom-in; transition: filter 0.15s ease, transform 0.15s ease; }
+  figure img:hover { filter: brightness(0.95); }
+  .lightbox { position: fixed; inset: 0; background: rgba(35,28,51,0.92); display: none; align-items: center; justify-content: center; padding: 24px; z-index: 1000; cursor: zoom-out; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 96%; max-height: 96%; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
 </style>
 </head>
 <body>
@@ -348,12 +353,12 @@
       <li>Collabs, Shopify's creator-marketing product, existed only as a mobile web experience. The team was rebuilding it as a native app, codenamed Project Phoenix.</li>
       <li>It was not a single redesign. Two connected surfaces had to ship together: the merchant admin, where brands manage collabs, and the creator app, where creators discover products, track collabs, get paid, and run a shoppable storefront for their followers.</li>
       <li>Underneath, it was really an information-architecture problem. Two audiences, two surfaces, one shared taxonomy of products, categories, brands, and collab states, and the job was making it feel like one coherent system instead of two apps bolted together.</li>
-      <li><strong>How I knew it was real:</strong> working with our UX researcher Sophie Allcock, empathy mapping surfaced a live tension, creators wanted momentum and control ("do more of what works," "keep me on track") but also simplicity and automation. And the old navigation, five flat top-level tabs, plainly couldn't scale to hold both surfaces.</li>
+      <li><strong>How I knew it was real:</strong> working with our UX researcher, empathy mapping surfaced a live tension, creators wanted momentum and control ("do more of what works," "keep me on track") but also simplicity and automation. And the old navigation, five flat top-level tabs, plainly couldn't scale to hold both surfaces.</li>
       <li><strong>The goal:</strong> one system that read as a single product to two different people, a merchant configuring a collab and a creator posting and getting paid, without either side feeling like an afterthought.</li>
     </ul>
     <figure>
       <img src="../../images/work/collabs/02-empathy-map.jpg" alt="Creator empathy map: 'As a creator using Collabs, I feel...' and 'What I need...' research synthesis">
-      <figcaption>Early creator research (with researcher Sophie Allcock) surfaced the real tension: momentum and control, but also simplicity and automation.</figcaption>
+      <figcaption>Early creator research (with our UX researcher) surfaced the real tension: momentum and control, but also simplicity and automation.</figcaption>
     </figure>
     <figure>
       <img src="../../images/work/collabs/09-ia-before-after-nav.jpg" alt="FigJam board comparing the core current navigation against the redesigned 2023 navigation, level 1 to 4">
@@ -411,7 +416,7 @@
         <figcaption>Content and logic in one artifact, so the rules shipped with the design.</figcaption>
       </figure>
       <ul class="points">
-        <li><strong>Designed the buyer-facing side of the same system:</strong> a shoppable creator storefront (a TikTok-style feed to "Shop this look" to curated collections like "Marielle's Minimal Winter") so a creator's own audience could shop straight from their content. This is the content-commerce half, the other side of the same taxonomy.</li>
+        <li><strong>Designed the buyer-facing side of the same system:</strong> a shoppable creator storefront (a TikTok-style feed to "Shop this look" to curated collections like "Marielle's Minimal Winter") so a creator's own audience could shop straight from their content. This is the content-commerce half, the other side of the same taxonomy. We deliberately designed these screens with a diverse cast of creators, so the product's tone was set by the real range of people who use it.</li>
       </ul>
       <figure>
         <img src="../../images/work/collabs/15-buyer-experience-updated.jpg" alt="The shoppable creator storefront a buyer sees: creator profile, content post, Shop this look, and curated collections">
@@ -448,7 +453,7 @@
         <figcaption>A documented decision, live: commission math surfaced on the product page ("Buyer pays $189.00 / You earn $28.35"), shot from my own phone a year after the work.</figcaption>
       </figure>
       <ul class="points">
-        <li><strong>The merchant-admin half shipped too, and it's public.</strong> Shopify's Editions Winter '24 page lists seven live Collabs features: creator search and filters, automatic commission payouts, consolidated creator profiles, bulk application management, a unified connections table, per-segment affiliate offers, and TikTok Shop sync. Verifiable, not an internal claim.</li>
+        <li><strong>The merchant-admin half shipped too, and it's public.</strong> Shopify's Editions Winter '24 page lists seven live Collabs features: creator search and filters, automatic commission payouts, consolidated creator profiles, bulk application management, a unified connections table, per-segment affiliate offers, and TikTok Shop sync.</li>
       </ul>
       <figure>
         <img src="../../images/work/collabs/11-shopify-editions-winter24-public.jpg" alt="Public Shopify Editions Winter 24 page showing shipped Collabs merchant features">
@@ -459,7 +464,7 @@
     <section>
       <h2>What I learned</h2>
       <ul class="points">
-        <li>The information architecture was the real test. Everything was interconnected, so getting the scaffolding right mattered more than any single screen. It was the clearest chance I've had to hold a whole shared taxonomy in my head at once, not just apply systems thinking to one flow.</li>
+        <li>The information architecture was the real test, and it demanded systems thinking, not screen-by-screen writing. Everything was interconnected, so holding the whole shared taxonomy in my head at once mattered more than any single screen. Leaning on that systems view is what kept two surfaces reading as one product, and it's the muscle this project pushed furthest for me.</li>
         <li>The values-step drop-off taught me something about how "optional" reads to people. Creators treated it as a "maybe later" step, and a good chunk never came back. If I had more time, I'd make its value clearer in the moment or rethink where it sits in the flow.</li>
         <li>Working across both surfaces let me see the full loop, the merchant managing a collab and the creator posting and getting paid. Very few projects let you sit with both halves of a relationship at once, and it changed how I thought about the taxonomy: a decision that looked small on the admin side could become real friction on the creator side.</li>
       </ul>
@@ -503,5 +508,18 @@
   })();
 </script>
 
+<div class="lightbox" id="lightbox" aria-hidden="true"><img alt="Enlarged view"></div>
+<script>
+  (function () {
+    var lb = document.getElementById('lightbox');
+    var lbImg = lb.querySelector('img');
+    document.addEventListener('click', function (e) {
+      var im = e.target.closest('figure img');
+      if (im) { lbImg.src = im.src; lb.classList.add('open'); return; }
+      if (e.target === lb || e.target === lbImg) lb.classList.remove('open');
+    });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('open'); });
+  })();
+</script>
 </body>
 </html>
