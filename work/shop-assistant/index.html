@@ -409,6 +409,7 @@
       </figure>
       <ul class="points">
         <li><strong>Owned the open design questions as signed artifacts:</strong> training the model to follow our tone-of-voice guidelines (the same three-point tone spectrum I built in <a href="/work/gravity/">Gravity</a>), generating a first-time prompt list from Shop's real search data, categorizing and prioritizing prompts, handling back-and-forth, and where the entry points live. Real-time design thinking in writing, not reconstructed after the fact.</li>
+        <li><strong>Evaluated output quality by hand, the way you could in early 2023.</strong> Human review against a rubric, spot-checking responses for whether they surfaced a product that fit the ask, stayed grounded in real inventory and price, held the <a href="/work/gravity/">Gravity</a> tone, and asked a clarifying question instead of guessing. Automated LLM-as-judge evals didn't exist yet, so hands-on review was the standard.</li>
         <li><strong>Wrote end-to-end demos that show reasoning, not just retrieval.</strong> Asked for "a gift for my mom," the assistant reasons about the occasion and her style before recommending; asked for "an outfit Brad Pitt would wear," it explains the styling choices. The point was an assistant that thinks with you, not a fancier search box.</li>
       </ul>
       <div class="phone-pair">
@@ -463,7 +464,8 @@
       <ul class="points">
         <li>Writing for a model I couldn't fully control was new. In the first days the API existed, you couldn't just specify an output, you shaped the conditions and hoped. That reframed the job: less writing the answer, more designing the context and guardrails the model answers inside.</li>
         <li>Naming did more of the design work than I expected. What we called the assistant, shopé, and how weird we let it be, was really us deciding what the product was and how it should feel. Names turned out to be design decisions you make early, not labels you add at the end.</li>
-        <li>This was the first time I treated a model as something you design the surroundings for, rather than something you script. The instinct holds up, even with week-old tools. What I'd change now is starting from the content standards and how we'd evaluate quality, not from the demo.</li>
+        <li>This was the first time I treated a model as something you design the surroundings for, rather than something you script. The instinct holds up, even with week-old tools. What I'd change now is starting from the content standards, not the demo.</li>
+        <li>The evaluation we ran, human review against a rubric plus spot-checks, was the right method for early 2023, but it didn't scale: every prompt change meant re-reviewing outputs by hand. What I'd change now is keeping the same rubric and automating the scoring, running a fixed set of real shopper queries through an LLM-as-judge so quality is a number we can steer across iterations, not a manual pass each time.</li>
       </ul>
     </section>
 
