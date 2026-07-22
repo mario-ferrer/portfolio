@@ -313,6 +313,69 @@
     display: inline-block;
   }
 
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .filter-btn {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    color: #6B6152;
+    background: transparent;
+    border: 1px solid rgba(35,28,51,0.2);
+    border-radius: 100px;
+    padding: 6px 14px;
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .filter-btn:hover { border-color: #7C5CD6; color: #7C5CD6; }
+
+  .filter-btn.active {
+    background: #7C5CD6;
+    border-color: #7C5CD6;
+    color: #fff;
+  }
+
+  .filter-btn .count { opacity: 0.6; margin-left: 3px; }
+
+  .filter-search {
+    margin-left: auto;
+    position: relative;
+  }
+
+  .filter-search input {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: #231C33;
+    background: #fff;
+    border: 1px solid rgba(35,28,51,0.2);
+    border-radius: 100px;
+    padding: 6px 16px;
+    width: 190px;
+    outline: none;
+    transition: border-color 0.15s ease;
+  }
+
+  .filter-search input:focus { border-color: #7C5CD6; }
+
+  .no-results {
+    display: none;
+    color: #7A6E54;
+    font-size: 14px;
+    padding: 20px 0;
+  }
+
+  @media (max-width: 560px) {
+    .filter-search { margin-left: 0; flex: 1 1 100%; }
+    .filter-search input { width: 100%; }
+  }
+
   tbody a {
     color: #231C33;
     text-decoration: underline;
@@ -498,7 +561,22 @@
     </div>
   </div>
 
-  <h2 class="section-label">Where I've talked<span class="filter-chip" id="filter-chip"></span></h2>
+  <h2 class="section-label">Where I've talked</h2>
+
+  <div class="filters" id="filters">
+    <button class="filter-btn active" data-type="all">All <span class="count"></span></button>
+    <button class="filter-btn" data-type="Talk">Talks</button>
+    <button class="filter-btn" data-type="Podcast">Podcasts</button>
+    <button class="filter-btn" data-type="Panel">Panels</button>
+    <button class="filter-btn" data-type="Interview">Interviews</button>
+    <button class="filter-btn" data-type="Workshop">Workshops</button>
+    <div class="filter-search">
+      <input type="search" id="talk-search" placeholder="Search talks…" aria-label="Search talks by title or event">
+    </div>
+  </div>
+
+  <p class="no-results" id="no-results">No talks match that. <button type="button" class="filter-btn" id="clear-filters">Clear filters</button></p>
+
   <div class="table-wrap">
   <table>
     <colgroup>
@@ -570,61 +648,66 @@
 
 <script>
   (function () {
+    var rows = Array.prototype.slice.call(document.querySelectorAll('tbody tr'));
+    var btns = Array.prototype.slice.call(document.querySelectorAll('.filter-btn[data-type]'));
     var pills = document.querySelectorAll('tbody .pill');
-    var rows = document.querySelectorAll('tbody tr');
-    var wrap = document.querySelector('.table-wrap');
-    var table = wrap.querySelector('table');
-    var chip = document.getElementById('filter-chip');
-    var activeType = null;
-    var animating = false;
+    var search = document.getElementById('talk-search');
+    var noResults = document.getElementById('no-results');
+    var clearBtn = document.getElementById('clear-filters');
+    var allCount = document.querySelector('.filter-btn[data-type="all"] .count');
+    var activeType = 'all';
+
+    // Cache each row's type + searchable text.
+    rows.forEach(function (row) {
+      var pill = row.querySelector('.pill');
+      row.dataset.type = pill ? pill.textContent.trim() : '';
+      row.dataset.search = row.textContent.toLowerCase();
+    });
+    allCount.textContent = rows.length;
 
     function applyFilter() {
-      if (animating) return;
-      animating = true;
+      var q = (search.value || '').trim().toLowerCase();
+      var shown = 0;
 
-      pills.forEach(function (p) {
-        p.classList.toggle('active', activeType !== null && p.textContent.trim() === activeType);
+      rows.forEach(function (row) {
+        var okType = activeType === 'all' || row.dataset.type === activeType;
+        var okSearch = q === '' || row.dataset.search.indexOf(q) !== -1;
+        var match = okType && okSearch;
+        row.style.display = match ? '' : 'none';
+        if (match) shown++;
       });
 
-      if (activeType !== null) {
-        chip.textContent = 'Showing: ' + activeType + 's ✕';
-        chip.classList.add('visible');
-      } else {
-        chip.classList.remove('visible');
-      }
+      btns.forEach(function (b) {
+        b.classList.toggle('active', b.dataset.type === activeType);
+      });
 
-      wrap.style.height = wrap.offsetHeight + 'px';
-      table.style.opacity = '0';
-
-      setTimeout(function () {
-        rows.forEach(function (row) {
-          var rowPill = row.querySelector('.pill');
-          var match = activeType === null || (rowPill && rowPill.textContent.trim() === activeType);
-          row.style.display = match ? '' : 'none';
-        });
-
-        wrap.style.height = table.offsetHeight + 'px';
-        table.style.opacity = '1';
-
-        setTimeout(function () {
-          wrap.style.height = 'auto';
-          animating = false;
-        }, 360);
-      }, 150);
+      noResults.style.display = shown === 0 ? 'block' : 'none';
     }
 
-    pills.forEach(function (pill) {
-      pill.addEventListener('click', function () {
-        var type = pill.textContent.trim();
-        activeType = (activeType === type) ? null : type;
+    btns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        activeType = btn.dataset.type;
         applyFilter();
       });
     });
 
-    chip.addEventListener('click', function () {
-      activeType = null;
-      applyFilter();
+    // Clicking a pill in a row filters by that type too.
+    pills.forEach(function (pill) {
+      pill.addEventListener('click', function () {
+        activeType = pill.textContent.trim();
+        applyFilter();
+      });
     });
+
+    search.addEventListener('input', applyFilter);
+
+    if (clearBtn) {
+      clearBtn.addEventListener('click', function () {
+        activeType = 'all';
+        search.value = '';
+        applyFilter();
+      });
+    }
   })();
 </script>
 
