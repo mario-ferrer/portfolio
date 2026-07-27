@@ -118,12 +118,6 @@
     position: relative;
     border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.25s ease;
-  }
-
-  .bento-card:hover {
-    transform: scale(1.06);
-    z-index: 1;
   }
 
   .bento-card img {
@@ -344,38 +338,6 @@
 
   .filter-btn .count { opacity: 0.6; margin-left: 3px; }
 
-  .filter-search {
-    margin-left: auto;
-    position: relative;
-  }
-
-  .filter-search input {
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    color: #231C33;
-    background: #fff;
-    border: 1px solid rgba(35,28,51,0.2);
-    border-radius: 100px;
-    padding: 6px 16px;
-    width: 190px;
-    outline: none;
-    transition: border-color 0.15s ease;
-  }
-
-  .filter-search input:focus { border-color: #7C5CD6; }
-
-  .no-results {
-    display: none;
-    color: #7A6E54;
-    font-size: 14px;
-    padding: 20px 0;
-  }
-
-  @media (max-width: 560px) {
-    .filter-search { margin-left: 0; flex: 1 1 100%; }
-    .filter-search input { width: 100%; }
-  }
-
   tbody a {
     color: #231C33;
     text-decoration: underline;
@@ -570,12 +532,7 @@
     <button class="filter-btn" data-type="Panel">Panels</button>
     <button class="filter-btn" data-type="Interview">Interviews</button>
     <button class="filter-btn" data-type="Workshop">Workshops</button>
-    <div class="filter-search">
-      <input type="search" id="talk-search" placeholder="Search talks…" aria-label="Search talks by title or event">
-    </div>
   </div>
-
-  <p class="no-results" id="no-results">No talks match that. <button type="button" class="filter-btn" id="clear-filters">Clear filters</button></p>
 
   <div class="table-wrap">
   <table>
@@ -651,37 +608,23 @@
     var rows = Array.prototype.slice.call(document.querySelectorAll('tbody tr'));
     var btns = Array.prototype.slice.call(document.querySelectorAll('.filter-btn[data-type]'));
     var pills = document.querySelectorAll('tbody .pill');
-    var search = document.getElementById('talk-search');
-    var noResults = document.getElementById('no-results');
-    var clearBtn = document.getElementById('clear-filters');
     var allCount = document.querySelector('.filter-btn[data-type="all"] .count');
     var activeType = 'all';
 
-    // Cache each row's type + searchable text.
     rows.forEach(function (row) {
       var pill = row.querySelector('.pill');
       row.dataset.type = pill ? pill.textContent.trim() : '';
-      row.dataset.search = row.textContent.toLowerCase();
     });
     allCount.textContent = rows.length;
 
     function applyFilter() {
-      var q = (search.value || '').trim().toLowerCase();
-      var shown = 0;
-
       rows.forEach(function (row) {
-        var okType = activeType === 'all' || row.dataset.type === activeType;
-        var okSearch = q === '' || row.dataset.search.indexOf(q) !== -1;
-        var match = okType && okSearch;
+        var match = activeType === 'all' || row.dataset.type === activeType;
         row.style.display = match ? '' : 'none';
-        if (match) shown++;
       });
-
       btns.forEach(function (b) {
         b.classList.toggle('active', b.dataset.type === activeType);
       });
-
-      noResults.style.display = shown === 0 ? 'block' : 'none';
     }
 
     btns.forEach(function (btn) {
@@ -698,16 +641,6 @@
         applyFilter();
       });
     });
-
-    search.addEventListener('input', applyFilter);
-
-    if (clearBtn) {
-      clearBtn.addEventListener('click', function () {
-        activeType = 'all';
-        search.value = '';
-        applyFilter();
-      });
-    }
   })();
 </script>
 
