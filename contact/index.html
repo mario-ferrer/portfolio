@@ -88,7 +88,7 @@
   }
 
   h1 .accent {
-    color: #12A5B4;
+    color: #FF1B6B;
   }
 
   .intro {
@@ -96,16 +96,7 @@
     line-height: 1.65;
     color: #6B6152;
     max-width: 60ch;
-    margin-bottom: 40px;
-  }
-
-  .section-label {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 18px;
-    letter-spacing: 0.01em;
-    color: #12A5B4;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
   }
 
   .contact-grid {
@@ -163,7 +154,7 @@
   .form-field input:focus,
   .form-field textarea:focus {
     outline: none;
-    border-color: #12A5B4;
+    border-color: #FF1B6B;
   }
 
   .send-btn {
@@ -206,26 +197,25 @@
 
   /* Taco map card */
   .taco-card {
-    display: grid;
-    grid-template-columns: 1fr 340px;
+    max-width: 560px;
     background: #fff;
     border: 1px solid rgba(35,28,51,0.1);
     border-radius: 16px;
     overflow: hidden;
-    transition: transform 0.25s ease;
-  }
-
-  .taco-card:hover {
-    transform: scale(1.02);
   }
 
   .taco-receipts {
-    background: #F2E8D5;
-    padding: 16px;
+    background: rgba(255,27,107,0.08);
+    padding: 20px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 8px;
-    justify-content: center;
+  }
+
+  .taco-receipts .tweet {
+    width: 100%;
+    max-width: 440px;
   }
 
   .tweet {
@@ -289,7 +279,7 @@
   }
 
   .taco-card-text {
-    padding: 24px 24px;
+    padding: 24px;
   }
 
   .taco-card-text .taco-title {
@@ -351,13 +341,6 @@
       padding-right: 24px;
     }
 
-    .contact-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .taco-card {
-      grid-template-columns: 1fr;
-    }
   }
   .footer-cv { color: #231C33; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(35,28,51,0.35); }
   .footer-cv:hover { text-decoration-color: #231C33; }
@@ -382,39 +365,32 @@
 
 <main id="main">
   <h1>Say <span class="accent">hola</span> &#128075;&#127996;</h1>
-  <p class="intro">Work, talks, teaching, or a taco tip that can't wait? Drop me a line.</p>
+  <p class="intro">Work, talks, teaching, or a taco tip that can't wait? Send it my way.</p>
 
   <div class="contact-grid">
-    <div>
-      <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="bb21eb62-a459-4594-970b-8f05cd61caa4">
-        <input type="hidden" name="subject" value="New message from marioferrer.com">
-        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-        <div class="form-field">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required autocomplete="name">
-        </div>
-        <div class="form-field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required autocomplete="email">
-        </div>
-        <div class="form-field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" required></textarea>
-        </div>
-        <button type="submit" class="send-btn">Send it</button>
-        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-      </form>
-      <p class="linkedin-line">Not a form person? My <a href="https://www.linkedin.com/in/marioferrer/" target="_blank" rel="noopener">LinkedIn</a> DMs are open.</p>
-    </div>
+    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="bb21eb62-a459-4594-970b-8f05cd61caa4">
+      <input type="hidden" name="subject" value="New message from marioferrer.com">
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+      <div class="form-field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+      </div>
+      <div class="form-field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div class="form-field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <button type="submit" class="send-btn">Send it</button>
+      <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+    </form>
+    <p class="linkedin-line">Forms not your thing? <a href="https://www.linkedin.com/in/marioferrer/" target="_blank" rel="noopener">LinkedIn</a> DMs work too.</p>
   </div>
 
   <div class="taco-card">
-    <div class="taco-card-text">
-      <div class="taco-title">The taco map &#127790;</div>
-      <p>Back in 2020, quoting Jane Ruffino, I proposed tacos as the official food of our craft. The community agreed, and <a href="https://torreypodmajersky.com" target="_blank" rel="noopener">Torrey Podmajersky</a>, host of <a href="https://www.buttonevents.com/" target="_blank" rel="noopener">Button</a>, now keeps a map of every spot the conference crowd recommends. The Guadalajara pins are mine.</p>
-      <p class="taco-cta"><a href="https://maps.app.goo.gl/hDDzYTUqvDbzwjK67" target="_blank" rel="noopener">Explore the map &rarr;</a></p>
-    </div>
     <div class="taco-receipts">
       <div class="tweet">
         <div class="tweet-head">
@@ -439,6 +415,11 @@
         <div class="tweet-body">UX writing tacos have my full agreement.</div>
         <div class="tweet-date">Feb 25, 2020</div>
       </div>
+    </div>
+    <div class="taco-card-text">
+      <div class="taco-title">The taco map &#127790;</div>
+      <p>Back in 2020, quoting Jane Ruffino, I proposed tacos as the official food of our craft. The community agreed, and <a href="https://torreypodmajersky.com" target="_blank" rel="noopener">Torrey Podmajersky</a>, host of <a href="https://www.buttonevents.com/" target="_blank" rel="noopener">Button</a>, now keeps a map of every spot the conference crowd recommends. The Guadalajara pins are mine.</p>
+      <p class="taco-cta"><a href="https://maps.app.goo.gl/hDDzYTUqvDbzwjK67" target="_blank" rel="noopener">Explore the map &rarr;</a></p>
     </div>
   </div>
 </main>
