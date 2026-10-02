@@ -359,9 +359,8 @@
       grid-template-columns: 1fr;
     }
   }
-  footer .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; text-align: left; }
-  .footer-cv { color: #6B6152; text-decoration: none; }
-  .footer-cv:hover { color: #231C33; }
+  .footer-cv { color: #231C33; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(35,28,51,0.35); }
+  .footer-cv:hover { text-decoration-color: #231C33; }
   .skip-link { position: absolute; left: -9999px; top: 0; background: #231C33; color: #fff; padding: 8px 16px; z-index: 100; font-size: 14px; border-radius: 0 0 8px 0; }
   .skip-link:focus { left: 0; }
   a:focus-visible, button:focus-visible { outline: 2px solid #FF1B6B; outline-offset: 2px; }
@@ -445,10 +444,7 @@
 </main>
 
 <footer>
-  <div class="footer-inner">
-    <a class="footer-cv" href="/mario-ferrer-cv.pdf" target="_blank" rel="noopener">View my CV</a>
-    <div class="copyright">Every word chosen on purpose | &copy; 2026 Mario Ferrer</div>
-  </div>
+  <div class="footer-inner">Vibecoded with craft and tacos | &copy; 2026 Mario Ferrer | <a class="footer-cv" href="/mario-ferrer-cv.pdf" target="_blank" rel="noopener">View my CV</a></div>
 </footer>
 
 <script>
