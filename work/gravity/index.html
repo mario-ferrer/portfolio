@@ -425,7 +425,7 @@
     </div>
     <div>
       <div class="meta-label">What I owned</div>
-      <div class="meta-value">Voice, tone, and UX writing system, paired with visual guidelines component by component</div>
+      <div class="meta-value">Voice, tone, and UX writing system, matched to visual guidelines component by component</div>
     </div>
     <div>
       <div class="meta-label">When</div>
@@ -435,16 +435,16 @@
 
   <section>
     <h2>The problem space</h2>
-    <p>The Shop app already showed the problem; nobody needed an audit to find it. The same app greeted people one way, apologized another, and celebrated in a third, with order updates, empty states, and error messages all reading like they came from different products. Once more than one writer touches a growing surface, tone drifts without anyone deciding it should.</p>
-    <p>It also had to work for two audiences at once. Merchants and shoppers use different words for the same features, so one system had to speak to both without splitting into two separate voices. And it had to extend Shopify's existing Polaris design system: Gravity was the shopper-facing layer built on top of Polaris's foundation, grounded in guidelines Polaris had already set rather than built from zero.</p>
+    <p>The Shop app already showed the problem; nobody needed an audit to find it. The same app greeted people one way, apologized another, and celebrated in a third, with order updates, empty states, and error messages all reading like they came from different products. Nobody decides tone should drift, it just happens once more than one content designer is shipping into the same growing surface.</p>
+    <p>It also had to work for two audiences at once. Merchants and shoppers use different words for the same features, so one system had to speak to both without splitting into two separate voices. On top of that, it had to extend Shopify's existing Polaris design system rather than start from scratch, so every new rule had to fit the foundation Polaris had already set.</p>
     <div class="insight-row">
       <div class="insight-block">
         <div class="insight-label">Why this mattered</div>
-        <p>The drift was already live in the product: order updates sounded helpful, error messages sounded apologetic, celebratory moments sounded like a different app. Lining up the actual strings side by side was enough to see it.</p>
+        <p>To the person using the app, a helpful order update, an apologetic error message, and a totally different voice at checkout didn't read as careful craft. It read as an app that didn't know what it sounded like.</p>
       </div>
       <div class="insight-block">
         <div class="insight-label">The goal</div>
-        <p>One reference any writer could apply on their own, so the Shop app sounded like a single product no matter who was writing, or when.</p>
+        <p>A system every content designer could follow, so whoever opened the app felt like they were talking to one consistent product, not whichever person wrote that particular screen.</p>
       </div>
     </div>
   </section>
@@ -463,18 +463,19 @@
 
     <section>
       <h2>What I worked on</h2>
-      <p><strong>Built a three-point tone spectrum: Straightforward, Approachable, Memorable.</strong> Each point got a defined attitude, a frequency (used always, used often, used sometimes), and real product moments as anchors: order tracking and error messages sit at Straightforward, Home sits at Approachable, Shop Minis and shopping events sit at Memorable.</p>
+      <p><strong>Co-wrote Gravity's documentation with the design system team, component by component.</strong> Every component carried its own content guidelines right next to its visual spec, so a content designer, a product designer, or an engineer could check the same page and know exactly how to write for that piece of UI. On top of that, Gravity also carried its own overarching content guidelines, standards that applied across the whole of Shop rather than to any single component.</p>
+      <p><strong>One of those overarching pieces was a three-point tone spectrum built to replace guesswork with a shared reference: Straightforward, Approachable, Memorable.</strong> Order tracking and error messages needed to feel plain and dependable, not playful. Shop Minis and shopping events could afford real personality. Anchoring each point to moments like those meant a content designer never had to guess how formal or how playful a given screen was allowed to be, the spectrum already answered it.</p>
       <figure>
         <img src="../../images/work/gravity/01-voice-tone-spectrum-preview.png" data-full="../../images/work/gravity/01-voice-tone-spectrum.png" alt="The Gravity tone spectrum: Straightforward, Approachable, and Memorable, each with attitude, frequency, and paired do and don't examples">
-        <figcaption>The spectrum plus its first set of Do and Don't examples, real strings, not hypothetical ones.</figcaption>
+        <figcaption>Each point pairs an attitude and a frequency with a real Do and Don't, so a content designer can check tone and example in one place.</figcaption>
       </figure>
-      <p><strong>Paired every rule with a concrete Do and Don't, instead of leaving it as an abstract principle.</strong> "Your package is out for delivery" versus "There's activity related to your package!" for a routine update. "Picked for you" versus "Product recommendations," too generic for the Approachable tone. Underneath those tone calls sat a more granular layer: active voice, American spelling, capitalization, contractions, punctuation, the kind of rule that keeps hundreds of strings consistent even when nobody's actively thinking about tone.</p>
-      <p>Several of those mechanical rules point straight back to <a href="https://polaris.shopify.com/content/fundamentals" target="_blank" rel="noopener">Polaris's own content guidelines</a>, so Gravity extended that foundation instead of quietly duplicating it.</p>
+      <p><strong>Paired every rule with a concrete Do and Don't, because an abstract principle doesn't survive contact with a deadline.</strong> A content designer moving fast needed to compare "Your package is out for delivery" against "There's activity related to your package!" and know instantly which one was Straightforward, not stop to reason it out from a definition. Underneath those tone calls sat a more granular layer, active voice, American spelling, capitalization, contractions, punctuation, the kind of mechanical rule that keeps hundreds of strings consistent even when nobody's actively thinking about tone in the moment.</p>
+      <p>Several of those mechanical rules point straight back to <a href="https://shopify.dev/docs/apps/design/content" target="_blank" rel="noopener">Polaris's own content guidelines</a>. Building on that foundation instead of inventing a parallel one meant Gravity never contradicted the rest of Shopify's own guidance.</p>
       <figure>
         <img src="../../images/work/gravity/02-writing-guidelines.png" alt="Gravity writing guidelines: plain language, actionable and inclusive language, and punctuation mechanics, with explicit references to Polaris">
-        <figcaption>The mechanical guidelines, several of them explicit Polaris references rather than reinvented rules.</figcaption>
+        <figcaption>The mechanical guidelines, with explicit Polaris citations next to each rule so nobody had to take the standard on faith.</figcaption>
       </figure>
-      <p><strong>Defined branded terminology for two audiences that use different words for the same feature.</strong> "Shop Cash," "Shop Pay Installments," "Shop Promise," each with a definition and a correct and incorrect usage, with merchant-specific phrasing called out wherever a term needed to land differently for someone managing a store versus someone shopping in it.</p>
+      <p><strong>Defined branded terminology for two audiences that use different words for the same feature.</strong> A term like "Shop Promise" could get written correctly and still confuse someone, if a merchant managing a store read it the way a shopper would, or the reverse. Writing down the correct usage for each audience, not just a single definition, was what kept a shared feature from sounding like two different products depending on who was reading.</p>
       <figure>
         <img src="../../images/work/gravity/03-branded-terms.png" alt="Gravity branded terms sheet with merchant versus shopper tags, definitions, and correct usage">
         <figcaption>Branded terms with merchant and shopper usage called out separately, so the same feature read correctly to each audience.</figcaption>
@@ -483,35 +484,52 @@
         <img src="../../images/work/gravity/05-branded-terms-2.png" alt="A second Gravity branded terms sheet with more definitions and usage examples">
         <figcaption>A second terminology sheet. Getting these names right was half the work of sounding like one product.</figcaption>
       </figure>
-      <p><strong>Designed content patterns with the reasoning written down, not just the rule.</strong> The timestamp pattern, for instance, reasons through cognitive load out loud: don't communicate how much time has passed since an event ("1d ago"), display the actual time or date so people aren't forced to do the math.</p>
+      <p><strong>Wrote the reasoning behind each content pattern alongside the rule itself.</strong> The timestamp pattern is a good example: show the actual time or date rather than "1d ago," because nobody should have to do mental math to know when something happened. Stating that reasoning meant the pattern could be applied correctly later, by someone who never sat in the room where the decision got made.</p>
       <figure>
         <img src="../../images/work/gravity/04-timestamps-pattern.png" alt="Gravity timestamp content pattern, showing the rule and its stated cognitive-load rationale">
-        <figcaption>The stated reasoning sits right next to the rule, so the next writer could extend it rather than guess.</figcaption>
+        <figcaption>One documentation page: the rule, an example, and the reasoning behind it, the same structure repeated across every content pattern in Gravity.</figcaption>
       </figure>
-      <p><strong>Paired every writing guideline with a matching visual guideline, component by component.</strong> This is the part worth calling out directly: Gravity wasn't a writing-only artifact. It was co-developed with visual design, so the voice and the visual system evolved together, not in separate documents someone had to reconcile later.</p>
     </section>
 
     <section>
       <h2>What got shipped</h2>
       <div class="metrics">
-        <div class="metric"><div class="metric-num">9</div><div class="metric-label">Content designers I led</div></div>
-        <div class="metric"><div class="metric-num">2 audiences</div><div class="metric-label">Merchants and shoppers, one system</div></div>
-        <div class="metric"><div class="metric-num">3-point</div><div class="metric-label">Tone spectrum any writer could apply</div></div>
+        <div class="metric"><div class="metric-num">3</div><div class="metric-label">Tone points, each anchored to real product moments</div></div>
+        <div class="metric"><div class="metric-num">9</div><div class="metric-label">Content designers building from one system</div></div>
+        <div class="metric"><div class="metric-num">2 audiences</div><div class="metric-label">One shared terminology across merchants and shoppers</div></div>
       </div>
-      <ul class="points">
-        <li><strong>It became infrastructure, not a document.</strong> Gravity was integrated into Shop's design system itself and built into onboarding for every designer joining the team, product and content designers alike. As craft lead for the nine content designers on Shop, it was the shared reference we all worked from.</li>
-        <li><strong>And it outlived its original scope.</strong> Seven months after I moved off the Shop app, a teammate built the Collabs native-app UI kit by repurposing Gravity's components, and I stress-tested it myself, rebuilding the existing Collabs web experience inside the kit to prove it could carry a native app.</li>
-        <li>It built on Polaris, Shopify's public design system, which still documents the same plain-language, active-voice, and 7th-grade-reading-level rules Gravity extended.</li>
-      </ul>
+      <p><strong>Order updates, error messages, empty states, and everything in between started reading like one product.</strong> The tone spectrum and its Do/Don't pairs got applied directly to the live strings across the Shop app. The same order updates, error messages, and empty states that used to sound like different products now came from the same three tone points.</p>
+      <p><strong>It became infrastructure, built into onboarding for every new designer.</strong> Gravity was integrated into Shop's design system itself and built into onboarding for every designer joining the team, product and content designers alike. As craft lead for the nine content designers on Shop, it was the shared reference the whole team worked from.</p>
+      <p><strong>Partnering with the design system team meant content got designed into every flow from the start, not patched in after the fact.</strong> Because the writing guidelines lived inside Gravity's own documentation, right next to the visual spec for each component, a product designer saw the content rules the moment they opened a component, not weeks later when a content designer finally got looped in. Content stopped being the thing that showed up after a flow was already designed.</p>
     </section>
 
     <section>
       <h2>The lesson learned</h2>
-      <ul class="points">
-        <li>The hardest calls were never mechanical. Punctuation you can just decide. Tone was the tension: a declined payment could read Straightforward ("Your card was declined") or lean Approachable to soften it, and the wrong pick made the app feel either cold or weirdly upbeat about your money not going through. Writing those judgment calls down, with real examples, was the whole point.</li>
-        <li>Pairing every writing rule with a visual one changed how I saw voice. I had thought tone lived in the words. Up close with visual design, it clearly lived in the spacing, the hierarchy, the weight of a button too. Guidelines that only covered words were doing half the job.</li>
-        <li>In hindsight, Gravity reads like an early version of an instinct I keep coming back to: don't hand people, or a model, a list of adjectives and hope. Give them the reasoning behind each call, so they can make the next one without you in the room.</li>
-        <li>Building it as a system rather than a style doc is what let it travel: into the design system, into onboarding, into another team's product entirely. I didn't set out to make infrastructure. That's just what a system turns into when it's built to be extended, not only followed.</li>
+      <ul class="points lessons">
+        <li>
+          <svg class="lesson-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .8 1.6v.1h5.6v-.1c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="lesson-text">
+            <strong>Tone is where the hardest calls actually lived.</strong>
+            <p>Punctuation is a rule settled once and left alone. Tone was the real tension: a declined payment could read Straightforward ("Your card was declined") or lean Approachable to soften it, and picking wrong made the app feel cold, or strangely cheerful about someone's money not going through.</p>
+            <p>Writing those judgment calls down, with real examples, was the actual point. Now I treat the judgment call itself as the deliverable, the mechanical rule is just a footnote next to it.</p>
+          </div>
+        </li>
+        <li>
+          <svg class="lesson-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .8 1.6v.1h5.6v-.1c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="lesson-text">
+            <strong>Pairing every writing rule with a visual one changed where I thought voice lived.</strong>
+            <p>I'd assumed tone lived in the words. Working this closely with visual design showed me it lived just as much in the spacing, the hierarchy, the weight of a button.</p>
+            <p>On every system I've built since, a content rule without its visual counterpart sitting right next to it is a sign the work isn't done yet, not something to hand off and fix later.</p>
+          </div>
+        </li>
+        <li>
+          <svg class="lesson-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .8 1.6v.1h5.6v-.1c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="lesson-text">
+            <strong>Writing the reasoning down is what let this travel beyond Shop.</strong>
+            <p>I didn't set out to build infrastructure. Giving every rule its reasoning, the actual judgment behind it, is what let another team extend Gravity into <a href="/work/collabs-creator-app/">Collabs</a>, an entirely different product, months after I'd moved on.</p>
+            <p>On any guideline system I build now, I write it assuming someone will need to extend it without me in the room.</p>
+          </div>
+        </li>
       </ul>
     </section>
 
