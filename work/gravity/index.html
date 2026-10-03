@@ -100,10 +100,10 @@
   .meta-label {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 12.5px;
+    font-size: 13px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: #231C33;
+    color: #C9552E;
     margin-bottom: 6px;
   }
 
@@ -125,6 +125,13 @@
     color: #231C33;
     max-width: 66ch;
     margin-bottom: 16px;
+  }
+
+  section p > strong:first-child {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15.5px;
+    margin-bottom: 6px;
   }
 
   ul.points { list-style: none; max-width: 66ch; }
@@ -153,6 +160,75 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     color: #231C33;
+  }
+
+  ul.points.lessons > li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: #fff;
+    border: 1px solid rgba(35,28,51,0.1);
+    border-radius: 10px;
+    padding: 20px 24px;
+    padding-left: 24px;
+    margin-bottom: 20px;
+  }
+
+  ul.points.lessons > li::before { content: none; }
+
+  .lesson-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+    color: #C9552E;
+  }
+
+  .lesson-text strong {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15.5px;
+    margin-bottom: 8px;
+  }
+
+  .lesson-text p {
+    margin: 0 0 10px 0;
+  }
+
+  .lesson-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .insight-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0 32px;
+    max-width: 66ch;
+  }
+
+  .insight-block {
+    background: #fff;
+    border-left: 3px solid #C9552E;
+    border-radius: 8px;
+    padding: 16px 20px;
+  }
+
+  .insight-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #C9552E;
+    margin-bottom: 8px;
+  }
+
+  .insight-block p { font-size: 15px; margin-bottom: 10px; max-width: none; }
+  .insight-block p:last-child { margin-bottom: 0; }
+
+  @media (max-width: 600px) {
+    .insight-row { grid-template-columns: 1fr; }
   }
 
   section a { color: #231C33; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(35,28,51,0.35); }
@@ -359,13 +435,18 @@
 
   <section>
     <h2>The problem space</h2>
-    <ul class="points">
-      <li>The Shop app had no shared, documented voice. Once more than one writer touches a growing surface, tone drifts: order updates, empty states, and error messages all end up sounding different.</li>
-      <li>It had to serve two audiences at once. Merchants and shoppers use different words for the same features, and one system had to speak to both without splitting in two.</li>
-      <li>It had to extend Polaris, not duplicate it. Shopify's design system already set the foundation, so Gravity was the shopper-facing layer on top, not a rebuild from zero.</li>
-      <li><strong>How I knew it was real:</strong> the drift was already in the product. The same app greeted you one way, apologized another, and celebrated in a third. No audit needed, it was visible in the strings once you lined them up.</li>
-      <li><strong>The goal:</strong> one reference any writer could apply on their own, so the Shop app sounded like a single product no matter who was writing, or when.</li>
-    </ul>
+    <p>The Shop app already showed the problem; nobody needed an audit to find it. The same app greeted people one way, apologized another, and celebrated in a third, with order updates, empty states, and error messages all reading like they came from different products. Once more than one writer touches a growing surface, tone drifts without anyone deciding it should.</p>
+    <p>It also had to work for two audiences at once. Merchants and shoppers use different words for the same features, so one system had to speak to both without splitting into two separate voices. And it had to extend Shopify's existing Polaris design system: Gravity was the shopper-facing layer built on top of Polaris's foundation, grounded in guidelines Polaris had already set rather than built from zero.</p>
+    <div class="insight-row">
+      <div class="insight-block">
+        <div class="insight-label">Why this mattered</div>
+        <p>The drift was already live in the product: order updates sounded helpful, error messages sounded apologetic, celebratory moments sounded like a different app. Lining up the actual strings side by side was enough to see it.</p>
+      </div>
+      <div class="insight-block">
+        <div class="insight-label">The goal</div>
+        <p>One reference any writer could apply on their own, so the Shop app sounded like a single product no matter who was writing, or when.</p>
+      </div>
+    </div>
   </section>
 
   <section class="gate" id="gate">
@@ -382,42 +463,32 @@
 
     <section>
       <h2>What I worked on</h2>
-      <ul class="points">
-        <li><strong>Built a 3-point tone spectrum: Straightforward, Approachable, Memorable.</strong> Each point got a defined attitude, a frequency (used always, used often, used sometimes), and real product moments as anchors: order tracking and error messages sit at Straightforward, Home sits at Approachable, and Shop Minis and shopping events sit at Memorable.</li>
-      </ul>
+      <p><strong>Built a three-point tone spectrum: Straightforward, Approachable, Memorable.</strong> Each point got a defined attitude, a frequency (used always, used often, used sometimes), and real product moments as anchors: order tracking and error messages sit at Straightforward, Home sits at Approachable, Shop Minis and shopping events sit at Memorable.</p>
       <figure>
-        <img src="../../images/work/gravity/01-voice-tone-spectrum.png" alt="The Gravity tone spectrum: Straightforward, Approachable, and Memorable, each with attitude, frequency, and paired do and don't examples">
-        <figcaption>The tone spectrum, with a concrete Do and Don't for each point rather than an abstract principle.</figcaption>
+        <img src="../../images/work/gravity/01-voice-tone-spectrum-preview.png" data-full="../../images/work/gravity/01-voice-tone-spectrum.png" alt="The Gravity tone spectrum: Straightforward, Approachable, and Memorable, each with attitude, frequency, and paired do and don't examples">
+        <figcaption>The spectrum plus its first set of Do and Don't examples, real strings, not hypothetical ones.</figcaption>
       </figure>
-      <ul class="points">
-        <li><strong>Paired every rule with a concrete Do and Don't.</strong> For example, "Your package is out for delivery" (do) versus "There's activity related to your package!" (don't, wrong tone for a routine update); "Picked for you" (do) versus "Product recommendations" (don't, too generic for the Approachable tone).</li>
-        <li><strong>Wrote the granular mechanical guidelines</strong> covering active voice, American spelling, capitalization, contractions, and punctuation: Oxford comma, em dash versus en dash, when to avoid exclamation and question marks. The unglamorous layer that keeps hundreds of strings consistent across many writers.</li>
-      </ul>
+      <p><strong>Paired every rule with a concrete Do and Don't, instead of leaving it as an abstract principle.</strong> "Your package is out for delivery" versus "There's activity related to your package!" for a routine update. "Picked for you" versus "Product recommendations," too generic for the Approachable tone. Underneath those tone calls sat a more granular layer: active voice, American spelling, capitalization, contractions, punctuation, the kind of rule that keeps hundreds of strings consistent even when nobody's actively thinking about tone.</p>
+      <p>Several of those mechanical rules point straight back to <a href="https://polaris.shopify.com/content/fundamentals" target="_blank" rel="noopener">Polaris's own content guidelines</a>, so Gravity extended that foundation instead of quietly duplicating it.</p>
       <figure>
         <img src="../../images/work/gravity/02-writing-guidelines.png" alt="Gravity writing guidelines: plain language, actionable and inclusive language, and punctuation mechanics, with explicit references to Polaris">
-        <figcaption>Mechanical guidelines, with several rules explicitly deferring to Polaris so Gravity extended the design system instead of forking it.</figcaption>
+        <figcaption>The mechanical guidelines, several of them explicit Polaris references rather than reinvented rules.</figcaption>
       </figure>
-      <ul class="points">
-        <li><strong>Defined branded terminology with audience tags.</strong> "Shop Cash," "Shop Pay Installments," "Shop Promise," each with a definition and correct and incorrect usage, tagged for whether it is merchant-facing or shopper-facing language.</li>
-      </ul>
+      <p><strong>Defined branded terminology for two audiences that use different words for the same feature.</strong> "Shop Cash," "Shop Pay Installments," "Shop Promise," each with a definition and a correct and incorrect usage, with merchant-specific phrasing called out wherever a term needed to land differently for someone managing a store versus someone shopping in it.</p>
       <figure>
         <img src="../../images/work/gravity/03-branded-terms.png" alt="Gravity branded terms sheet with merchant versus shopper tags, definitions, and correct usage">
-        <figcaption>Branded terms tagged MERCHANT or SHOPPER, so the same feature could be described correctly to each audience.</figcaption>
+        <figcaption>Branded terms with merchant and shopper usage called out separately, so the same feature read correctly to each audience.</figcaption>
       </figure>
       <figure>
         <img src="../../images/work/gravity/05-branded-terms-2.png" alt="A second Gravity branded terms sheet with more definitions and usage examples">
         <figcaption>A second terminology sheet. Getting these names right was half the work of sounding like one product.</figcaption>
       </figure>
-      <ul class="points">
-        <li><strong>Designed content patterns with the rationale written down.</strong> The timestamp pattern, for instance, reasons through cognitive load out loud: we don't communicate how much time has passed since an event (1d ago); we display the actual time or date, so people aren't forced to do the math.</li>
-      </ul>
+      <p><strong>Designed content patterns with the reasoning written down, not just the rule.</strong> The timestamp pattern, for instance, reasons through cognitive load out loud: don't communicate how much time has passed since an event ("1d ago"), display the actual time or date so people aren't forced to do the math.</p>
       <figure>
         <img src="../../images/work/gravity/04-timestamps-pattern.png" alt="Gravity timestamp content pattern, showing the rule and its stated cognitive-load rationale">
-        <figcaption>Patterns stated the reasoning, not just the rule, so the next writer could extend them instead of guessing.</figcaption>
+        <figcaption>The stated reasoning sits right next to the rule, so the next writer could extend it rather than guess.</figcaption>
       </figure>
-      <ul class="points">
-        <li><strong>Paired every writing guideline with a matching visual guideline, component by component.</strong> This is the part worth foregrounding: Gravity wasn't a writing-only artifact. It was co-developed with visual design, so voice and visual system evolved together rather than in separate documents.</li>
-      </ul>
+      <p><strong>Paired every writing guideline with a matching visual guideline, component by component.</strong> This is the part worth calling out directly: Gravity wasn't a writing-only artifact. It was co-developed with visual design, so the voice and the visual system evolved together, not in separate documents someone had to reconcile later.</p>
     </section>
 
     <section>
@@ -497,7 +568,7 @@
     var lbImg = lb.querySelector('img');
     document.addEventListener('click', function (e) {
       var im = e.target.closest('figure img');
-      if (im) { lbImg.src = im.src; lb.classList.add('open'); return; }
+      if (im) { lbImg.src = im.getAttribute('data-full') || im.src; lb.classList.add('open'); return; }
       if (e.target === lb || e.target === lbImg) lb.classList.remove('open');
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('open'); });
