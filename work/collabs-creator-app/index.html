@@ -100,10 +100,10 @@
   .meta-label {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 12.5px;
+    font-size: 13px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: #231C33;
+    color: #C9552E;
     margin-bottom: 6px;
   }
 
@@ -125,6 +125,13 @@
     color: #231C33;
     max-width: 66ch;
     margin-bottom: 16px;
+  }
+
+  section p > strong:first-child {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15.5px;
+    margin-bottom: 6px;
   }
 
   ul.points { list-style: none; max-width: 66ch; }
@@ -153,6 +160,74 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     color: #231C33;
+  }
+
+  ul.points.lessons > li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: #fff;
+    border: 1px solid rgba(35,28,51,0.1);
+    border-radius: 10px;
+    padding: 20px 24px;
+    padding-left: 24px;
+    margin-bottom: 20px;
+  }
+
+  ul.points.lessons > li::before { content: none; }
+
+  .lesson-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+    color: #C9552E;
+  }
+
+  .lesson-text strong {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15.5px;
+    margin-bottom: 8px;
+  }
+
+  .lesson-text p {
+    margin: 0 0 10px 0;
+  }
+
+  .lesson-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .insight-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0 32px;
+    max-width: 66ch;
+  }
+
+  .insight-block {
+    background: #fff;
+    border-left: 3px solid #C9552E;
+    border-radius: 8px;
+    padding: 16px 20px;
+  }
+
+  .insight-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #C9552E;
+    margin-bottom: 8px;
+  }
+
+  .insight-block p { font-size: 15px; margin-bottom: 0; max-width: none; }
+
+  @media (max-width: 600px) {
+    .insight-row { grid-template-columns: 1fr; }
   }
 
   section a { color: #231C33; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(35,28,51,0.35); }
@@ -362,26 +437,31 @@
 
   <section>
     <h2>The problem space</h2>
-    <ul class="points">
-      <li>Collabs, Shopify's creator-marketing product, existed only as a mobile web experience. The team was rebuilding it as a native app, codenamed Project Phoenix.</li>
-      <li>It was not a single redesign. Two connected surfaces had to ship together: the merchant admin, where brands manage collabs, and the creator app, where creators discover products, track collabs, get paid, and run a shoppable storefront for their followers.</li>
-      <li>Underneath, it was really an information-architecture problem. Two audiences, two surfaces, one shared taxonomy of products, categories, brands, and collab states, and the job was making it feel like one coherent system instead of two apps bolted together.</li>
-      <li><strong>How I knew it was real:</strong> working with our UX researcher, empathy mapping surfaced a live tension, creators wanted momentum and control ("do more of what works," "keep me on track") but also simplicity and automation. And the old navigation, five flat top-level tabs, plainly couldn't scale to hold both surfaces.</li>
-      <li><strong>The goal:</strong> one system that read as a single product to two different people, a merchant configuring a collab and a creator posting and getting paid, without either side feeling like an afterthought.</li>
-    </ul>
+    <p>Before this rebuild, a creator's entire relationship with Collabs lived in a mobile browser. There was no dedicated app, so checking whether a brand had approved a submission, posting new content, or tracking a payout meant juggling tabs on a phone, losing your place mid-task, and sometimes giving up and emailing support just to find out where things stood.</p>
+    <p>Fixing that meant rebuilding Collabs as a native app. But the native app wasn't the whole job: the existing merchant admin, where brands manage collabs, needed its own overhaul to connect to it, which meant two surfaces now had to work as one system. Underneath, it was really an information-architecture problem: two audiences and two surfaces sharing one taxonomy of products, categories, brands, and collab states, and the job was making all of it feel like a single coherent system instead of two apps bolted together.</p>
+    <div class="insight-row">
+      <div class="insight-block">
+        <div class="insight-label">Why this mattered</div>
+        <p>Early empathy mapping with our UX researcher surfaced a real tension: creators wanted momentum and control, but also simplicity and automation. That same tension showed up structurally: the old navigation, five flat top-level tabs, could serve one need or the other, not both.</p>
+      </div>
+      <div class="insight-block">
+        <div class="insight-label">The goal</div>
+        <p>One system that reads as a single product to two very different people: a merchant configuring a collab, a creator posting and getting paid. Neither side an afterthought.</p>
+      </div>
+    </div>
     <figure>
       <img src="../../images/work/collabs/02-empathy-map.jpg" alt="Creator empathy map: 'As a creator using Collabs, I feel...' and 'What I need...' research synthesis">
-      <figcaption>Early creator research (with our UX researcher) surfaced the real tension: momentum and control, but also simplicity and automation.</figcaption>
+      <figcaption>The empathy map from an early creator research session. This is the artifact that turned a gut feeling about creator needs into a documented tension.</figcaption>
     </figure>
     <figure>
       <img src="../../images/work/collabs/09-ia-before-after-nav.jpg" alt="FigJam board comparing the core current navigation against the redesigned 2023 navigation, level 1 to 4">
-      <figcaption>The IA problem, made visible: the old five-tab structure versus the redesigned navigation grouped by how creators actually work.</figcaption>
+      <figcaption>The old navigation versus the redesign, side by side, Level 1 to 4. This is the artifact that turned "the nav feels off" into a documented structural problem.</figcaption>
     </figure>
   </section>
 
   <section class="gate" id="gate">
-    <h2>From here, you'll need a password</h2>
-    <p>The full walkthrough, the screens, the numbers, and what I learned are behind a password. <a href="/contact/">Reach out and I'll send it over</a>.</p>
+    <h2>The rest is behind a password</h2>
+    <p>The process, the outcomes, and what I learned along the way. <a href="/contact/">Reach out and I'll send it over</a>.</p>
     <form class="gate-form" id="gate-form">
       <input type="password" id="gate-input" placeholder="Enter password" autocomplete="off" aria-label="Password">
       <button type="submit">Unlock</button>
@@ -393,92 +473,130 @@
 
     <section>
       <h2>What I worked on</h2>
-      <ul class="points">
-        <li><strong>Set the tone-of-voice foundations first.</strong> Three pillars, Gutsy, Authentic, Empowering, each grounded in a specific creator insight ("Collabs is a vibe... clarity over clever"), not abstract adjectives. This became the north star for every screen that followed.</li>
-      </ul>
+      <p><strong>Set three tone of voice pillars before any screen work started, each grounded in real creator insight.</strong> The three, Gutsy, Authentic, Empowering, weren't abstract adjectives. Authentic, for example, traces back to a real line, "Collabs is a vibe... clarity over clever," not a vague descriptor. This became the north star for every screen that followed.</p>
       <figure>
         <img src="../../images/work/collabs/01-tone-of-voice-foundations.jpg" alt="Collabs tone of voice: Gutsy, Authentic, and Empowering pillars, each tied to a creator insight">
-        <figcaption>Voice pillars tied to real creator insights, so tone had a reason behind it rather than a mood board.</figcaption>
+        <figcaption>The actual foundations deck, later expanded into a standalone tone of voice guide the team kept referencing.</figcaption>
       </figure>
+      <p><strong>Built one shared model of products and collab states, so what a merchant sets up and what a creator sees come from the same source.</strong> Information architecture became the cornerstone of this project: merchants and creators related to the same products, categories, and collab states in completely different ways, and without one shared model underneath, that mismatch would have made an already complicated product even messier. This is the creator app's full screen inventory, mapped to reconcile with what already existed in the merchant admin:</p>
       <ul class="points">
-        <li><strong>Built the taxonomy and IA that tie admin and app together.</strong> Mapped the full screen inventory as a system, Discover, Creator Shop, Performance, Settings up top, with PDP, Merchant Shop, Search, Collections, Connections, and Security beneath, so the same product and collab-state model could drive both what a merchant configures and what a creator sees.</li>
+        <li>Top level: Discover, Creator Shop, Performance, Settings</li>
+        <li>Second level: PDP, Merchant Shop, Search, Collections, Connections, Security</li>
       </ul>
+      <p>Four top-level tabs and six second-level screens, each broken into its own component blocks: the creator app's half of a model now aligned with admin's existing structure.</p>
       <figure>
-        <img src="../../images/work/collabs/06-ia-taxonomy-key-screens.jpg" alt="Full Collabs app IA and taxonomy skeleton across Discover, Creator Shop, Performance, and Settings">
-        <figcaption>One shared taxonomy driving two surfaces, the scaffolding the whole system hung from.</figcaption>
+        <img src="../../images/work/collabs/06-ia-taxonomy-key-screens.jpg" alt="Full Collabs app information architecture and taxonomy skeleton across Discover, Creator Shop, Performance, and Settings">
+        <figcaption>The creator app's screen inventory, the half that had to reconcile with what already existed in admin.</figcaption>
       </figure>
+      <p><strong>Redesigned Home around real creator personas, after user research with creators on the MVP showed one generic feed wasn't landing.</strong> The fix was three personas, each mapped along a spectrum from your active collab out to discovery:</p>
       <ul class="points">
-        <li><strong>Designed the Home feed around three real creator personas.</strong> Coach, Insider, and Guardian, each with a distinct need ("show me what's working" / "show me something new" / "keep me on path"), mapped along a spectrum from your active collab out to discovery. Home's design principles were written as paired rules and creator-voice quotes.</li>
+        <li>Coach: "show me what's working"</li>
+        <li>Insider: "show me something new"</li>
+        <li>Guardian: "keep me on path"</li>
       </ul>
+      <p>Three different needs, met by one feed that flexed depending on who was looking at it.</p>
       <figure>
         <img src="../../images/work/collabs/13-home-personas-and-principles.jpg" alt="The three creator personas, Coach, Insider, and Guardian, with their needs and Home's five design principles">
-        <figcaption>Personalization designed around who the creator is, with principles written in the creator's own voice.</figcaption>
+        <figcaption>Five Home principles, each paired with a real creator-voice quote, alongside the three personas' needs and the rail-element template built from them.</figcaption>
       </figure>
+      <p><strong>Applied a content strategy process to prioritize Home's growing list of rail ideas.</strong> Home's rails are the scrolling content rows on the feed, things like "Your top sellers." Ideas for new rails kept coming, well beyond what we had room to build, so each one had to earn its spot through the same process:</p>
       <ul class="points">
-        <li><strong>Turned the personalization concept into a prioritized, voice-complete backlog.</strong> Every rail idea (Your top sellers, Trending in {my category}, New from {Active Collab}) got a plain-language rationale, an actual shipped-voice tagline ("Tap into the trendsetters to boost your commissions"), and a Do Now / Do Soon / Later / Don't triage. Voice applied line by line, not a moodboard.</li>
+        <li>Mapped by type and priority, surfacing patterns across ideas that a flat list would have hidden</li>
+        <li>A plain-language rationale for why it should exist</li>
+        <li>A taxonomy-grounded title and body copy, like "Trending in {my category}" paired with "Tap into the trendsetters to boost your commissions," which let us map and prioritize ideas against each other rather than judging them one by one</li>
+        <li>A priority call: Do Now, Do Soon, For the Future, or Don't Do</li>
       </ul>
+      <p>That's content strategy doing its job: deciding what earned a spot, and giving each one real voice from day one.</p>
       <figure>
         <img src="../../images/work/collabs/14-home-feature-backlog-prioritized.jpg" alt="The prioritized Home rail backlog: Do Now, Do Soon, For the Future, Don't Do, each with a rationale and a shipped-voice tagline">
-        <figcaption>The craft behind the spectrum: real taglines against a triaged, attributed backlog.</figcaption>
+        <figcaption>The real backlog: every idea with its rationale, a taxonomy-based title and body copy, a priority call, and the contributor behind it.</figcaption>
       </figure>
+      <p><strong>Pressure-tested the taxonomy and turned it into shippable logic, working directly with engineering, product, and design.</strong></p>
       <ul class="points">
-        <li><strong>Spec'd each Home rail as a reusable component with conditional logic,</strong> not a one-off screen. "IF creator has an active brand collab, show the hero product card... ELSE fallback," written right alongside the visual so engineering could build the branching without a separate spec.</li>
+        <li>Do we favorite, save, or follow a brand? Favorite.</li>
+        <li>Where do favorite brands live, Home or Library? Library.</li>
+        <li>Are brand values clickable? No, too few creators had them.</li>
       </ul>
+      <p>That same collaboration carried into engineering: each Home rail got spec'd as a reusable component, with conditional logic written right alongside the visual: "IF creator has an active brand collab, show the hero product card... ELSE fallback." Content and logic shipped together in one artifact, so the design carried its own rules with it.</p>
       <figure>
         <img src="../../images/work/collabs/17-home-component-spec-system.jpg" alt="Home rail components spec'd with conditional IF/ELSE logic written alongside the visual design">
-        <figcaption>Content and logic in one artifact, so the rules shipped with the design.</figcaption>
+        <figcaption>Six creator states, each mapped along the personalization spectrum to a different version of the screen.</figcaption>
       </figure>
-      <ul class="points">
-        <li><strong>Designed the buyer-facing side of the same system:</strong> a shoppable creator storefront (a TikTok-style feed to "Shop this look" to curated collections like "Marielle's Minimal Winter") so a creator's own audience could shop straight from their content. This is the content-commerce half, the other side of the same taxonomy. We deliberately designed these screens with a diverse cast of creators, so the product's tone was set by the real range of people who use it.</li>
-      </ul>
-      <figure>
-        <img src="../../images/work/collabs/15-buyer-experience-updated.jpg" alt="The shoppable creator storefront a buyer sees: creator profile, content post, Shop this look, and curated collections">
-        <figcaption>The other side of the taxonomy: a creator's followers shopping directly from their content.</figcaption>
-      </figure>
-      <ul class="points">
-        <li><strong>Wrote and structured the full onboarding flow:</strong> login, welcome, personal info, social connection, community guidelines, notifications, celebration, plus edge states like the waitlist screen and a "Leaving so soon?" exit-intent. I added a skip option on social connection specifically to cut drop-off.</li>
-      </ul>
+      <p><strong>Wrote and structured the full onboarding flow, then revised it when funnel data showed ~10% of people were dropping off at one specific step: social-account connection.</strong> Seven stages end to end, from login through celebration. Two got special attention: community guidelines, which had to set real expectations without reading like legal boilerplate, and the "Leaving so soon?" exit-intent modal, built to catch people before they abandoned the flow for good. The edge cases got as much scrutiny as the happy path, because that's usually where flows quietly lose people. At social connection specifically, I worked with the designer on a skip option, cutting that step's drop-off from ~10% to about 3%.</p>
       <figure>
         <img src="../../images/work/collabs/16-onboarding-updated-full-flow.jpg" alt="The full Collabs onboarding flow from login through celebration, including waitlist and exit-intent edge states">
-        <figcaption>The whole flow, including the unglamorous edge states, with a skip added where the data said people were dropping.</figcaption>
+        <figcaption>The skip CTA sits right on the social connect screen itself, not buried in a menu, and celebration closes out personalized with the creator's own name.</figcaption>
       </figure>
-      <ul class="points">
-        <li><strong>Pressure-tested the taxonomy in cross-functional decision reviews, on the file.</strong> Real questions resolved in place: do we favorite or save or follow a brand (favorite), where do favorite brands live, Home or Library (Library, per Harriet, our PM), are brand values clickable (no). Designed with product and design leadership, not in isolation.</li>
-        <li><strong>Carried Gravity across products.</strong> Ahead of the build, I stress-tested an experimental Figma UI kit (a teammate had repurposed <a href="/work/gravity/">Gravity's</a> components) by translating the existing web creator experience into it, to validate it as a foundation for the engineer building the native app. The systems thinking wasn't siloed per product, it traveled.</li>
-      </ul>
+      <p><strong>Borrowed Gravity, <a href="/work/gravity/">the design system I'd helped build the content for</a> at Shop (Shopify's own consumer app), to see if it could hold up as the base for Collabs's native build.</strong> A teammate turned Gravity's components into an experimental Figma UI kit. Ahead of the full build, I stress-tested it by translating the existing web creator experience, its content, voice, and screen structure, into that kit, to see where it held and where it didn't. What held up became the base for the new native experience, before the engineer started building on top of it.</p>
+      <p><strong>Full circle: the system Collabs built on top of Gravity went back onto Shop itself, as part of an expansion strategy.</strong> This gave creators a shoppable storefront inside Shop: a TikTok-style feed leading to "Shop this look," then into curated collections. The interesting part was proving the system could grow sturdy enough to stand on its own, back on the very surface it came from.</p>
+      <figure>
+        <img src="../../images/work/collabs/15-buyer-experience-updated.jpg" alt="The shoppable creator storefront a buyer sees: creator profile, content post, Shop this look, and curated collections">
+        <figcaption>Five screens, one path: creator profile, a single TikTok-style post, "Shop this look," then a full curated collection, all pulling from the same product catalog.</figcaption>
+      </figure>
     </section>
 
     <section>
       <h2>What got shipped</h2>
       <div class="metrics">
         <div class="metric"><div class="metric-num">4.8&#9733;</div><div class="metric-label">App Store rating, live today</div></div>
-        <div class="metric"><div class="metric-num">70 &rarr; 72%</div><div class="metric-label">Onboarding completion, legacy vs. new funnel</div></div>
+        <div class="metric"><div class="metric-num">70 &rarr; 72%</div><div class="metric-label">Onboarding completion, first two weeks of the new funnel</div></div>
         <div class="metric"><div class="metric-num">~10 &rarr; ~3%</div><div class="metric-label">Drop-off on social connection after adding a skip</div></div>
       </div>
+      <p><strong>Shipped and well-received: 4.8 stars across 298 ratings, live today on the App Store and Google Play.</strong> Unsolicited, from the reviews: "Keeps me up to date with every sale that's made," and "so user friendly... we've had the best experience with it."</p>
+      <p><strong>15% of the people who skipped social-account connection came back and connected anyway, with nobody prompting them to.</strong> Adding the skip option cut that step's drop-off from ~10% to ~3%, and that follow-up number is what mattered: most of them were just pausing mid-flow.</p>
+      <p><strong>Documented decisions traced straight to what's live, concrete enough to check against the actual screens.</strong> Here's a specific call made during design, and the exact screen it became:</p>
       <ul class="points">
-        <li><strong>Live product, positive reception.</strong> "Collabs: Content commerce" is on the App Store and Google Play today at 4.8 stars across 298 ratings. Unsolicited from the reviews: "Keeps me up to date with every sale that's made," and "so user friendly... we've had the best experience with it."</li>
-        <li><strong>The skip option was the single biggest win.</strong> Adding a skip on social-account connection cut that step's drop-off from ~10% to ~3%, and 15% of the people who skipped came back and connected later anyway.</li>
-        <li><strong>Documented decisions traced straight to what's live.</strong> The "favorite brands live in Library, not Home" call shipped exactly there. The Coach / Insider / Guardian spectrum shows up as a live "Curate your feed" picker. The taxonomy's Performance and Commissions sections are the app's real tabs, with commission math on every product page.</li>
+        <li>The "favorite brands live in Library, not Home" call shipped exactly there</li>
+        <li>The Coach / Insider / Guardian spectrum shows up as a live "Curate your feed" picker</li>
+        <li>The taxonomy's Performance and Commissions sections are the app's real tabs, with commission math on every product page</li>
       </ul>
       <figure class="phone">
         <img src="../../images/work/collabs/20-live-app-pdp-commission-math.jpg" alt="Live Collabs app product page showing real commission math: Buyer pays $189.00, You earn $28.35">
-        <figcaption>A documented decision, live: commission math surfaced on the product page ("Buyer pays $189.00 / You earn $28.35"), shot from my own phone a year after the work.</figcaption>
+        <figcaption>Commission math on the live product page: "Buyer pays $189.00 / You earn $28.35," screenshotted from my own phone a year after the work shipped.</figcaption>
       </figure>
+      <p><strong>The merchant-admin half shipped too, a serious information architecture undertaking in its own right.</strong> The admin side runs on that same shared taxonomy, and seven of its features are documented publicly on Shopify's own Editions Winter '24 page:</p>
       <ul class="points">
-        <li><strong>The merchant-admin half shipped too.</strong> Shopify's Editions Winter '24 page lists seven live Collabs features: creator search and filters, automatic commission payouts, consolidated creator profiles, bulk application management, a unified connections table, per-segment affiliate offers, and TikTok Shop sync.</li>
+        <li>Creator search and filters</li>
+        <li>Automatic commission payouts</li>
+        <li>Consolidated creator profiles</li>
+        <li>Bulk application management</li>
+        <li>A unified connections table</li>
+        <li>Per-segment affiliate offers</li>
+        <li>TikTok Shop sync</li>
       </ul>
       <figure>
         <img src="../../images/work/collabs/11-shopify-editions-winter24-public.jpg" alt="Public Shopify Editions Winter 24 page showing shipped Collabs merchant features">
-        <figcaption>The merchant side, documented publicly in Shopify's Editions Winter '24.</figcaption>
+        <figcaption>Three of the seven, shown as real screens on Shopify's own page: creator search and filters, automatic commission payouts, and consolidated creator profiles.</figcaption>
       </figure>
     </section>
 
     <section>
       <h2>The lesson learned</h2>
-      <ul class="points">
-        <li>The information architecture was the real test, and it demanded systems thinking, not screen-by-screen writing. Everything was interconnected, so holding the whole shared taxonomy in my head at once mattered more than any single screen. Leaning on that systems view is what kept two surfaces reading as one product, and it's the muscle this project pushed furthest for me.</li>
-        <li>The values-step drop-off taught me something about how "optional" reads to people. Creators treated it as a "maybe later" step, and a good chunk never came back. If I had more time, I'd make its value clearer in the moment or rethink where it sits in the flow.</li>
-        <li>Working across both surfaces let me see the full loop, the merchant managing a collab and the creator posting and getting paid. Very few projects let you sit with both halves of a relationship at once, and it changed how I thought about the taxonomy: a decision that looked small on the admin side could become real friction on the creator side.</li>
+      <ul class="points lessons">
+        <li>
+          <svg class="lesson-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .8 1.6v.1h5.6v-.1c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="lesson-text">
+            <strong>Systems thinking is what kept two surfaces reading as one product.</strong>
+            <p>I started the taxonomy as internal reference material, a doc to check against rather than a priority of its own. The real risk was never getting one screen wrong. It was the admin team and the app team quietly building against two different ideas of what a "collab" was, something that wouldn't show up until both surfaces shipped and stopped matching.</p>
+            <p>The document is what caught that early. Now I scope that kind of groundwork as its own deliverable on any multi-surface project, before a single screen gets drawn.</p>
+          </div>
+        </li>
+        <li>
+          <svg class="lesson-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .8 1.6v.1h5.6v-.1c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="lesson-text">
+            <strong>"Good enough for everyone" turned out to mean "good for no one in particular."</strong>
+            <p>I designed Home's MVP as one feed for every creator, on the bet that a single well-built experience would flex enough to work for all of them. User interviews testing that MVP found creators who wanted to double down on one collab, creators who wanted to discover something new, and creators who just wanted guardrails, all reading the exact same feed and none of them fully getting what they needed from it.</p>
+            <p>Now I look for where a single flow is quietly flattening different needs, instead of waiting for research to force the issue.</p>
+          </div>
+        </li>
+        <li>
+          <svg class="lesson-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .8 1.6v.1h5.6v-.1c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="lesson-text">
+            <strong>A decision that looked small on the merchant admin could land as real friction for the creator.</strong>
+            <p>Working across both surfaces let me see the full loop: the merchant managing a collab on one end, the creator posting and getting paid on the other. Very few projects let you sit with both halves of a relationship at once, and it changed how I thought about the taxonomy. A labeling choice a merchant barely noticed on their end could be the exact word a creator was scanning for on theirs, and getting it wrong on one surface quietly broke trust on the other.</p>
+            <p>It's changed how I scope any shared-taxonomy project since. I ask who else touches this before I assume I know the full shape of the problem.</p>
+          </div>
+        </li>
       </ul>
     </section>
 
