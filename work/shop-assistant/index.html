@@ -99,10 +99,10 @@
   .meta-label {
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
-    font-size: 12.5px;
+    font-size: 13px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: #231C33;
+    color: #C9552E;
     margin-bottom: 6px;
   }
 
@@ -124,6 +124,13 @@
     color: #231C33;
     max-width: 66ch;
     margin-bottom: 16px;
+  }
+
+  section p > strong:first-child {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15.5px;
+    margin-bottom: 6px;
   }
 
   ul.points { list-style: none; max-width: 66ch; }
@@ -152,6 +159,74 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 600;
     color: #231C33;
+  }
+
+  ul.points.lessons > li {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: #fff;
+    border: 1px solid rgba(35,28,51,0.1);
+    border-radius: 10px;
+    padding: 20px 24px;
+    padding-left: 24px;
+    margin-bottom: 20px;
+  }
+
+  ul.points.lessons > li::before { content: none; }
+
+  .lesson-icon {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    margin-top: 2px;
+    color: #C9552E;
+  }
+
+  .lesson-text strong {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15.5px;
+    margin-bottom: 8px;
+  }
+
+  .lesson-text p {
+    margin: 0 0 10px 0;
+  }
+
+  .lesson-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  .insight-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 24px 0 32px;
+    max-width: 66ch;
+  }
+
+  .insight-block {
+    background: #fff;
+    border-left: 3px solid #C9552E;
+    border-radius: 8px;
+    padding: 16px 20px;
+  }
+
+  .insight-label {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #C9552E;
+    margin-bottom: 8px;
+  }
+
+  .insight-block p { font-size: 15px; margin-bottom: 0; max-width: none; }
+
+  @media (max-width: 600px) {
+    .insight-row { grid-template-columns: 1fr; }
   }
 
   section a { color: #231C33; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(35,28,51,0.35); }
@@ -365,26 +440,31 @@
 
   <section>
     <h2>The problem space</h2>
-    <ul class="points">
-      <li>Shop's search was pure inventory lookup: type a query, get a results grid. The team wanted to test whether an AI chat layer (GPT-3.5, weeks after OpenAI's ChatGPT API first became available) could actually help someone find the right product instead of only matching keywords.</li>
-      <li>Internal codename "shopé," pitched plainly as "ChatGPT x Shop App." The aim: an in-app AI experience that helps users find exactly what they're looking for on Shop.</li>
-      <li><strong>How I knew it was real:</strong> keyword search can't hear intent. Someone typing "a gift for my mom" got a wall of results, not help. The open questions were captured as literal signed sticky notes at the time, how do we train the model to follow our tone-of-voice guidelines, how do we prioritize and categorize prompts, how does going back and forth work, where do the entry points live.</li>
-      <li><strong>The goal:</strong> help a shopper find the right thing through conversation, with the app's voice intact, not just swap one results grid for a chattier one.</li>
-      <li>This was 0 to 1 under real time pressure. The API had existed for about a week when we started scoping it.</li>
-    </ul>
+    <p>Shop's search was pure inventory lookup: type a query, get a results grid. Someone typing "a gift for my mom" got a wall of products back and no help narrowing it down. The team wanted to test whether a conversational AI layer, built on GPT-3.5 about a week after OpenAI opened up the ChatGPT API, could actually understand what someone needed, beyond matching the words in their query.</p>
+    <p>OpenAI had opened the API about a week earlier, and nobody on the team yet knew whether Shopify would ship alongside that launch or months behind it. It was a 0-to-1 build under real time pressure, with real open questions nobody had answered yet: how do we train a model to hold the brand's tone, how do we even categorize and prioritize the prompts people might type, what happens when the conversation goes back and forth, where should this even live in the app.</p>
+    <div class="insight-row">
+      <div class="insight-block">
+        <div class="insight-label">Why this mattered</div>
+        <p>Keyword search can't read intent, it can only match words. Someone asking for "an outfit for a summer wedding" needed judgment, not a smarter filter, and nobody at Shopify had designed content for a model like this before.</p>
+      </div>
+      <div class="insight-block">
+        <div class="insight-label">The goal</div>
+        <p>Help a shopper find the right thing through real conversation, without losing the app's voice. Not a chattier results grid wearing a chat bubble.</p>
+      </div>
+    </div>
     <figure>
       <img src="../../images/work/shop-assistant/03-context-gpt3-x-shop.jpg" alt="The one-line context slide framing the project as GPT-3 times Shop">
-      <figcaption>The pitch in one line: an AI layer that helps you find exactly what you're looking for on Shop.</figcaption>
+      <figcaption>The actual slide: the whole mission reduced to one sentence, before a single screen got designed.</figcaption>
     </figure>
     <figure>
       <img src="../../images/work/shop-assistant/04-open-questions-naming-brand.jpg" alt="Real unresolved questions about naming and brand positioning shown against actual entry-point iterations, Cash Island versus shopé">
-      <figcaption>The real open questions, in the open: naming, positioning, and where the assistant should live, tested against actual product screens.</figcaption>
+      <figcaption>The real open question: build the entry point on the existing cashback badge, or give it its own AI-branded one, tested side by side on the same product page.</figcaption>
     </figure>
   </section>
 
   <section class="gate" id="gate">
-    <h2>From here, you'll need a password</h2>
-    <p>The scripts, the chat states, the demos, and what I learned are behind a password. <a href="/contact/">Reach out and I'll send it over</a>.</p>
+    <h2>The rest is behind a password</h2>
+    <p>The process, the outcomes, and what I learned along the way. <a href="/contact/">Reach out and I'll send it over</a>.</p>
     <form class="gate-form" id="gate-form">
       <input type="password" id="gate-input" placeholder="Enter password" autocomplete="off" aria-label="Password">
       <button type="submit">Unlock</button>
@@ -396,79 +476,93 @@
 
     <section>
       <h2>What I worked on</h2>
-      <ul class="points">
-        <li><strong>Defined what the assistant actually was and pitched it in plain language.</strong> "An AI-driven utility layer inside Shop that helps you with all of your shopping needs, chat, voice, or visual search," positioned alongside a supercharged Shop search with camera, voice, and chat docked right in the search bar.</li>
-      </ul>
+      <p><strong>Defined what the assistant actually was before anyone touched a screen, in one plain sentence the rest of the team could build toward.</strong> "An AI-driven utility layer inside Shop that helps you with all of your shopping needs, chat, voice, or visual search," positioned alongside a supercharged Shop search with camera, voice, and chat docked right in the search bar. Naming the thing first meant design, engineering, and product were all building toward the same idea from day one.</p>
       <figure>
         <img src="../../images/work/shop-assistant/01-poster-pitch.jpg" alt="The plain-language pitch poster: an AI-driven utility layer inside Shop that helps with all your shopping needs">
-        <figcaption>Naming the thing in plain language before designing it, so the team shared one idea of what it was.</figcaption>
+        <figcaption>The actual pitch poster, the plain-language definition the rest of the project got built against.</figcaption>
       </figure>
-      <ul class="points">
-        <li><strong>Wrote the actual conversational scripts, past the concept stage.</strong> The assistant narrowing "the 45,873 shorts we have available on Shop" down through a specific opening question and quick-reply chips, or asking "can you tell me what kind of shoe you're looking for?" with category chips (Running, Lifestyle, Boots, Training). Those chips weren't invented, they mapped to Shop's existing product taxonomy, so a big part of the work was understanding that taxonomy and using it to surface the right categories based on where the conversation had gone.</li>
-      </ul>
+      <p><strong>Designed the prompts behind the assistant's conversations, past the concept stage, grounded in Shop's real product taxonomy and tone of voice spectrum.</strong> The assistant narrowing "the 45,873 shorts we have available on Shop" down through one specific opening question and quick-reply chips, the same pattern behind asking what kind of shoe someone wanted: Running, Lifestyle, Boots, Training. Those chips weren't invented: they mapped to categories that already existed in Shop's taxonomy, so a real part of my job, with engineering support, was training the assistant on that taxonomy well enough to surface the right one depending on where the conversation had gone.</p>
+      <p>Every line also had to hold up against the tone of voice spectrum I built for <a href="/work/gravity/">Gravity, Shop's design system</a>, so the assistant sounded like Shop even while reasoning out loud.</p>
       <figure class="phone">
         <img src="../../images/work/shop-assistant/05-final-chat-flow.jpg" alt="Finished chat screen: the assistant asking what kind of shoe, with Running, Lifestyle, Boots, and Training quick-reply chips">
-        <figcaption>Real scripted flow with quick-reply chips, so the conversation had a shape, not just a text box.</figcaption>
+        <figcaption>The shipped quick-reply flow: Running, Lifestyle, Boots, Training, every chip pulled from Shop's existing category taxonomy.</figcaption>
       </figure>
+      <p><strong>Designed the context the model operated inside, working through open questions as they came up, not after the model already existed.</strong> None of these were separate decisions. Tone shaped which prompts mattered, prompts shaped how a conversation needed to recover, and all of it fed into what counted as a good response, worked out together instead of one after another:</p>
       <ul class="points">
-        <li><strong>Owned the open design questions as signed artifacts:</strong> training the model to follow our tone-of-voice guidelines (the same three-point tone spectrum I built in <a href="/work/gravity/">Gravity</a>), generating a first-time prompt list from Shop's real search data, categorizing and prioritizing prompts, handling back-and-forth, and where the entry points live. Real-time design thinking in writing, not reconstructed after the fact.</li>
-        <li><strong>Evaluated output quality by hand, the way you could in early 2023.</strong> Human review against a rubric, spot-checking responses for whether they surfaced a product that fit the ask, stayed grounded in real inventory and price, held the <a href="/work/gravity/">Gravity</a> tone, and asked a clarifying question instead of guessing. Automated LLM-as-judge evals didn't exist yet, so hands-on review was the standard.</li>
-        <li><strong>Wrote end-to-end demos that show reasoning, not just retrieval.</strong> Asked for "a gift for my mom," the assistant reasons about the occasion and her style before recommending; asked for "an outfit Brad Pitt would wear," it explains the styling choices. The point was an assistant that thinks with you, not a fancier search box.</li>
+        <li>Training the model on Shop's tone of voice, the same spectrum already established through Gravity</li>
+        <li>Building a list of what a first-time user might actually type, pulled from Shop's real search data, then deciding which of those the assistant needed to handle well at launch and which could wait</li>
+        <li>Deciding how back-and-forth should work, where the entry points should live, and how each turn recovered when a request came back empty or off track</li>
+        <li>Defining what a good response looked like, work that later shaped the actual evaluation rubric</li>
       </ul>
+      <p><strong>Evaluated output quality by hand, because automated evaluation wasn't standard practice yet in early 2023.</strong> Human review against a rubric, spot-checking whether a response surfaced a product that actually fit the ask, stayed grounded in real inventory and price, held Gravity's tone, and asked a clarifying question instead of guessing. That hands-on review was the standard before LLM-as-judge evaluation became common.</p>
+      <p><strong>Built two end-to-end demos that show the assistant reasoning through a request instead of just matching it to a product.</strong> Asked for "a gift for my mom," it reasons about the occasion and her style before recommending a hat and boots. Asked for "an outfit Brad Pitt would wear," it explains the styling choices behind the look. Both demos make the same point: the assistant thinks through a request before it recommends anything.</p>
       <div class="phone-pair">
         <figure>
           <img src="../../images/work/shop-assistant/06-demo-gift-for-mom.gif" alt="Recorded demo: the assistant reasoning through a Mother's Day gift request and recommending a hat and boots">
-          <figcaption>"Help me find a gift for my mom", reasoning about the occasion before recommending.</figcaption>
+          <figcaption>The assistant's actual reply: "Hi Luke! I'm here to help you find the right thing," personalized by name before a single product shows up.</figcaption>
         </figure>
         <figure>
           <img src="../../images/work/shop-assistant/07-demo-brad-pitt-outfit.gif" alt="Recorded demo: the assistant styling a Brad-Pitt-inspired outfit with reasoning">
-          <figcaption>"An outfit Brad Pitt would wear", explaining the styling, not just matching keywords.</figcaption>
+          <figcaption>The styling logic shown step by step, right up to the finished outfit.</figcaption>
         </figure>
       </div>
-      <ul class="points">
-        <li><strong>Designed all eight states of the chat interaction, not just the happy path.</strong> Empty, prompts, keyboard focused, keyboard active, products returned, feedback unfocused, feedback captured, clear conversation. The boring-but-critical edge cases (what does it look like with nothing typed yet? after you clear the thread?) alongside the demo-able ones.</li>
-      </ul>
+      <p><strong>Co-designed the chat interaction's full state model, from the obvious to the easy-to-forget.</strong> Mapped every state the chat interaction could be in, from an empty first screen through feedback captured to a fully cleared conversation. Each one got the same scrutiny, including the states nobody notices: what nothing-typed-yet looks like, what a cleared thread looks like.</p>
       <div class="phone-pair">
         <figure>
           <img src="../../images/work/shop-assistant/08-chat-state-empty.jpg" alt="Chat state: empty, before anything is typed">
-          <figcaption>Empty state.</figcaption>
+          <figcaption>Empty state: before a single word gets typed.</figcaption>
         </figure>
         <figure>
           <img src="../../images/work/shop-assistant/12-chat-state-products-returned.jpg" alt="Chat state: products returned, with product cards in the conversation">
-          <figcaption>Products-returned state.</figcaption>
+          <figcaption>Products-returned state: the moment the conversation actually pays off.</figcaption>
         </figure>
       </div>
-      <ul class="points">
-        <li><strong>Placed the entry point across three real product surfaces,</strong> the Home feed, browse-by-category, and search results, each with the same small purple assistant icon in the search bar, so it read as one consistent, always-available entry point rather than a chat screen bolted onto a single surface.</li>
-      </ul>
+      <p><strong>Placed the entry point across three real product surfaces: Home, browse-by-category, and search results.</strong> The same small purple icon sat in the search bar on all three, so the assistant read as one consistent, always-available option across the whole app.</p>
       <figure class="phone">
         <img src="../../images/work/shop-assistant/16-entry-point-home-feed.jpg" alt="The assistant entry icon docked in the Home feed search bar">
-        <figcaption>One consistent entry point, docked in the search bar across surfaces.</figcaption>
+        <figcaption>This one's the Home feed; the identical icon shows up unchanged on browse and search too.</figcaption>
       </figure>
     </section>
 
     <section>
       <h2>What got shipped</h2>
       <div class="metrics">
-        <div class="metric"><div class="metric-num">100M</div><div class="metric-label">Shop app users it launched to</div></div>
-        <div class="metric"><div class="metric-num">1 of 4</div><div class="metric-label">Companies in OpenAI's first ChatGPT API launch</div></div>
-        <div class="metric"><div class="metric-num">Mar 2023</div><div class="metric-label">Shipped publicly, web rollout weeks later</div></div>
+        <div class="metric"><div class="metric-num">100M</div><div class="metric-label">Shop app users at launch</div></div>
+        <div class="metric"><div class="metric-num">1 of 4</div><div class="metric-label">Launch partners for OpenAI's ChatGPT API</div></div>
+        <div class="metric"><div class="metric-num">1st</div><div class="metric-label">AI-powered feature shipped at Shopify</div></div>
       </div>
-      <ul class="points">
-        <li><strong>It shipped.</strong> Publicly, to 100 million Shop app users, on March 1, 2023, via a purple assistant icon in the search bar, with a web rollout two weeks later and independent press coverage at launch.</li>
-        <li><strong>Shopify was one of only four launch partners</strong> OpenAI named for the brand-new ChatGPT API itself, alongside Instacart, Snap, and Quizlet. Not "we tried ChatGPT eventually," but one of the first four public implementations of the API, ever.</li>
-        <li><strong>No public adoption numbers exist for this one,</strong> so the outcome is the launch itself: a first-of-its-kind integration, live to 100 million users, covered in the press. On this project, that is the metric.</li>
-        <li>For the record, this 2023 Shop assistant is a distinct, earlier product from Shopify's later merchant-facing Sidekick and from the 2025 checkout integration. It predates both.</li>
-      </ul>
+      <p><strong>Built and shipped fast enough to land inside OpenAI's own launch window for the ChatGPT API.</strong> OpenAI named Shopify directly alongside Instacart, Snap, and Quizlet as one of four launch partners, the same day the API itself went live. That's the direct payoff of scoping this during the week the API became available, long before most companies even had access.</p>
+      <p><strong>Shipped to 100 million Shop app users is the number that matters here.</strong> It launched publicly on March 1, 2023, via a purple assistant icon in the search bar, with a web rollout two weeks later and <a href="https://www.valueaddedresource.net/shopify-adds-chatgpt-assistant-shop-app" target="_blank" rel="noopener">independent press coverage at launch</a>. It's still live today, built into <a href="https://shop.com" target="_blank" rel="noopener">Shop's</a> core experience. For the record, this 2023 assistant is a distinct, earlier product from Shopify's later merchant-facing Sidekick and the 2025 checkout integration, it predates both.</p>
+      <p><strong>Shop's own launch tweet had the voice baked right in.</strong> "Say hello to your new shopping BFF: the @Shop app's ChatGPT powered assistant is ready to talk products, trends, and maybe even the meaning of life." The same tone spectrum carried into the brand's own words, too.</p>
     </section>
 
     <section>
       <h2>The lesson learned</h2>
-      <ul class="points">
-        <li>Writing for a model I couldn't fully control was new. In the first days the API existed, you couldn't just specify an output, you shaped the conditions and hoped. That reframed the job: less writing the answer, more designing the context and guardrails the model answers inside.</li>
-        <li>Naming did more of the design work than I expected. What we called the assistant, shopé, and how weird we let it be, was really us deciding what the product was and how it should feel. Names turned out to be design decisions you make early, not labels you add at the end.</li>
-        <li>This was the first time I treated a model as something you design the surroundings for, rather than something you script. The instinct holds up, even with week-old tools. What I'd change now is starting from the content standards, not the demo.</li>
-        <li>The evaluation we ran, human review against a rubric plus spot-checks, was the right method for early 2023, but it didn't scale: every prompt change meant re-reviewing outputs by hand. What I'd change now is keeping the same rubric and automating the scoring, running a fixed set of real shopper queries through an LLM-as-judge so quality is a number we can steer across iterations, not a manual pass each time.</li>
+      <ul class="points lessons">
+        <li>
+          <svg class="lesson-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .8 1.6v.1h5.6v-.1c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="lesson-text">
+            <strong>Writing for a model I couldn't fully control changed what the job actually was.</strong>
+            <p>In the first days the API existed, I couldn't just specify an output and expect it. I could only shape the conditions the model worked inside: train its tone, hand it real product data, define what a good answer looked like, and see if the behavior held.</p>
+            <p>That reframed the job for me. Less time writing the answer myself, more time designing the context and guardrails the model answers inside. If I started this project today, I'd begin from the content standards instead of the demo. The instinct held up even with week-old tools, I just had the order backward.</p>
+          </div>
+        </li>
+        <li>
+          <svg class="lesson-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .8 1.6v.1h5.6v-.1c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="lesson-text">
+            <strong>Tone, prompts, and evaluation weren't problems I could solve in order.</strong>
+            <p>I expected to nail down tone first, then write the prompts, then figure out evaluation last, a tidy sequence. It didn't work that way. Deciding how blunt or playful the assistant could be changed which prompts were even worth building for, and watching how those prompts actually performed changed what counted as a good response in the first place.</p>
+            <p>Now on any ambiguous AI project, I expect earlier decisions to get revisited once later ones are in front of me, rather than moving down a list once.</p>
+          </div>
+        </li>
+        <li>
+          <svg class="lesson-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .8 1.6v.1h5.6v-.1c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="lesson-text">
+            <strong>Human review against a rubric was the right call in 2023, but it doesn't scale.</strong>
+            <p>Every prompt change meant re-reviewing outputs by hand against the rubric: did the response surface something that actually fit, stay grounded in real inventory, hold the brand's tone. The cost of one review stayed the same, but the number of reviews only grew as the prompts kept changing, and that's exactly where manual review breaks down. LLM-as-judge evaluation, where another model scores outputs against that same rubric, wasn't standard practice yet to lean on instead.</p>
+            <p>Now I'd keep the same rubric but hand the scoring to an LLM-as-judge: run a fixed set of real shopper queries through it on every iteration, so quality becomes a number I can track automatically, no matter how often the prompts change.</p>
+          </div>
+        </li>
       </ul>
     </section>
 
@@ -522,7 +616,7 @@
     var lbImg = lb.querySelector('img');
     document.addEventListener('click', function (e) {
       var im = e.target.closest('figure img');
-      if (im) { lbImg.src = im.src; lb.classList.add('open'); return; }
+      if (im) { lbImg.src = im.getAttribute('data-full') || im.src; lb.classList.add('open'); return; }
       if (e.target === lb || e.target === lbImg) lb.classList.remove('open');
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('open'); });
