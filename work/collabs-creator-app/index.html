@@ -508,7 +508,7 @@
       </ul>
       <p>That's content strategy doing its job: deciding what earned a spot, and giving each one real voice from day one.</p>
       <figure>
-        <img src="../../images/work/collabs/14-home-feature-backlog-prioritized.jpg" alt="The prioritized Home rail backlog: Do Now, Do Soon, For the Future, Don't Do, each with a rationale and a shipped-voice tagline">
+        <img src="../../images/work/collabs/14-home-feature-backlog-prioritized-preview.jpg" data-full="../../images/work/collabs/14-home-feature-backlog-prioritized.jpg" alt="The prioritized Home rail backlog: Do Now, Do Soon, For the Future, Don't Do, each with a rationale and a shipped-voice tagline">
         <figcaption>The real backlog: every idea with its rationale, a taxonomy-based title and body copy, a priority call, and the contributor behind it.</figcaption>
       </figure>
       <p><strong>Pressure-tested the taxonomy and turned it into shippable logic, working directly with engineering, product, and design.</strong></p>
@@ -650,7 +650,7 @@
     var lbImg = lb.querySelector('img');
     document.addEventListener('click', function (e) {
       var im = e.target.closest('figure img');
-      if (im) { lbImg.src = im.src; lb.classList.add('open'); return; }
+      if (im) { lbImg.src = im.getAttribute('data-full') || im.src; lb.classList.add('open'); return; }
       if (e.target === lb || e.target === lbImg) lb.classList.remove('open');
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lb.classList.remove('open'); });
