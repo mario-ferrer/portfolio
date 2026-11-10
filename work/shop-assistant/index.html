@@ -440,8 +440,8 @@
 
   <section>
     <h2>The problem space</h2>
-    <p>Shop's search was pure inventory lookup: type a query, get a results grid. Someone typing "a gift for my mom" got a wall of products back and no help narrowing it down. The team wanted to test whether a conversational AI layer, built on GPT-3.5 about a week after OpenAI opened up the ChatGPT API, could actually understand what someone needed, beyond matching the words in their query.</p>
-    <p>OpenAI had opened the API about a week earlier, and nobody on the team yet knew whether Shopify would ship alongside that launch or months behind it. It was a 0-to-1 build under real time pressure, with real open questions nobody had answered yet: how do we train a model to hold the brand's tone, how do we even categorize and prioritize the prompts people might type, what happens when the conversation goes back and forth, where should this even live in the app.</p>
+    <p>Shop's search was pure inventory lookup: type a query, get a results grid. Someone typing "a gift for my mom" got a wall of products back and no help narrowing it down. The team wanted to test whether a conversational AI layer, built on GPT-3.5 through early partner access to the ChatGPT API, months before the API was public, could actually understand what someone needed, beyond matching the words in their query.</p>
+    <p>Nobody yet knew whether Shopify would ship alongside OpenAI's public launch or months behind it. It was a 0-to-1 build under real time pressure, with real open questions nobody had answered yet: how do we train a model to hold the brand's tone, how do we even categorize and prioritize the prompts people might type, what happens when the conversation goes back and forth, where should this even live in the app.</p>
     <div class="insight-row">
       <div class="insight-block">
         <div class="insight-label">Why this mattered</div>
@@ -531,7 +531,7 @@
         <div class="metric"><div class="metric-num">1 of 4</div><div class="metric-label">Launch partners for OpenAI's ChatGPT API</div></div>
         <div class="metric"><div class="metric-num">1st</div><div class="metric-label">AI-powered feature shipped at Shopify</div></div>
       </div>
-      <p><strong>Built and shipped fast enough to land inside OpenAI's own launch window for the ChatGPT API.</strong> OpenAI named Shopify directly alongside Instacart, Snap, and Quizlet as one of four launch partners, the same day the API itself went live. That's the direct payoff of scoping this during the week the API became available, long before most companies even had access.</p>
+      <p><strong>Built and shipped fast enough to land inside OpenAI's own launch window for the ChatGPT API.</strong> OpenAI named Shopify directly alongside Instacart, Snap, and Quizlet as one of four launch partners, the same day the API itself went live. That's the direct payoff of scoping this during early partner access, months before the API was public and long before most companies even had access.</p>
       <p><strong>Shipped to 100 million Shop app users is the number that matters here.</strong> It launched publicly on March 1, 2023, via a purple assistant icon in the search bar, with a web rollout two weeks later and <a href="https://www.valueaddedresource.net/shopify-adds-chatgpt-assistant-shop-app" target="_blank" rel="noopener">independent press coverage at launch</a>. It's still live today, built into <a href="https://shop.com" target="_blank" rel="noopener">Shop's</a> core experience. For the record, this 2023 assistant is a distinct, earlier product from Shopify's later merchant-facing Sidekick and the 2025 checkout integration, it predates both.</p>
       <p><strong>Shop's own launch tweet had the voice baked right in.</strong> "Say hello to your new shopping BFF: the @Shop app's ChatGPT powered assistant is ready to talk products, trends, and maybe even the meaning of life." The same tone spectrum carried into the brand's own words, too.</p>
     </section>
@@ -543,8 +543,8 @@
           <svg class="lesson-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .8 1.6v.1h5.6v-.1c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div class="lesson-text">
             <strong>Writing for a model I couldn't fully control changed what the job actually was.</strong>
-            <p>In the first days the API existed, I couldn't just specify an output and expect it. I could only shape the conditions the model worked inside: train its tone, hand it real product data, define what a good answer looked like, and see if the behavior held.</p>
-            <p>That reframed the job for me. Less time writing the answer myself, more time designing the context and guardrails the model answers inside. If I started this project today, I'd begin from the content standards instead of the demo. The instinct held up even with week-old tools, I just had the order backward.</p>
+            <p>During early access, before the API was public, I couldn't just specify an output and expect it. I could only shape the conditions the model worked inside: train its tone, hand it real product data, define what a good answer looked like, and see if the behavior held.</p>
+            <p>That reframed the job for me. Less time writing the answer myself, more time designing the context and guardrails the model answers inside. If I started this project today, I'd begin from the content standards instead of the demo. The instinct held up even with tools still in early access, I just had the order backward.</p>
           </div>
         </li>
         <li>
