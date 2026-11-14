@@ -494,7 +494,7 @@
         <li>Deciding how back-and-forth should work, where the entry points should live, and how each turn recovered when a request came back empty or off track</li>
         <li>Defining what a good response looked like, work that later shaped the actual evaluation rubric</li>
       </ul>
-      <p><strong>Evaluated output quality by hand, because automated evaluation wasn't standard practice yet in early 2023.</strong> Human review against a rubric, spot-checking whether a response surfaced a product that actually fit the ask, stayed grounded in real inventory and price, held Gravity's tone, and asked a clarifying question instead of guessing. That hands-on review was the standard before LLM-as-judge evaluation became common.</p>
+      <p><strong>Evaluated output quality by hand, because LLM-based evaluation wasn't an established practice yet in early 2023.</strong> In practice, I ran a few batches of 20 to 25 realistic shopper queries through the assistant, read every response myself, and logged a pass or fail in a spreadsheet against a rubric. A response had to surface a product that fit the ask, stay grounded in real inventory and price, hold Gravity's tone, and ask a clarifying question when a request was too vague to answer well. The review caught responses that didn't take discounted prices into account, and each miss sent me back to the prompt to fix it and rerun the batch.</p>
       <p><strong>Built two end-to-end demos that show the assistant reasoning through a request instead of just matching it to a product.</strong> Asked for "a gift for my mom," it reasons about the occasion and her style before recommending a hat and boots. Asked for "an outfit Brad Pitt would wear," it explains the styling choices behind the look. Both demos make the same point: the assistant thinks through a request before it recommends anything.</p>
       <div class="phone-pair">
         <figure>
@@ -542,25 +542,25 @@
         <li>
           <svg class="lesson-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .8 1.6v.1h5.6v-.1c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div class="lesson-text">
-            <strong>Writing for a model I couldn't fully control changed what the job actually was.</strong>
-            <p>During early access, before the API was public, I couldn't just specify an output and expect it. I could only shape the conditions the model worked inside: train its tone, hand it real product data, define what a good answer looked like, and see if the behavior held.</p>
-            <p>That reframed the job for me. Less time writing the answer myself, more time designing the context and guardrails the model answers inside. If I started this project today, I'd begin from the content standards instead of the demo. The instinct held up even with tools still in early access, I just had the order backward.</p>
+            <strong>Writing for a model I couldn't fully control turned the job into designing the context it worked in.</strong>
+            <p>During early access, before the API was public, I couldn't specify an output and expect it. I could only shape the conditions the model worked inside, like its tone and the product data it saw, then check whether the behavior held.</p>
+            <p>So I spent less time writing answers myself and more time designing the context and guardrails around them. I started from the demo, and I had that order backward. Today I'd begin from the content standards, then build the demo.</p>
           </div>
         </li>
         <li>
           <svg class="lesson-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .8 1.6v.1h5.6v-.1c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div class="lesson-text">
-            <strong>Tone, prompts, and evaluation weren't problems I could solve in order.</strong>
-            <p>I expected to nail down tone first, then write the prompts, then figure out evaluation last, a tidy sequence. It didn't work that way. Deciding how blunt or playful the assistant could be changed which prompts were even worth building for, and watching how those prompts actually performed changed what counted as a good response in the first place.</p>
-            <p>Now on any ambiguous AI project, I expect earlier decisions to get revisited once later ones are in front of me, rather than moving down a list once.</p>
+            <strong>Tone, prompts, and evaluation shaped each other, so they had to be worked on together.</strong>
+            <p>I expected a tidy sequence: tone first, then prompts, then evaluation. In practice, how blunt or playful the assistant could be changed which prompts were worth building, and how those prompts performed changed what counted as a good response.</p>
+            <p>On any ambiguous AI project now, I expect earlier decisions to get revisited once later ones are in front of me.</p>
           </div>
         </li>
         <li>
           <svg class="lesson-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.5.4.8 1 .8 1.6v.1h5.6v-.1c0-.6.3-1.2.8-1.6A6 6 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
           <div class="lesson-text">
-            <strong>Human review against a rubric was the right call in 2023, but it doesn't scale.</strong>
-            <p>Every prompt change meant re-reviewing outputs by hand against the rubric: did the response surface something that actually fit, stay grounded in real inventory, hold the brand's tone. The cost of one review stayed the same, but the number of reviews only grew as the prompts kept changing, and that's exactly where manual review breaks down. LLM-as-judge evaluation, where another model scores outputs against that same rubric, wasn't standard practice yet to lean on instead.</p>
-            <p>Now I'd keep the same rubric but hand the scoring to an LLM-as-judge: run a fixed set of real shopper queries through it on every iteration, so quality becomes a number I can track automatically, no matter how often the prompts change.</p>
+            <strong>Hand review carried the launch, and automated scoring is what keeps pace with prompt changes.</strong>
+            <p>Every prompt change meant rerunning the batch and re-scoring each response by hand. The cost of one review stayed flat while the number of reviews kept growing.</p>
+            <p>Today I'd keep the same rubric and have an LLM-as-judge, a second model scoring against it, run a fixed set of real shopper queries on every iteration. Before trusting it, I'd grade a first pass of a few rows myself to pin down what good looks like, especially on tone, where grading takes judgment and a wrong price is obvious. That gives me a quality number I can track across changes.</p>
           </div>
         </li>
       </ul>
