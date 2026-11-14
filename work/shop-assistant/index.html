@@ -487,14 +487,15 @@
         <img src="../../images/work/shop-assistant/05-final-chat-flow.jpg" alt="Finished chat screen: the assistant asking what kind of shoe, with Running, Lifestyle, Boots, and Training quick-reply chips">
         <figcaption>The shipped quick-reply flow: Running, Lifestyle, Boots, Training, every chip pulled from Shop's existing category taxonomy.</figcaption>
       </figure>
-      <p><strong>Designed the context the model operated inside, working through open questions as they came up, not after the model already existed.</strong> None of these were separate decisions. Tone shaped which prompts mattered, prompts shaped how a conversation needed to recover, and all of it fed into what counted as a good response, worked out together instead of one after another:</p>
+      <p><strong>Designed the context the model operated inside, working through open questions as they came up, not after the model already existed.</strong> None of these were separate decisions. Tone shaped which prompts mattered, prompts shaped how a conversation needed to recover, and all of it fed into what counted as a good response, worked out together:</p>
       <ul class="points">
         <li>Training the model on Shop's tone of voice, the same spectrum already established through Gravity</li>
         <li>Building a list of what a first-time user might actually type, pulled from Shop's real search data, then deciding which of those the assistant needed to handle well at launch and which could wait</li>
         <li>Deciding how back-and-forth should work, where the entry points should live, and how each turn recovered when a request came back empty or off track</li>
         <li>Defining what a good response looked like, work that later shaped the actual evaluation rubric</li>
       </ul>
-      <p><strong>Evaluated output quality by hand, because LLM-based evaluation wasn't an established practice yet in early 2023.</strong> In practice, I ran a few batches of 20 to 25 realistic shopper queries through the assistant, read every response myself, and logged a pass or fail in a spreadsheet against a rubric. A response had to surface a product that fit the ask, stay grounded in real inventory and price, hold Gravity's tone, and ask a clarifying question when a request was too vague to answer well. The review caught responses that didn't take discounted prices into account, and each miss sent me back to the prompt to fix it and rerun the batch.</p>
+      <p><strong>Set the rubric for what a good response looks like.</strong> A response had to surface a product that fit the ask, stay grounded in real inventory and price, hold Gravity's tone, and ask a clarifying question when a request was too vague to answer well.</p>
+      <p><strong>Evaluated output quality by hand against that rubric, because LLM-based evaluation wasn't an established practice yet in early 2023.</strong> In practice, I ran a few batches of 20 to 25 realistic shopper queries through the assistant, read every response myself, and logged a pass or fail in a spreadsheet. The review caught responses that didn't take discounted prices into account, and each miss sent me back to the prompt to fix it and rerun the batch.</p>
       <p><strong>Built two end-to-end demos that show the assistant reasoning through a request instead of just matching it to a product.</strong> Asked for "a gift for my mom," it reasons about the occasion and her style before recommending a hat and boots. Asked for "an outfit Brad Pitt would wear," it explains the styling choices behind the look. Both demos make the same point: the assistant thinks through a request before it recommends anything.</p>
       <div class="phone-pair">
         <figure>
@@ -544,7 +545,7 @@
           <div class="lesson-text">
             <strong>Writing for a model I couldn't fully control turned the job into designing the context it worked in.</strong>
             <p>During early access, before the API was public, I couldn't specify an output and expect it. I could only shape the conditions the model worked inside, like its tone and the product data it saw, then check whether the behavior held.</p>
-            <p>So I spent less time writing answers myself and more time designing the context and guardrails around them. I started from the demo, and I had that order backward. Today I'd begin from the content standards, then build the demo.</p>
+            <p>So I spent less time writing answers myself and more time designing the context and guardrails around them. I built the demo before the content standards were settled. Today I'd start from the standards and build the demo second.</p>
           </div>
         </li>
         <li>
