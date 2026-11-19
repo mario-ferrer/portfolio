@@ -244,6 +244,8 @@
 
   /* phone-sized screens shouldn't blow up full width */
   figure.phone img { max-width: 300px; margin: 0 auto; }
+  figure.video video { display: block; width: 100%; max-width: 420px; height: auto; aspect-ratio: 1 / 1; margin: 0 auto; background: #F2E8D5; border: 1px solid rgba(35,28,51,0.12); border-radius: 12px; }
+  figure.video figcaption { text-align: center; }
   .phone-pair { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; margin: 24px 0 8px; }
   .phone-pair figure { margin: 0; flex: 1; min-width: 200px; max-width: 300px; }
   .phone-pair figure img { max-width: 100%; }
@@ -476,16 +478,24 @@
 
     <section>
       <h2>What I worked on</h2>
-      <p><strong>Defined what the assistant actually was before anyone touched a screen, in one plain sentence the rest of the team could build toward.</strong> "An AI-driven utility layer inside Shop that helps you with all of your shopping needs, chat, voice, or visual search," positioned alongside a supercharged Shop search with camera, voice, and chat docked right in the search bar. Naming the thing first meant design, engineering, and product were all building toward the same idea from day one.</p>
+      <p><strong>Helped define what the assistant was before anyone touched a screen, in one plain sentence the team could build toward.</strong> "An AI-driven utility layer inside Shop that helps you with all of your shopping needs, chat, voice, or visual search," positioned alongside a supercharged Shop search with camera, voice, and chat docked right in the search bar. Naming the thing first meant design, engineering, and product were all building toward the same idea from day one.</p>
       <figure>
         <img src="../../images/work/shop-assistant/01-poster-pitch.jpg" alt="The plain-language pitch poster: an AI-driven utility layer inside Shop that helps with all your shopping needs">
         <figcaption>The actual pitch poster, the plain-language definition the rest of the project got built against.</figcaption>
       </figure>
-      <p><strong>Designed the prompts behind the assistant's conversations, past the concept stage, grounded in Shop's real product taxonomy and tone of voice spectrum.</strong> The assistant narrowing "the 45,873 shorts we have available on Shop" down through one specific opening question and quick-reply chips, the same pattern behind asking what kind of shoe someone wanted: Running, Lifestyle, Boots, Training. Those chips weren't invented: they mapped to categories that already existed in Shop's taxonomy, so a real part of my job, with engineering support, was training the assistant on that taxonomy well enough to surface the right one depending on where the conversation had gone.</p>
+      <figure>
+        <img src="../../images/work/shop-assistant/18-raw-chatgpt-hiking-boots.jpg" alt="A raw ChatGPT conversation: the question 'Can you recommend hiking boots that is below $150 with good arch support and is waterproof?' answered with a numbered list of four boot models and short descriptions">
+        <figcaption>My first test, February 2023: a raw ChatGPT answer to a hiking boots question.</figcaption>
+      </figure>
+      <p><strong>Designed the prompts behind the assistant's conversations, past the concept stage, grounded in <a href="https://www.shopify.com/blog/shopify-taxonomy" target="_blank" rel="noopener">Shopify's Standard Product Taxonomy</a> and tone of voice spectrum.</strong> The assistant narrowing "the 45,873 shoes we have available on Shop" down through one specific opening question and quick-reply chips, the same pattern behind asking what kind of shoe someone wanted. The prototype chips (Running, Lifestyle, Boots, Training) were a first pass. For launch, the categories came from Shopify's product taxonomy, and with engineering I worked out which ones showed up and when, depending on where the conversation had gone.</p>
       <p>Every line also had to hold up against the tone of voice spectrum I built for <a href="/work/gravity/">Gravity, Shop's design system</a>, so the assistant sounded like Shop even while reasoning out loud.</p>
       <figure class="phone">
-        <img src="../../images/work/shop-assistant/05-final-chat-flow.jpg" alt="Finished chat screen: the assistant asking what kind of shoe, with Running, Lifestyle, Boots, and Training quick-reply chips">
-        <figcaption>The shipped quick-reply flow: Running, Lifestyle, Boots, Training, every chip pulled from Shop's existing category taxonomy.</figcaption>
+        <img src="../../images/work/shop-assistant/05-final-chat-flow.jpg" alt="Prototype chat screen: the assistant asking what kind of shoe, with Running, Lifestyle, Boots, and Training quick-reply chips">
+        <figcaption>The prototype quick-reply flow, February 2023: Running, Lifestyle, Boots, Training, with the sale price visible on the product cards.</figcaption>
+      </figure>
+      <figure class="phone">
+        <img src="../../images/work/shop-assistant/19-follow-up-chips.jpg" alt="Chat screen with product cards in the conversation and two follow-up chips under them: Show me other options, and Do you like any?">
+        <figcaption>Follow-up chips under the product results: Show me other options, and Do you like any?</figcaption>
       </figure>
       <p><strong>Designed the context the model operated inside, working through open questions as they came up, not after the model already existed.</strong> None of these were separate decisions. Tone shaped which prompts mattered, prompts shaped how a conversation needed to recover, and all of it fed into what counted as a good response, worked out together:</p>
       <ul class="points">
@@ -494,8 +504,8 @@
         <li>Deciding how back-and-forth should work, where the entry points should live, and how each turn recovered when a request came back empty or off track</li>
         <li>Defining what a good response looked like, work that later shaped the actual evaluation rubric</li>
       </ul>
-      <p><strong>Set the rubric for what a good response looks like.</strong> A response had to surface a product that fit the ask, stay grounded in real inventory and price, hold Gravity's tone, and ask a clarifying question when a request was too vague to answer well.</p>
-      <p><strong>Evaluated output quality by hand against that rubric, because LLM-based evaluation wasn't an established practice yet in early 2023.</strong> In practice, I ran a few batches of 20 to 25 realistic shopper queries through the assistant, read every response myself, and logged a pass or fail in a spreadsheet. The review caught responses that didn't take discounted prices into account, and each miss sent me back to the prompt to fix it and rerun the batch.</p>
+      <p><strong>Helped set the rubric for what a good response looks like.</strong> A response had to surface a product that fit the ask, stay grounded in real inventory and price, hold Gravity's tone, and ask a clarifying question when a request was too vague to answer well.</p>
+      <p><strong>Evaluated output quality by hand against that rubric, because LLM-based evaluation wasn't an established practice yet in early 2023.</strong> In practice, I ran a few batches of 20 to 25 realistic shopper queries through the assistant, read each response myself, and logged a pass or fail in a spreadsheet. These were the first, small batches during initial content design testing. Engineering tested at a far larger scale. The review caught responses that didn't take discounted prices into account, and each miss sent me back to the prompt to fix it and rerun the batch.</p>
       <p><strong>Built two end-to-end demos that show the assistant reasoning through a request instead of just matching it to a product.</strong> Asked for "a gift for my mom," it reasons about the occasion and her style before recommending a hat and boots. Asked for "an outfit Brad Pitt would wear," it explains the styling choices behind the look. Both demos make the same point: the assistant thinks through a request before it recommends anything.</p>
       <div class="phone-pair">
         <figure>
@@ -534,6 +544,12 @@
       </div>
       <p><strong>Built and shipped fast enough to land inside OpenAI's own launch window for the ChatGPT API.</strong> OpenAI named Shopify directly alongside Instacart, Snap, and Quizlet as one of four launch partners, the same day the API itself went live. That's the direct payoff of scoping this during early partner access, months before the API was public and long before most companies even had access.</p>
       <p><strong>Shipped to 100 million Shop app users is the number that matters here.</strong> It launched publicly on March 1, 2023, via a purple assistant icon in the search bar, with a web rollout two weeks later and <a href="https://www.valueaddedresource.net/shopify-adds-chatgpt-assistant-shop-app" target="_blank" rel="noopener">independent press coverage at launch</a>. It's still live today, built into <a href="https://shop.com" target="_blank" rel="noopener">Shop's</a> core experience. For the record, this 2023 assistant is a distinct, earlier product from Shopify's later merchant-facing Sidekick and the 2025 checkout integration, it predates both.</p>
+      <figure class="video">
+        <video muted loop playsinline preload="metadata" controls width="720" height="720" poster="../../images/work/shop-assistant/17-launch-video-flow.jpg" aria-label="Screen recording of the Shop assistant: starter prompts, a shopper asking to learn to make soaps, the assistant asking a clarifying question, soap starter kits returned as product cards, and one kit added to the bag.">
+          <source src="../../images/work/shop-assistant/17-launch-video-flow.mp4" type="video/mp4">
+        </video>
+        <figcaption>Footage from Shopify's launch video for the Shop assistant.</figcaption>
+      </figure>
       <p><strong>Shop's own launch tweet had the voice baked right in.</strong> "Say hello to your new shopping BFF: the @Shop app's ChatGPT powered assistant is ready to talk products, trends, and maybe even the meaning of life." The same tone spectrum carried into the brand's own words, too.</p>
     </section>
 
@@ -607,6 +623,20 @@
         input.focus();
       }
     });
+  })();
+</script>
+
+<script>
+  (function () {
+    var v = document.querySelector('figure.video video');
+    if (!v || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+        else v.pause();
+      });
+    }, { threshold: 0.4 }).observe(v);
   })();
 </script>
 
